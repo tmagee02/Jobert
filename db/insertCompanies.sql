@@ -1,0 +1,2 @@
+-- insert into Company (company_name, base_url, search_path, search_query)
+-- values ('Stripe', 'https://stripe.com', '/jobs/search', '?query=Software+Engineer&remote_locations=North+America--US+Remote&office_locations=North+America--Atlanta&office_locations=North+America--Chicago&office_locations=North+America--New+York&office_locations=North+America--New+York+Privy+HQ&office_locations=North+America--San+Francisco+Bridge+HQ&office_locations=North+America--Seattle&office_locations=North+America--South+San+Francisco&office_locations=North+America--Washington+DC')

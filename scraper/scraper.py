@@ -43,7 +43,7 @@ def main():
                 logger.info(
                     f'Job details already gathered for {jobUrl}. Skipping.')
 
-        # writeJobDetailsToFile(jobDetails)
+        writeJobDetailsToFile(jobDetails)
 
     return
 

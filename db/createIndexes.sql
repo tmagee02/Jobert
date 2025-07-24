@@ -1,0 +1,1 @@
+-- create index if not exists idx_job_url on Job(job_url)

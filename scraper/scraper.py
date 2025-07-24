@@ -115,8 +115,7 @@ def writeJobDetailsToFile(jobDetails: dict) -> None:
                 f.write(f'Remote Locations: {remote}\n')
             f.write('\n')
             f.write(jobDesc)
-            f.write(
-                '\n\n--------------------\n--------------------\n--------------------\n\n')
+            f.write('\n\n--------------------\n--------------------\n--------------------\n\n')
     return
 
 
@@ -132,7 +131,7 @@ if __name__ == '__main__':
     logging.basicConfig(filename=loggerFile, level=logging.DEBUG, format=formatting)
         
     main()
-    
+
     timeEnd = time.perf_counter()
     programTime = timeEnd - timeStart
     print(f'Program Time: {programTime}')

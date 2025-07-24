@@ -77,13 +77,13 @@ def findJobDetails(html: str, jobDetails: dict, jobUrl: str) -> None:
     return
 
 
-def randomDelay():
+def randomDelay() -> None:
     randomTime = random.uniform(1.5, 7)
     logger.debug(randomTime)
     time.sleep(randomTime)
 
 
-def writeJobDetailsToFile(jobDetails: dict):
+def writeJobDetailsToFile(jobDetails: dict) -> None:
     with open('jobDetails.txt', 'w') as f:
         for jobUrl, (title, jobDesc, offices, remote) in jobDetails.items():
             f.write(jobUrl)
@@ -102,6 +102,14 @@ def writeJobDetailsToFile(jobDetails: dict):
 if __name__ == '__main__':
     timeStart = time.perf_counter()
     print('.\n.\n.\n.\n.\n')
+    # DEBUG
+    #   randomTime
+    # INFO
+    #   gather details from job
+    #   skip details from job
+    # WARNING
+    # ERROR
+    # CRITICAL
     logger = logging.getLogger('Jobert Scraper')
     logging.basicConfig(level=logging.INFO)
     # logging.basicConfig(level=logging.ERROR)

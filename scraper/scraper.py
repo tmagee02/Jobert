@@ -1,3 +1,5 @@
+from datetime import datetime
+import os
 import time
 import random
 import logging
@@ -13,11 +15,12 @@ def main():
         from Company
         '''
 
-    conn = sqlite3.connect('./db/jobert.db')
-    dataframe = pd.read_sql_query(selectCompany, conn)
-    print(dataframe)
-    conn.close()
+    with sqlite3.connect('./db/jobert.db') as conn:
+        dataframe = pd.read_sql_query(selectCompany, conn)
+        print(dataframe)
 
+    idCompany = int(dataframe.at[0, 'id'])
+    companyName = dataframe.at[0, 'company_name']
     baseUrl = dataframe.at[0, 'base_url']
     searchPath = dataframe.at[0, 'search_path']
     query = dataframe.at[0, 'search_query']
@@ -33,7 +36,7 @@ def main():
         jobDetails = {}
         for jobUrl in jobUrls:
             if jobUrl not in jobDetails:
-                logger.info(f'Gathering job details for {jobUrl}')
+                logger.info(f'Gathering job details for {jobUrl}. Good.')
                 page.goto(jobUrl)
                 page.locator('h1.Copy__title').first.wait_for(state='visible')
                 html = page.inner_html('body')
@@ -44,6 +47,7 @@ def main():
                     f'Job details already gathered for {jobUrl}. Skipping.')
 
         writeJobDetailsToFile(jobDetails)
+        insertJobToDatabase(jobDetails, idCompany)
 
     return
 
@@ -77,9 +81,26 @@ def findJobDetails(html: str, jobDetails: dict, jobUrl: str) -> None:
     return
 
 
+def insertJobToDatabase(jobDetails: dict, idCompany: int) -> None:
+    with sqlite3.connect('./db/jobert.db') as conn:
+        for jobUrl, (title, jobDesc, offices, remote) in jobDetails.items():
+            insertJob = '''
+                insert into Job (job_url, title, job_desc, company_id)
+                values (?, ?, ?, ?)
+                '''
+            try:
+                conn.execute(insertJob, (jobUrl, title, jobDesc, idCompany))
+                logger.info(f'Inserting row into db for Job: {title}. Good.')
+            except sqlite3.IntegrityError:
+                logger.info(f'Row in db for Job: {title} already exists. Skipping.')
+
+
+
+
+
 def randomDelay() -> None:
     randomTime = random.uniform(1.5, 7)
-    logger.debug(randomTime)
+    logger.debug(f'Random Delay: {randomTime} sec')
     time.sleep(randomTime)
 
 
@@ -102,18 +123,16 @@ def writeJobDetailsToFile(jobDetails: dict) -> None:
 if __name__ == '__main__':
     timeStart = time.perf_counter()
     print('.\n.\n.\n.\n.\n')
-    # DEBUG
-    #   randomTime
-    # INFO
-    #   gather details from job
-    #   skip details from job
-    # WARNING
-    # ERROR
-    # CRITICAL
+
+    os.makedirs("logs", exist_ok=True)
+    timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    loggerFile = f'./logs/scraper_logs_{timestamp}.log'
     logger = logging.getLogger('Jobert Scraper')
-    logging.basicConfig(level=logging.INFO)
-    # logging.basicConfig(level=logging.ERROR)
+    formatting = '%(asctime)s - %(levelname)s - %(message)s'
+    logging.basicConfig(filename=loggerFile, level=logging.DEBUG, format=formatting)
+        
     main()
+    
     timeEnd = time.perf_counter()
     programTime = timeEnd - timeStart
     print(f'Program Time: {programTime}')

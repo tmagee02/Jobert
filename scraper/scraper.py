@@ -64,6 +64,10 @@ def findJobUrls(html: str) -> list[str]:
     return jobUrls
 
 
+def exposeJobDetails():
+    return
+
+
 def findJobDetails(html: str, jobDetails: dict, jobUrl: str) -> None:
     soup = BeautifulSoup(html, 'html.parser')
     jobTitle = soup.find('h1', class_='Copy__title').get_text(strip=True)
@@ -89,8 +93,10 @@ def insertJobToDatabase(jobDetails: dict, idCompany: int) -> None:
                 values (?, ?, ?, ?)
                 '''
             try:
-                conn.execute(insertJob, (jobUrl, title, jobDesc, idCompany))
+                cursor = conn.cursor()
+                cursor.execute(insertJob, (jobUrl, title, jobDesc, idCompany))
                 logger.info(f'Inserting row into db for Job: {title}. Good.')
+                idJob = cursor.lastrowid
             except sqlite3.IntegrityError:
                 logger.info(f'Row in db for Job: {title} already exists. Skipping.')
 

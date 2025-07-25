@@ -1,0 +1,93 @@
+[
+    {
+        "companyName" : "Stripe",
+        "urlRenderType" : null,
+        "xpaths" : {
+            "jobUrl" : "",
+            "nextPage" : "",
+            "jobTitle" : "",
+            "jobDesc" : "",
+            "location" : "",
+            "remote" : "",
+            "datePosted" : ""
+        }
+    },
+    {
+        "companyName" : "Airbnb",
+        "urlRenderType" : "Next Page",
+        "xpaths" : {
+            "jobUrl" : "//h3/a",
+            "nextPage" : "//a[@class='facetwp-page next']",
+            "jobTitle" : "//h1[@class='text-size-12  text-left']",
+            "jobDesc" : "//div[@class='job-detail active']",
+            "location" : "//div[@class='offices']/span",
+            "remote" : null,
+            "datePosted" : null
+        }
+    },
+    {
+        "companyName" : "Block",
+        "urlRenderType" : null,
+        "xpaths" : {
+            "jobUrl" : "//div[contains(@class, 'jobs-stack')]/div/a",
+            "nextPage" : null,
+            "jobTitle" : "//h1/div",
+            "jobDesc" : "//div[@id='job-details-content']",
+            "location" : "//div[contains(@class, 'job-info-container')]/div/span/p",
+            "remote" : null,
+            "datePosted" : "//div[contains(@class, 'job-info-container')]/div[3]/p/span"
+        }
+    },
+    {
+        "companyName" : "Uber",
+        "urlRenderType" : "Show More",
+        "xpaths" : {
+            "jobUrl" : "//span/a",
+            "nextPage" : "//button[text() = 'Show more openings']",
+            "jobTitle" : "//h1",
+            "jobDesc" : "//div[contains(@class, 'job-details')]/div/div/div[3]",
+            "location" : "//div[contains(@class, 'job-details')]/div/div/div/div/div",
+            "remote" : null,
+            "datePosted" : null
+        }
+    },
+    {
+        "companyName" : "OpenAI",
+        "urlRenderType" : null,
+        "xpaths" : {
+            "jobUrl" : "//div[contains(@class, '@container')]/div/a[1]",
+            "nextPage" : null,
+            "jobTitle" : "//h2",
+            "jobDesc" : "//div[contains(@class, 'prose')]",
+            "location" : "//div[@class='mt-md']/p",
+            "remote" : null,
+            "datePosted" : null
+        }
+    },
+    {
+        "companyName" : "Databricks",
+        "urlRenderType" : null,
+        "xpaths" : {
+            "jobUrl" : "//div[@id='jobWrap']/div/div/a",
+            "nextPage" : null,
+            "jobTitle" : "//h1/div",
+            "jobDesc" : "//div[contains(@class, 'rich-text-body b2')]",
+            "location" : "//div[contains(@class, 'h4')]",
+            "remote" : null,
+            "datePosted" : null
+        }
+    },
+    {
+        "companyName" : "Apple",
+        "urlRenderType" : "Next Page",
+        "xpaths" : {
+            "jobUrl" : "//h3/a",
+            "nextPage" : "//button[@aria-label='Next Page']",
+            "jobTitle" : "//h1",
+            "jobDesc" : "//section[@class='hyperlink-underline']",
+            "location" : "//label[@id='jobdetails-joblocation']",
+            "remote" : null,
+            "datePosted" : "//time[@id='jobdetails-jobpostdate']"
+        }
+    }
+]

@@ -1,0 +1,118 @@
+AFTER REACHING WEBSITE AND ENTERING QUERY
+
+Stripe
+	jobUrl : soup.find_all("a", class_="Link JobsListings__link")
+	nextPage : DNE
+	jobTitle : soup.find('h1', class_='Copy__title').get_text(strip=True)
+	jobDesc : soup.find('div', class_='RowLayout').get_text(separator=' \n\n ', strip=True)
+	offices : offices = soup.find('p', string='Office locations')
+				if offices:
+					offices = offices.find_next_sibling('p').get_text()
+	remote : remote = soup.find('p', string='Remote locations')
+				if remote:
+					remote = remote.find_next_sibling('p').get_text()
+	datePosted : DNE
+	NOTES: offices and remote - sometimes one or the other doesnt exist on the page so you need to check if they exist before storing
+	
+	
+	
+Airbnb
+	baseUrl : https://careers.airbnb.com
+	searchPath : /positions/
+	searchQuery : ?_search_input=Software%20Engineer&_offices=united-states&_jobs_sort=updated_at
+	jobUrl : //h3/a
+	nextPage : //a[@class='facetwp-page next']
+	jobTitle : //h1[@class='text-size-12  text-left']
+	jobDesc : //div[@class='job-detail active']
+	Location : //div[@class='offices']/span
+	remote : DNE
+	datePosted : DNE
+	NOTES: Job search only displays 10 jobs, must press next page before searching for more job links
+	
+
+Block
+	baseUrl : https://block.xyz
+	searchPath : /careers/jobs
+	searchQuery : ?teams[]=Software%20Engineering
+	jobUrl : //div[contains(@class, 'jobs-stack')]/div/a
+	nextPage : DNE
+	jobTitle : //h1/div
+	jobDesc : //div[@id='job-details-content']
+	location : //div[contains(@class, 'job-info-container')]/div/span/p
+	remote : DNE
+	datePosted : //div[contains(@class, 'job-info-container')]/div[3]/p/span
+	NOTES: 	datePosted does not always exist
+
+
+Uber
+	baseUrl : https://www.uber.com
+	searchPath : /us/en/careers/list/
+	searchQuery : ?query=Software%20Engineer&location=USA-California-San%20Francisco&location=USA-California-Sunnyvale&location=USA-California-Culver%20City&location=USA-California-Los%20Angeles&location=USA-New%20York-New%20York&location=USA-New%20York-Bronx&location=USA-Illinois-Chicago&location=USA-Texas-Dallas&location=USA-Washington-Seattle&location=USA-Arizona-Phoenix&location=USA-Florida-Miami&location=USA-District%20of%20Columbia-Washington&location=USA-Massachusetts-Boston
+	jobUrl : //span/a
+	nextPage : //button[text() = 'Show more openings']
+	jobTitle : //h1
+	jobDesc : //div[contains(@class, 'job-details')]/div/div/div[3]
+	Location : //div[contains(@class, 'job-details')]/div/div/div/div/div
+	remote : DNE
+	datePosted : DNE
+	NOTES: nextPage = Show more openings. Continue to press it until it doesnt exist.
+
+
+OpenAI
+	baseUrl : https://openai.com
+	searchPath : /careers/search/
+	searchQuery : ?q=Software+Engineer&l=07ed9191-5bc6-421b-9883-f1ac2e276ad7%2Ce8062547-b090-4206-8f1e-7329e0014e98%2Cbbd9f7fe-aae5-476a-9108-f25aea8f6cd2%2C16c48b76-8036-4fe3-a18f-e9d357395713%2C6252b4ed-714d-469a-a970-7a13101bac9d
+	jobUrl : //div[contains(@class, '@container')]/div/a[1]
+	nextPage : DNE
+	jobTitle : //h2
+	jobDesc : //div[contains(@class, 'prose')]
+	Location : //div[@class='mt-md']/p
+	remote : DNE
+	datePosted : DNE
+	NOTES: jobDesc finds 2 objects, one with desc, one with salary; location needs to be parsed from team
+
+
+Databricks
+	baseUrl : https://www.databricks.com
+	searchPath : /company/careers/open-positions
+	searchQuery : ?department=Engineering&location=United%20States
+	jobUrl : //div[@id='jobWrap']/div/div/a
+	nextPage : DNE
+	jobTitle : //h1/div
+	jobDesc : //div[contains(@class, 'rich-text-body b2')]
+	Location : //div[contains(@class, 'h4')]
+	remote : DNE
+	datePosted : DNE
+	NOTES: location - get text, not child text
+
+
+Apple
+	baseUrl : https://jobs.apple.com
+	searchPath : /en-us/search
+	searchQuery : ?search=Software+Engineer&sort=newest&location=united-states-USA
+	jobUrl : //h3/a
+	nextPage : //button[@aria-label='Next Page']
+	jobTitle : //h1
+	jobDesc : //section[@class='hyperlink-underline']
+	Location : //label[@id='jobdetails-joblocation']
+	remote : DNE
+	datePosted : //time[@id='jobdetails-jobpostdate']
+	NOTES: jobDesc also includes datePosted, not a big deal
+
+
+#$%#$%
+	baseUrl : 
+	searchPath : 
+	searchQuery : 
+	jobUrl : 
+	nextPage : 
+	jobTitle : 
+	jobDesc : 
+	Location : 
+	remote : DNE
+	datePosted : DNE
+	NOTES: 
+
+
+	
+	

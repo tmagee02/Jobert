@@ -3,7 +3,7 @@
         "companyName" : "Stripe",
         "urlRenderType" : null,
         "xpaths" : {
-            "jobUrl" : "",
+            "jobUrl" : "//tr/td/a",
             "nextPage" : "",
             "jobTitle" : "",
             "jobDesc" : "",

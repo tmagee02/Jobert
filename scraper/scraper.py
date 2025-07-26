@@ -8,7 +8,8 @@ import json
 import pandas as pd
 from collections import defaultdict
 from bs4 import BeautifulSoup
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, Page, Locator
+from urllib.parse import urljoin
 
 
 def main():    
@@ -26,10 +27,10 @@ def main():
 
 
     urlRenderTypes = {}
-    xpathCompany = defaultdict(dict)
+    xpaths = defaultdict(dict)
     for company in data:
         urlRenderTypes[company['companyName']] = company['urlRenderType']
-        xpathCompany[company['companyName']] = company['xpaths']
+        xpaths[company['companyName']] = company['xpaths']
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False, slow_mo=50)
@@ -42,20 +43,23 @@ def main():
             searchPath = row.search_path
             searchQuery = row.search_query
             urlRenderType = urlRenderTypes[companyName]
-            print(companyName, urlRenderType)
-            xJobUrl = xpathCompany[companyName]['jobUrl']
-            xNextPage = xpathCompany[companyName]['nextPage']
-            xJobTitle = xpathCompany[companyName]['jobTitle']
-            xJobDesc = xpathCompany[companyName]['jobDesc']
-            xLocation = xpathCompany[companyName]['location']
-            xRemote = xpathCompany[companyName]['remote']
-            xDatePosted = xpathCompany[companyName]['datePosted']
+            # xJobUrl = xpaths[companyName]['jobUrl']
+            # xNextPage = xpaths[companyName]['nextPage']
+            # xJobTitle = xpaths[companyName]['jobTitle']
+            # xJobDesc = xpaths[companyName]['jobDesc']
+            # xLocation = xpaths[companyName]['location']
+            # xRemote = xpaths[companyName]['remote']
+            # xDatePosted = xpaths[companyName]['datePosted']
+            
             page.goto(baseUrl + searchPath + searchQuery)
             randomDelay()
+            jobUrls = getJobUrls(page, xpaths, companyName, baseUrl, searchPath, urlRenderType)
+            for jobUrl in jobUrls:
+                print(companyName, jobUrl)
         # page.goto(baseUrl + searchPath + query)
         # randomDelay()
         # html = page.inner_html('body')
-        # jobUrls = findJobUrls(html)
+        # jobUrls = getJobUrls(html)
 
         # jobDetails = {}
         # for jobUrl in jobUrls:
@@ -65,7 +69,7 @@ def main():
         #         page.locator('h1.Copy__title').first.wait_for(state='visible')
         #         html = page.inner_html('body')
         #         exposeJobDetails()
-        #         findJobDetails(html, jobDetails, jobUrl)
+        #         getJobDetails(html, jobDetails, jobUrl)
         #         randomDelay()
         #     else:
         #         logger.info(
@@ -77,27 +81,51 @@ def main():
     return
 
 
-def testMultipleCompanies():
-    return
-
-
-def findJobUrls(html: str) -> list[str]:
-    soup = BeautifulSoup(html, "html.parser")
-    jobs = soup.find_all("a", class_="Link JobsListings__link")
+def getJobUrls(page: Page, xpaths: dict, companyName: str, baseUrl: str, searchPath: str, urlRenderType: str) -> list[str]:
     jobUrls = []
 
-    for job in jobs:
-        jobUrl = job.get("href")
-        jobUrls.append(jobUrl)
+    if urlRenderType == "Show More":
+        buttonShowMore = page.locator(xpaths[companyName]['nextPage'])
+        while buttonShowMore.count() > 0:
+            buttonShowMore.click()
+            try:
+                randomDelay(True)
+                page.locator(xpaths[companyName]['nextPage']).wait_for(timeout=5000)
+                buttonShowMore = page.locator(xpaths[companyName]['nextPage'])
+                print("button found")
+            except:
+                break
 
+    elements = page.query_selector_all(xpaths[companyName]['jobUrl'])
+    for e in elements:
+        jobPath = e.get_attribute('href')        
+        jobUrls.append(urljoin(baseUrl + searchPath, jobPath))
+
+    if urlRenderType == "Next Page":
+        maxPages = 9
+        buttonNextPage = page.locator(xpaths[companyName]['nextPage'])
+        while maxPages > 0 and isClickable(buttonNextPage):
+            buttonNextPage.click()
+            try:
+                randomDelay(True)
+                elements = page.query_selector_all(xpaths[companyName]['jobUrl'])
+                for e in elements:
+                    jobPath = e.get_attribute('href')        
+                    jobUrls.append(urljoin(baseUrl + searchPath, jobPath))
+
+                page.locator(xpaths[companyName]['nextPage']).wait_for(timeout=5000)
+                print("button found")
+
+                maxPages -= 1
+                buttonNextPage = page.locator(xpaths[companyName]['nextPage'])
+            except:
+                break
+
+    print(len(jobUrls))
     return jobUrls
 
 
-def exposeJobDetails():
-    return
-
-
-def findJobDetails(html: str, jobDetails: dict, jobUrl: str) -> None:
+def getJobDetails(html: str, jobDetails: dict, jobUrl: str) -> None:
     soup = BeautifulSoup(html, 'html.parser')
     jobTitle = soup.find('h1', class_='Copy__title').get_text(strip=True)
     jobDesc = soup.find('div', class_='RowLayout').get_text(separator=' \n ', strip=True)
@@ -130,11 +158,11 @@ def insertJobToDatabase(jobDetails: dict, idCompany: int) -> None:
     return
 
 
+#--------------------------------
 
 
-
-def randomDelay() -> None:
-    randomTime = random.uniform(1.5, 7)
+def randomDelay(shortDelay: bool=False) -> None:
+    randomTime = random.uniform(0.5, 1.5) if shortDelay else random.uniform(1.5, 5)
     logger.debug(f'Random Delay: {randomTime} sec')
     time.sleep(randomTime)
     return
@@ -153,6 +181,12 @@ def writeJobDetailsToFile(jobDetails: dict) -> None:
             f.write(jobDesc)
             f.write('\n\n--------------------\n--------------------\n--------------------\n\n')
     return
+
+
+def isClickable(buttonNextPage: Locator) -> bool:
+    isRemoved = buttonNextPage.count() == 0
+    isDisabled = buttonNextPage.get_attribute('disabled') is not None
+    return not (isRemoved or isDisabled)
 
 
 if __name__ == '__main__':

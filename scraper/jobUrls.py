@@ -1,9 +1,9 @@
-from scraperUtils import randomDelay
+from utils import randomDelay
 from playwright.sync_api import Page, Locator
 from urllib.parse import urljoin
 
 
-def getJobUrls(page: Page, xpaths: dict, companyName: str, baseUrl: str, searchPath: str, urlRenderType: str) -> list[(str, str)]:
+def getJobUrls(page: Page, xpaths: dict, companyName: str, idCompany: int, baseUrl: str, searchPath: str, urlRenderType: str) -> list[(str, str)]:
     jobUrls = []
 
     if urlRenderType == "Show More":
@@ -21,7 +21,7 @@ def getJobUrls(page: Page, xpaths: dict, companyName: str, baseUrl: str, searchP
     elements = page.query_selector_all(xpaths[companyName]['jobUrl'])
     for e in elements:
         jobPath = e.get_attribute('href')        
-        jobUrls.append((companyName, urljoin(baseUrl + searchPath, jobPath)))
+        jobUrls.append((companyName, idCompany, urljoin(baseUrl + searchPath, jobPath)))
 
     if urlRenderType == "Next Page":
         maxPages = 9
@@ -33,7 +33,7 @@ def getJobUrls(page: Page, xpaths: dict, companyName: str, baseUrl: str, searchP
                 elements = page.query_selector_all(xpaths[companyName]['jobUrl'])
                 for e in elements:
                     jobPath = e.get_attribute('href')        
-                    jobUrls.append((companyName, urljoin(baseUrl + searchPath, jobPath)))
+                    jobUrls.append((companyName, idCompany, urljoin(baseUrl + searchPath, jobPath)))
 
                 page.locator(xpaths[companyName]['nextPage']).wait_for(timeout=5000)
                 # print("button found")

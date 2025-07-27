@@ -3,31 +3,35 @@ import logging
 
 
 def writeJobDetailsToFile(jobDetails: dict) -> None:
-    with open('./scraper/jobDetails.txt', 'w') as f:
-        for jobUrl, (title, jobDesc, offices, remote) in jobDetails.items():
-            f.write(jobUrl)
+    count = 1
+    with open('./scraper/jobDetails.txt', 'w', encoding='utf-8') as f:
+        for jobUrl, (title, jobDesc, offices, remote, datePosted, idCompany) in jobDetails.items():
+            f.write(f'{count}. {jobUrl}')
+            count += 1
             f.write(f'\n{title}\n')
             if offices:
-                f.write(f'Office Locations: {offices}\n')
+                strOffice = '; '.join(offices)
+                f.write(f'Office Locations: {strOffice}\n')
             if remote:
                 f.write(f'Remote Locations: {remote}\n')
-            f.write('\n')
-            f.write(jobDesc)
+            if datePosted:
+                f.write(f'Date Posted: {datePosted}\n')
+            f.write(f'\n{jobDesc}\n')
             f.write('\n\n--------------------\n--------------------\n--------------------\n\n')
     return
 
 
-def insertJobToDatabase(jobDetails: dict, idCompany: int) -> None:
+def insertJobToDatabase(jobDetails: dict) -> None:
     logger = logging.getLogger('Jobert Scraper')
     with sqlite3.connect('./db/jobert.db') as conn:
         cursor = conn.cursor()
-        for jobUrl, (title, jobDesc, offices, remote) in jobDetails.items():
-            insertJob = '''
+        for jobUrl, (title, jobDesc, offices, remote, datePosted, idCompany) in jobDetails.items():
+            qInsertJob = '''
                 insert into Job (job_url, title, job_desc, company_id)
                 values (?, ?, ?, ?)
                 '''
             try:
-                cursor.execute(insertJob, (jobUrl, title, jobDesc, idCompany))
+                cursor.execute(qInsertJob, (jobUrl, title, jobDesc, idCompany))
                 logger.info(f'Inserting row into db for Job: {title}. Good.')
                 idJob = cursor.lastrowid
             except sqlite3.IntegrityError:

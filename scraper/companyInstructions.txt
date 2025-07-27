@@ -52,7 +52,7 @@ Uber
 	nextPage : //button[text() = 'Show more openings']
 	jobTitle : //h1
 	jobDesc : //div[contains(@class, 'job-details')]/div/div/div[3]
-	Location : //div[contains(@class, 'job-details')]/div/div/div/div/div
+	Location : //div[contains(@class, 'job-details')]/div/div/div/div
 	remote : DNE
 	datePosted : DNE
 	NOTES: nextPage = Show more openings. Continue to press it until it doesnt exist.

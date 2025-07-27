@@ -5,11 +5,14 @@ import logging
 import smtplib
 from email.message import EmailMessage
 from dotenv import load_dotenv
+from datetime import datetime
 
-
+totalDelay = 0
 def randomDelay(shortDelay: bool=False) -> None:
+    global totalDelay
     logger = logging.getLogger('Jobert Scraper')
     randomTime = random.uniform(0.5, 1.5) if shortDelay else random.uniform(1.5, 5)
+    totalDelay += randomTime
     logger.debug(f'Random Delay: {randomTime} sec')
     time.sleep(randomTime)
     return
@@ -33,3 +36,12 @@ def emailLogging(timestamp: str, programTime: float, loggerFile: str):
         smtp.login(email, password)
         smtp.send_message(msg)
     return
+
+def setupLogging():
+    os.makedirs("logs", exist_ok=True)
+    timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    loggerFile = f'./logs/scraper_logs_{timestamp}.log'
+    logger = logging.getLogger('Jobert Scraper')
+    formatting = '%(asctime)s - %(levelname)s - %(message)s'
+    logging.basicConfig(filename=loggerFile, level=logging.INFO, format=formatting)
+    return logger

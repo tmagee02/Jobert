@@ -1,9 +1,11 @@
+from typing import Tuple, Set
 import sqlite3
 import json
 import pandas as pd
+from pandas import DataFrame
 from collections import defaultdict
 
-def loadExistingDatabaseData():
+def loadExistingDatabaseData() -> Tuple[DataFrame, Set[str]]:
         qSelectCompany = '''
             select * 
             from Company
@@ -19,10 +21,10 @@ def loadExistingDatabaseData():
             df_jobUrls = pd.read_sql_query(qSelectJobUrls, conn)
         
         dbJobUrls = set(df_jobUrls['job_url'])
-        return dbCompanies, dbJobUrls
+        return (dbCompanies, dbJobUrls)
 
 
-def loadJson():
+def loadJson() -> Tuple[dict, defaultdict]:
     with open('./scraper/xpathCompany.json', 'r') as file:
         data = json.load(file)
 

@@ -1,3 +1,5 @@
+from typing import List, Tuple, Set
+from collections import defaultdict
 from utils import randomDelay
 from playwright.sync_api import Page, TimeoutError as PlaywrightTimeoutError
 import logging
@@ -16,10 +18,11 @@ def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany:
     try:
         logger.info(f'Status {status} @ {url}. Good.')
         page.locator(xpaths[companyName]['jobTitle']).nth(0).wait_for(timeout=5000)
-        locTitle = page.locator(xpaths[companyName]['jobTitle']).nth(0) if xpaths[companyName]['jobTitle'] else page.locator('//h1/h1/h1/h1')
-        locJobDesc = page.locator(xpaths[companyName]['jobDesc']) if xpaths[companyName]['jobDesc'] else page.locator('//h1/h1/h1/h1')
-        locLocations = page.locator(xpaths[companyName]['location']) if xpaths[companyName]['location'] else page.locator('//h1/h1/h1/h1')
-        locRemote = page.locator(xpaths[companyName]['nextPage']) if xpaths[companyName]['nextPage'] else page.locator('//h1/h1/h1/h1')
+        locDummy = page.locator('//h1/h1/h1/h1')
+        locTitle = page.locator(xpaths[companyName]['jobTitle']).nth(0) if xpaths[companyName]['jobTitle'] else locDummy
+        locJobDesc = page.locator(xpaths[companyName]['jobDesc']) if xpaths[companyName]['jobDesc'] else locDummy
+        locLocations = page.locator(xpaths[companyName]['location']) if xpaths[companyName]['location'] else locDummy
+        locRemote = page.locator(xpaths[companyName]['nextPage']) if xpaths[companyName]['nextPage'] else locDummy
         locDatePosted = page.locator(xpaths[companyName]['datePosted']) if xpaths[companyName]['datePosted'] else page.locator('//h1/h1/h1/h1')
 
         # print(companyName, locTitle.count(), locJobDesc.count(), locLocations.count(), locRemote.count(), locDatePosted.count(), url)
@@ -35,4 +38,18 @@ def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany:
     except PlaywrightTimeoutError:
         logger.error(f'Possible invalid job @ {url}.')
         return
-    
+
+
+def getAllJobDetails(dbJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, int, str]], xpaths: defaultdict) -> dict:   
+    logger = logging.getLogger('Jobert Scraper')
+    jobDetails = {}
+    count = 1
+    for company, idCompany, jobUrl in jobUrls:
+        if jobUrl not in dbJobUrls and jobUrl not in jobDetails:
+            status = page.goto(jobUrl).status
+            print(count)
+            count += 1
+            getJobDetails(page, status, xpaths, company, idCompany, jobDetails, jobUrl)
+        else:
+            logger.info(f'Job details already gathered for {jobUrl}. Skipping.')
+    return jobDetails

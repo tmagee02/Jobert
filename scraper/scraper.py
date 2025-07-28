@@ -27,7 +27,7 @@ if __name__ == '__main__':
     timeStart = time.perf_counter()
     print('.\n.\n.\n.\n.\n')
 
-    logger = setupLogging()
+    logger, jobActivity = setupLogging()
         
     main()
 

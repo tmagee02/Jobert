@@ -11,12 +11,15 @@ def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany:
     #Apple is consistant 11101
     #Databricks is consistant 11100
     logger = logging.getLogger('Jobert Scraper')
+    jobActivity = logging.getLogger('Job Activity')
     if status != 200:
         logger.error(f'Status {status} @ {url}. Skipping.')
+        jobActivity.error(f'Status {status} @ {url}. Skipping.')
         return
 
     try:
         logger.info(f'Status {status} @ {url}. Good.')
+        jobActivity.info(f'New job found @ {url}')
         page.locator(xpaths[companyName]['jobTitle']).nth(0).wait_for(timeout=5000)
         locDummy = page.locator('//h1/h1/h1/h1')
         locTitle = page.locator(xpaths[companyName]['jobTitle']).nth(0) if xpaths[companyName]['jobTitle'] else locDummy
@@ -37,6 +40,7 @@ def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany:
         return 
     except PlaywrightTimeoutError:
         logger.error(f'Possible invalid job @ {url}.')
+        jobActivity.error(f'Possible invalid job @ {url}.')
         return
 
 

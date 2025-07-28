@@ -39,9 +39,24 @@ def emailLogging(timestamp: str, programTime: float, loggerFile: str):
 
 def setupLogging():
     os.makedirs("logs", exist_ok=True)
+    os.makedirs('logs/debug', exist_ok=True)
+    os.makedirs('logs/jobActivity', exist_ok=True)
     timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    loggerFile = f'./logs/scraper_logs_{timestamp}.log'
+    formatting = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+
     logger = logging.getLogger('Jobert Scraper')
-    formatting = '%(asctime)s - %(levelname)s - %(message)s'
-    logging.basicConfig(filename=loggerFile, level=logging.INFO, format=formatting)
-    return logger
+    logger.setLevel(logging.DEBUG)
+    loggerFile = f'./logs/debug/scraper_logs_{timestamp}.log'
+    loggerHandler = logging.FileHandler(loggerFile)
+    loggerHandler.setFormatter(formatting)
+    logger.addHandler(loggerHandler)
+    
+    
+    jobActivity = logging.getLogger('Job Activity')
+    jobActivity.setLevel(logging.INFO)
+    jobActivityFile = f'./logs/jobActivity/job_activity_{timestamp}.log'
+    jobActivityHandler = logging.FileHandler(jobActivityFile)
+    jobActivityHandler.setFormatter(formatting)
+    jobActivity.addHandler(jobActivityHandler)
+
+    return logger, jobActivity

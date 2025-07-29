@@ -18,8 +18,6 @@ def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany:
         return
 
     try:
-        logger.info(f'Status {status} @ {url}. Good.')
-        jobActivity.info(f'New job found @ {url}')
         page.locator(xpaths[companyName]['jobTitle']).nth(0).wait_for(timeout=5000)
         locDummy = page.locator('//h1/h1/h1/h1')
         locTitle = page.locator(xpaths[companyName]['jobTitle']).nth(0) if xpaths[companyName]['jobTitle'] else locDummy
@@ -37,6 +35,8 @@ def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany:
         
         randomDelay(True)
         jobDetails[url] = (title, jobDesc, locations, remote, datePosted, idCompany)
+        logger.info(f'Status {status} @ {url}. Good.')
+        jobActivity.info(f'New job ( {title} ) found @ {url}')
         return 
     except PlaywrightTimeoutError:
         logger.error(f'Possible invalid job @ {url}.')

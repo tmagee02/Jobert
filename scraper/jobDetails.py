@@ -1,15 +1,25 @@
 from typing import List, Tuple, Set
 from collections import defaultdict
 from utils import randomDelay
-from playwright.sync_api import Page, TimeoutError as PlaywrightTimeoutError
+from playwright.sync_api import Page, Locator, TimeoutError as PlaywrightTimeoutError
 import logging
+
+def getLocator(page: Page, xpaths: dict, companyName: str, key: str) -> Locator:
+        locDummy = page.locator('//h1/h1/h1/h1')
+        xpath = xpaths[companyName][key]
+        return page.locator(xpath) if xpath else locDummy
+
+
+def getLocatorText(locator: Locator, multiple: bool=False, onlyFirst: bool=False):
+    if onlyFirst:
+        return locator.nth(0).inner_text() if locator.count() > 0 else None
+    elif multiple:
+        return locator.all_inner_texts() if locator.count() > 0 else None
+    else:
+        return locator.inner_text() if locator.count() > 0 else None
 
 
 def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany: int, jobDetails: dict, url: str) -> None:
-    #Uber has broken pages which i fixed and 7 h1s on a page
-    #OpenAI has cloudflare captcha
-    #Apple is consistant 11101
-    #Databricks is consistant 11100
     logger = logging.getLogger('Jobert Scraper')
     jobActivity = logging.getLogger('Job Activity')
     if status != 200:
@@ -18,20 +28,20 @@ def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany:
         return
 
     try:
+        #might need to revert locTitle idk if it works
         page.locator(xpaths[companyName]['jobTitle']).nth(0).wait_for(timeout=5000)
-        locDummy = page.locator('//h1/h1/h1/h1')
-        locTitle = page.locator(xpaths[companyName]['jobTitle']).nth(0) if xpaths[companyName]['jobTitle'] else locDummy
-        locJobDesc = page.locator(xpaths[companyName]['jobDesc']) if xpaths[companyName]['jobDesc'] else locDummy
-        locLocations = page.locator(xpaths[companyName]['location']) if xpaths[companyName]['location'] else locDummy
-        locRemote = page.locator(xpaths[companyName]['nextPage']) if xpaths[companyName]['nextPage'] else locDummy
-        locDatePosted = page.locator(xpaths[companyName]['datePosted']) if xpaths[companyName]['datePosted'] else page.locator('//h1/h1/h1/h1')
+        locTitle = getLocator(page, xpaths, companyName, xpaths[companyName]['jobTitle'])
+        locJobDesc = getLocator(page, xpaths, companyName, xpaths[companyName]['jobDesc'])
+        locLocations = getLocator(page, xpaths, companyName, xpaths[companyName]['location'])
+        locRemote = getLocator(page, xpaths, companyName, xpaths[companyName]['nextPage'])
+        locDatePosted = getLocator(page, xpaths, companyName, xpaths[companyName]['datePosted'])
 
         # print(companyName, locTitle.count(), locJobDesc.count(), locLocations.count(), locRemote.count(), locDatePosted.count(), url)
-        title = locTitle.inner_text() if locTitle.count() > 0 else None
-        jobDesc = locJobDesc.inner_text() if locJobDesc.count() > 0 else None
-        locations = locLocations.all_inner_texts() if locLocations.count() > 0 else None
-        remote = locRemote.inner_text() if locRemote.count() > 0 else None
-        datePosted = locDatePosted.inner_text() if locDatePosted.count() > 0 else None
+        title = getLocatorText(locTitle, onlyFirst=True)
+        jobDesc = getLocatorText(locJobDesc)
+        locations = getLocatorText(locLocations, multiple=True)
+        remote = getLocatorText(locRemote)
+        datePosted = getLocatorText(locDatePosted)
         
         randomDelay(True)
         jobDetails[url] = (title, jobDesc, locations, remote, datePosted, idCompany)

@@ -19,6 +19,9 @@
 --     foreign key (company_id) references Company(id) on delete cascade
 -- );
 
+-- alter table Job rename column date_added to date_scraped;
+-- alter table Job add column date_posted datetime;
+
 -- create table Location (
 --     id integer primary key,
 --     location_name text not null,
@@ -32,4 +35,6 @@
 --     foreign key (job_id) references Job(id) on delete cascade,
 --     foreign key (location_id) references Location(id) on delete cascade
 -- );
+
+
 

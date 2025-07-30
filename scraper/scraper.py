@@ -2,7 +2,7 @@ from dataLoader import loadExistingDatabaseData, loadJson
 from jobUrls import getAllJobUrls
 from jobDetails import getAllJobDetails
 from exportDetails import writeJobDetailsToFile, insertJobToDatabase
-from utils import setupLogging
+from utils import setupLogging, emailLogging
 import time
 from playwright.sync_api import sync_playwright
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     timeStart = time.perf_counter()
     print('.\n.\n.\n.\n.\n')
 
-    logger, jobActivity = setupLogging()
+    logger, jobActivity, timestamp = setupLogging()
         
     main()
 
@@ -37,4 +37,4 @@ if __name__ == '__main__':
     print(f'Total Delay: {totalDelay}')
     print(f'Program Time: {programTime}')
 
-    # sendEmail(timestamp, programTime, loggerFile)
+    emailLogging(timestamp, programTime, jobActivity)

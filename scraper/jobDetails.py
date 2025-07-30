@@ -19,7 +19,7 @@ def getLocatorText(locator: Locator, multiple: bool=False, onlyFirst: bool=False
         return locator.inner_text() if locator.count() > 0 else None
 
 
-def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany: int, jobDetails: dict, url: str) -> None:
+def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCompany: int, jobDetails: dict, url: str) -> None:
     logger = logging.getLogger('Jobert Scraper')
     jobActivity = logging.getLogger('Job Activity')
     if status != 200:
@@ -29,12 +29,13 @@ def getJobDetails(page: Page, status, xpaths: dict, companyName: str, idCompany:
 
     try:
         #might need to revert locTitle idk if it works
+        print(str(type(status)))
         page.locator(xpaths[companyName]['jobTitle']).nth(0).wait_for(timeout=5000)
-        locTitle = getLocator(page, xpaths, companyName, xpaths[companyName]['jobTitle'])
-        locJobDesc = getLocator(page, xpaths, companyName, xpaths[companyName]['jobDesc'])
-        locLocations = getLocator(page, xpaths, companyName, xpaths[companyName]['location'])
-        locRemote = getLocator(page, xpaths, companyName, xpaths[companyName]['nextPage'])
-        locDatePosted = getLocator(page, xpaths, companyName, xpaths[companyName]['datePosted'])
+        locTitle = getLocator(page, xpaths, companyName, 'jobTitle')
+        locJobDesc = getLocator(page, xpaths, companyName, 'jobDesc')
+        locLocations = getLocator(page, xpaths, companyName, 'location')
+        locRemote = getLocator(page, xpaths, companyName, 'nextPage')
+        locDatePosted = getLocator(page, xpaths, companyName, 'datePosted')
 
         # print(companyName, locTitle.count(), locJobDesc.count(), locLocations.count(), locRemote.count(), locDatePosted.count(), url)
         title = getLocatorText(locTitle, onlyFirst=True)

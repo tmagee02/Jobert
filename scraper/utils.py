@@ -28,7 +28,7 @@ def emailLogging(timestamp: str, programTime: float, loggerFile: str):
     msg["Subject"] = subject
     msg["From"] = email
     msg["To"] = email
-    with open(loggerFile, 'rb') as f:
+    with open(loggerFile.handlers[0].baseFilename, 'rb') as f:
         fData = f.read()
         msg.add_attachment(fData, maintype='text', subtype='plain', filename='logs.txt')
 
@@ -59,4 +59,4 @@ def setupLogging():
     jobActivityHandler.setFormatter(formatting)
     jobActivity.addHandler(jobActivityHandler)
 
-    return logger, jobActivity
+    return logger, jobActivity, timestamp

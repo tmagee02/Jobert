@@ -89,7 +89,7 @@ Databricks
 Apple
 	baseUrl : https://jobs.apple.com
 	searchPath : /en-us/search
-	searchQuery : ?search=Software+Engineer&sort=newest&location=united-states-USA
+	searchQuery : ?search=Software+Engineer&sort=newest&location=united-states-USA&key=Software%2520Engineer
 	jobUrl : //h3/a
 	nextPage : //button[@aria-label='Next Page']
 	jobTitle : //h1

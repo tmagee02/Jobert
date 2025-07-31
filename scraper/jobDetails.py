@@ -29,7 +29,6 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
 
     try:
         #might need to revert locTitle idk if it works
-        print(str(type(status)))
         page.locator(xpaths[companyName]['jobTitle']).nth(0).wait_for(timeout=5000)
         locTitle = getLocator(page, xpaths, companyName, 'jobTitle')
         locJobDesc = getLocator(page, xpaths, companyName, 'jobDesc')

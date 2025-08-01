@@ -14,6 +14,11 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False, slow_mo=50)
         page = browser.new_page()
+        page.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', {
+                get: () => undefined,
+            });
+        """)
 
         jobUrls = getAllJobUrls(dbCompanies, page, urlRenderTypes, xpaths)
         jobDetails = getAllJobDetails(dbJobUrls, page, jobUrls, xpaths)

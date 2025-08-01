@@ -10,13 +10,11 @@ def getLocator(page: Page, xpaths: dict, companyName: str, key: str) -> Locator:
         return page.locator(xpath) if xpath else locDummy
 
 
-def getLocatorText(locator: Locator, multiple: bool=False, onlyFirst: bool=False):
+def getLocatorText(locator: Locator, onlyFirst: bool=False):
     if onlyFirst:
         return locator.nth(0).inner_text() if locator.count() > 0 else None
-    elif multiple:
-        return locator.all_inner_texts() if locator.count() > 0 else None
     else:
-        return locator.inner_text() if locator.count() > 0 else None
+        return '\n\n'.join(locator.all_inner_texts()) if locator.count() > 0 else None
 
 
 def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCompany: int, jobDetails: dict, url: str) -> None:
@@ -28,7 +26,7 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
         return
 
     try:
-        #might need to revert locTitle idk if it works
+        logger.info(f'Status {status} @ {url}. Good.')
         page.locator(xpaths[companyName]['jobTitle']).nth(0).wait_for(timeout=5000)
         locTitle = getLocator(page, xpaths, companyName, 'jobTitle')
         locJobDesc = getLocator(page, xpaths, companyName, 'jobDesc')
@@ -39,13 +37,12 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
         # print(companyName, locTitle.count(), locJobDesc.count(), locLocations.count(), locRemote.count(), locDatePosted.count(), url)
         title = getLocatorText(locTitle, onlyFirst=True)
         jobDesc = getLocatorText(locJobDesc)
-        locations = getLocatorText(locLocations, multiple=True)
+        locations = getLocatorText(locLocations)
         remote = getLocatorText(locRemote)
         datePosted = getLocatorText(locDatePosted)
         
         randomDelay(True)
         jobDetails[url] = (title, jobDesc, locations, remote, datePosted, idCompany)
-        logger.info(f'Status {status} @ {url}. Good.')
         jobActivity.info(f'New job ( {title} ) found @ {url}')
         return 
     except PlaywrightTimeoutError:

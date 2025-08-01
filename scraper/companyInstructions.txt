@@ -1,16 +1,15 @@
 AFTER REACHING WEBSITE AND ENTERING QUERY
 
 Stripe
-	jobUrl : soup.find_all("a", class_="Link JobsListings__link")
+	baseUrl : https://stripe.com
+	searchPath : /jobs/search
+	searchQuery : ?query=Software+Engineer&remote_locations=North+America--US+Remote&office_locations=North+America--Atlanta&office_locations=North+America--Chicago&office_locations=North+America--New+York&office_locations=North+America--New+York+Privy+HQ&office_locations=North+America--San+Francisco+Bridge+HQ&office_locations=North+America--Seattle&office_locations=North+America--South+San+Francisco&office_locations=North+America--Washington+DC
+	jobUrl : //tr/td/a	
 	nextPage : DNE
-	jobTitle : soup.find('h1', class_='Copy__title').get_text(strip=True)
-	jobDesc : soup.find('div', class_='RowLayout').get_text(separator=' \n\n ', strip=True)
-	offices : offices = soup.find('p', string='Office locations')
-				if offices:
-					offices = offices.find_next_sibling('p').get_text()
-	remote : remote = soup.find('p', string='Remote locations')
-				if remote:
-					remote = remote.find_next_sibling('p').get_text()
+	jobTitle : //div[@class='Section__layout']/section/header/h1
+	jobDesc : //div[contains(@class, 'RowLayout')]
+	offices : //p[contains(text(), 'Office locations')]/following-sibling::p
+	remote : //p[contains(text(), 'Remote locations')]/following-sibling::p
 	datePosted : DNE
 	NOTES: offices and remote - sometimes one or the other doesnt exist on the page so you need to check if they exist before storing
 	

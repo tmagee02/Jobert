@@ -4,12 +4,12 @@
         "urlRenderType" : null,
         "xpaths" : {
             "jobUrl" : "//tr/td/a",
-            "nextPage" : "",
-            "jobTitle" : "",
-            "jobDesc" : "",
-            "location" : "",
-            "remote" : "",
-            "datePosted" : ""
+            "nextPage" : null,
+            "jobTitle" : "//div[@class='Section__layout']/section/header/h1",
+            "jobDesc" : "//div[contains(@class, 'RowLayout')]",
+            "location" : "//p[contains(text(), 'Office locations')]/following-sibling::p",
+            "remote" : "//p[contains(text(), 'Remote locations')]/following-sibling::p",
+            "datePosted" : null
         }
     },
     {

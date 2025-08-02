@@ -1,13 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './styles/App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./styles/App.css";
+import NavBar from "./components/NavBar";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div id="app" className="w-full">
+      <NavBar />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -58,8 +60,48 @@ function App() {
       <img src={viteLogo} className="logo" alt="Vite logo" />
       <img src={viteLogo} className="logo" alt="Vite logo" />
       <img src={viteLogo} className="logo" alt="Vite logo" />
-    </>
-  )
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+      <img src={viteLogo} className="logo" alt="Vite logo" />
+    </div>
+  );
 }
 
-export default App
+export default App;

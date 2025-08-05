@@ -1,19 +1,30 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import NotFound from "./NotFound.jsx";
 
 export default function JobInfo() {
-  const [jobInfo, setJobInfo] = useState(null);
+  const [jobInfo, setJobInfo] = useState(undefined);
   const { jobId } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:8000/jobs/${jobId}/`)
-      .then((response) => response.json())
-      .then((json) => setJobInfo(json));
-  }, []);
-
-  if (!jobInfo) return <p>LOADING...</p>;
+    async function getJobInfo() {
+      try {
+        const response = await fetch(`http://localhost:8000/jobs/${jobId}/`);
+        if (!response.ok) throw new Error("Failed to fetch job details");
+        const json = await response.json();
+        setJobInfo(json);
+      } catch (error) {
+        setJobInfo(null);
+        console.error(error);
+      }
+    }
+    getJobInfo();
+  }, [jobId]);
 
   console.log(jobInfo);
+  if (jobInfo === undefined) return <p>LOADING...</p>;
+  if (jobInfo === null) return <NotFound />;
+  console.log("passed loading");
 
   return (
     <div id="job-info">

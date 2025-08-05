@@ -1,11 +1,12 @@
 import "./styles/App.css";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home.jsx";
 import Jobs from "./pages/Jobs.jsx";
 import Watchlist from "./pages/Watchlist.jsx";
 import About from "./pages/About.jsx";
 import JobInfo from "./pages/JobInfo.jsx";
-import { Routes, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/jobs/:jobId" element={<JobInfo />} />
         <Route path="/watchlist" element={<Watchlist />} />
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

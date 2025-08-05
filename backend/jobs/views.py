@@ -1,11 +1,14 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404
+from datetime import timedelta, datetime
+from django.utils import timezone
 
 from .models import Job
 
 
 def jobs(request):
-    recentJobs = Job.objects.order_by('-date_scraped')[:30]
+    thirtyDays = timezone.now() - timedelta(days=7)
+    recentJobs = Job.objects.filter(date_scraped__gte=thirtyDays).order_by('-pk')#[:300]
     jobList = []
     for job in recentJobs:
         jobDetails = {

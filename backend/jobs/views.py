@@ -9,6 +9,7 @@ def jobs(request):
     jobList = []
     for job in recentJobs:
         jobDetails = {
+            #Probably should add dates or requirements or salary or something
             'JobId' : job.pk,
             'JobUrl' : job.job_url,
             'Company' : job.company.company_name,
@@ -16,22 +17,21 @@ def jobs(request):
         }
         jobList.append(jobDetails)
 
-
-    output = '<br>'.join([f'| {job.pk} || {job.company.company_name} || {job.title} || {job.job_url} |' for job in recentJobs])
-    # return HttpResponse(output)
     return JsonResponse(jobList, safe=False)
 
 def jobInfo(request, jobId):
+    #need: Company Logo?, Company name, title, locations, minExperience, max experience, date posted, date scraped, job desc
     job = get_object_or_404(Job, pk=jobId)
-    info = []
-    info.append('Company Logo')
-    info.append(job.company.company_name)
-    info.append(job.title)
-    info.append('job.locations')
-    info.append(f'job.min_experience -- job.max_experience')
-    info.append('job.date_posted')
-    info.append(str(job.date_scraped))
-    info.append(job.job_desc)
-    output = '<br>'.join(info)
+    jobInfo = {
+        'Company' : job.company.company_name,
+        'JobUrl' : job.job_url,
+        'Title' : job.title,
+        #'Locations' : job.locations
+        # 'MinExperience' : job.min_experience,
+        # 'MaxExperience' : job.max_experience,
+        # 'DatePosted' : job.date_posted,
+        'DateScraped' : job.date_scraped,
+        'JobDesc' : job.job_desc
+    }
 
-    return HttpResponse(output)
+    return JsonResponse(jobInfo)

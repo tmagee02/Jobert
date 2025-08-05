@@ -1,14 +1,25 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404
 
 from .models import Job
 
 
 def jobs(request):
-    recentJobs = Job.objects.order_by('-date_scraped')[:20]
-    output = '<br>'.join([f'| {job.min_experience} || {job.company.company_name} || {job.title} || {job.job_url} |' for job in recentJobs])
-    return HttpResponse(output)
+    recentJobs = Job.objects.order_by('-date_scraped')[:30]
+    jobList = []
+    for job in recentJobs:
+        jobDetails = {
+            'JobId' : job.pk,
+            'JobUrl' : job.job_url,
+            'Company' : job.company.company_name,
+            'Title' : job.title
+        }
+        jobList.append(jobDetails)
+
+
+    output = '<br>'.join([f'| {job.pk} || {job.company.company_name} || {job.title} || {job.job_url} |' for job in recentJobs])
+    # return HttpResponse(output)
+    return JsonResponse(jobList, safe=False)
 
 def jobInfo(request, jobId):
     job = get_object_or_404(Job, pk=jobId)

@@ -12,16 +12,14 @@ for file in folder.glob('*.json'):
         print(f"Failed to parse {file}: {e}")
         data = []
 
-    #print/prepare sending to file all entities for each job for each NER file
     for i, dic in enumerate(data):
         print('\n', i, dic['jobUrl'])
         toFile.append("")
         toFile.append(f"{i}, {dic['jobUrl']}")
-        jobDesc = dic['jobDesc']
-        locations = dic['locations']
+        text = dic['jobText']
 
         for start, end, entityType in dic['entities']:
-            entity = locations[start : end] if entityType == 'LOCATION' else jobDesc[start : end]
+            entity = text[start : end]
 
             print(repr(entity))
             toFile.append(f"{repr(entity)},")

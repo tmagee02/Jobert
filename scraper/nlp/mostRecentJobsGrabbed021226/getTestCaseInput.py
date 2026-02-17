@@ -92,8 +92,8 @@ def main():
                 print(f'L {company}')
         
         print(companyCount)
-        with open('./scraper/nlp/trainingData.json', 'w', encoding="utf-8") as file: #encoding added to keep actual characters in json
-            json.dump(trainingData, file, indent=4)
+        with open('./scraper/nlp/trainingData.json', 'w', encoding="utf-8") as file: #encoding and ensureascii added to keep actual characters in json
+            json.dump(trainingData, file, ensure_ascii=False, indent=4)
             
 
     return

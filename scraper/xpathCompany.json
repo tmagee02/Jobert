@@ -16,7 +16,7 @@
         "companyName" : "Airbnb",
         "urlRenderType" : "Next Page",
         "xpaths" : {
-            "jobUrl" : "//h3/a",
+            "jobUrl" : "//span/a",
             "nextPage" : "//a[@class='facetwp-page next']",
             "jobTitle" : "//h1[@class='text-size-12  text-left']",
             "jobDesc" : "//div[@class='job-detail active']",
@@ -33,9 +33,9 @@
             "nextPage" : null,
             "jobTitle" : "//h1/div",
             "jobDesc" : "//div[@id='job-details-content']",
-            "location" : "//div[contains(@class, 'job-info-container')]/div/span/p",
+            "location" : "//div[contains(@class, 'job-info-container')]/div/span[2]/span",
             "remote" : null,
-            "datePosted" : "//div[contains(@class, 'job-info-container')]/div[3]/p/span"
+            "datePosted" : "//div[contains(@class, 'job-info-container')]/div[3]/span"
         }
     },
     {
@@ -59,7 +59,7 @@
             "nextPage" : null,
             "jobTitle" : "//h2",
             "jobDesc" : "//div[contains(@class, 'prose')]",
-            "location" : "//div[@class='mt-md']/p",
+            "location" : "//div[@class='mt-sm']/p",
             "remote" : null,
             "datePosted" : null
         }

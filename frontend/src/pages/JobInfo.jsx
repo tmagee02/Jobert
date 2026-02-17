@@ -24,7 +24,6 @@ export default function JobInfo() {
   console.log(jobInfo);
   if (jobInfo === undefined) return <p>LOADING...</p>;
   if (jobInfo === null) return <NotFound />;
-  console.log("passed loading");
 
   return (
     <div id="job-info">

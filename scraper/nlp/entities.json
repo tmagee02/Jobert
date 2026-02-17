@@ -1,0 +1,1043 @@
+[
+    {
+        "company": "Apple",
+        "jobUrl": "https://jobs.apple.com/en-us/details/200616343-0836/ios-software-engineer-generative-ai-health?team=HRDWR",
+        "jobDesc": "Summary Posted: Feb 12, 2026 Role Number: 200616343-0836 The Health Personalization team builds outstanding technologies to support AI-driven health experiences that provide our users with understandable, actionable information about their health and wellbeing, and support them to achieve their health and wellness goals. As part of the larger Sensor Software & Prototyping team, we take a multimodal approach using a variety of sensors and user data signals across hardware platforms, such as camera, wearables, and natural language user input. We are committed to building deeply personal features that understand, anticipate, and adapt to users\u2019 behaviors and uphold Apple\u2019s deep commitment to privacy as a fundamental human right. Our team values expertise, innovation, and inclusivity. Come join us! Description We are looking to hire an iOS Software Engineer in Generative AI for Health with deep software engineering expertise and a proven record shipping machine learning features. You\u2019ll have the opportunity to work in a fast-growing team of highly skilled scientists and engineers to develop generative systems that achieve the highest levels of quality, reliability and alignment with human intent. This position requires a self-motivated engineer with strong technical and interpersonal skills. You should have a strong interest in health and wellness products, if not experience contributing to them directly. Minimum Qualifications MS or PhD or equivalent experience in Computer Science or similar field 5+ years of iOS development experience including deep knowledge of Swift and experience with iOS frameworks like Swift Data, Core ML, and Foundation Models Hands-on experience developing AI / machine learning-based products, and integrating AI/ML models within complex software systems Experience developing prototypes and demos to support feature definition and ideation, early data collections, and algorithm design Preferred Qualifications Curiosity about new technologies, a flexible mindset, and interest in contributing to product definition Experience or strong interest in building consumer digital health and wellness products Strong communication and interpersonal skills, and experience collaborating with AI / ML Scientists and Engineers Experience with privacy-preserving technologies is a plus Knowledge of AI / ML fundamentals, large language models, or hands-on experience with training and evaluation is a plus Pay & Benefits At Apple, base pay is one part of our total compensation package and is determined within a range. This provides the opportunity to progress as you grow and develop within a role. The base pay range for this role is between $181,100 and $318,400, and your base pay will depend on your skills, qualifications, experience, and location. Apple employees also have the opportunity to become an Apple shareholder through participation in Apple\u2019s discretionary employee stock programs. Apple employees are eligible for discretionary restricted stock unit awards, and can purchase Apple stock at a discount if voluntarily participating in Apple\u2019s Employee Stock Purchase Plan. You\u2019ll also receive benefits including: Comprehensive medical and dental coverage, retirement benefits, a range of discounted products and free services, and for formal education related to advancing your career at Apple, reimbursement for certain educational expenses \u2014 including tuition. Additionally, this role might be eligible for discretionary bonuses or commission payments as well as relocation. Learn more about Apple Benefits. Note: Apple benefit, compensation and employee stock programs are subject to eligibility requirements and other terms of the applicable plan or program. Apple is an equal opportunity employer that is committed to inclusion and diversity. We seek to promote equal opportunity for all applicants without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, Veteran status, or other legally protected characteristics. Learn more about your EEO rights as an applicant. Apple accepts applications to this posting on an ongoing basis.",
+        "locations": "Cupertino, California, United States ::: None",
+        "entities": [
+            [2702, 2723, "SALARY"],
+            [1535, 1537, "EXPERIENCE"],
+            [0, 36, "LOCATION"]
+        ]
+    },
+    {
+        "company": "Stripe",
+        "jobUrl": "https://stripe.com/jobs/listing/security-engineer-new-grad/7477571",
+        "jobDesc": "Who we are About Stripe Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world\u2019s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone's reach while doing the most important work of your career. About the team Stripe offers an interesting middle ground between joining a small startup and going to work for a multinational company. We have systems and processes optimized for early-career professionals. You will be in an environment that prizes rigor, discipline, and reliability\u2014from our products, from our ways of working, and from our colleagues. You will learn how the best teams put together extremely reliable systems, and you will be responsible for operating these systems, with adequate backup when things get tough. The Security organization is dedicated to building and maintaining a secure financial infrastructure platform. By joining this team, you will be on the front lines, engineering solutions that protect the sensitive data and systems underpinning a huge portion of the world's economy. You will contribute to core security functions like threat detection and rapid incident response, building and scaling the platforms that manage vulnerabilities, and proactively performing offensive security assessments to identify weaknesses before they can be exploited. This is a chance to apply software engineering principles and new technologies such as AI to solve complex, high-stakes security challenges, ultimately ensuring that Stripe's mission to increase the GDP of the internet is achieved securely. What you\u2019ll do As a Security Engineer New Grad you will have the opportunity to work across various security disciplines and own projects from start to finish. Your work will focus on securing Stripe's complex environment by applying software engineering principles to security challenges. You will learn and apply the principles of secure-by-default design by working closely with product and infrastructure engineering teams. You'll develop a foundational understanding of various security domains, such as threat detection, incident response, vulnerability management, or offensive security. You'll learn to act as a security subject matter expert, tailoring answers to both engineers and non-engineers. You'll contribute to the development of internal tools and automation to scale security efforts across Stripe. You will participate in threat modeling discussions, learning to balance security requirements with product advancement and user experience. Responsibilities Work on cross-functional projects, directly collaborating with other engineers Give meaningful feedback on code reviews and technical designs Contribute to our overall security posture by continuously improving security processes, tooling, and defenses. Develop a deep understanding of Stripe\u2019s security primitives, frameworks, and invariants. Provide actionable insights to help identify, prevent, detect, and respond to anomalous or potentially malicious activity. Who you are We\u2019re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement. Minimum requirements Currently enrolled in a Bachelor\u2019s or Master\u2019s program in Computer Science or related field (graduating by Summer 2026) Some experience and familiarity with programming, either through side projects or classwork. We work mostly in Java, Ruby, Python, JavaScript, Scala, and Go. We believe new programming languages can be learned if the fundamentals and general knowledge are present Experience from either previous internships or working collaboratively on multi-person coding projects (in a university or professional setting) Ability to learn unfamiliar systems and form an understanding of those systems, through independent research and working with a mentor and subject matter experts Aptitude to think like an attacker and reason through different approaches to reducing security risk. Preferred qualifications Experience in code review practices, and an understanding of how to safely update production systems Familiarity with navigating and managing work in large code bases Prior experience or course work in cyber security, digital forensics, or incident response (e.g., through log analysis or capture-the-flag events). Familiarity with foundational security concepts such as the OWASP Top 10 web application vulnerabilities. Basic knowledge of SQL or experience analyzing medium to large data sets. Exposure to cloud computing platforms such as AWS, Azure, or Google Cloud Platform. An adversarial mindset, understanding the goals, behaviors, and TTPs (tactics, techniques, and procedures) of threat actors. In-office expectations Office-assigned Stripes in most of our locations are currently expected to spend at least 50% of the time in a given month in their local office or with users. This expectation may vary depending on role, team and location. For example, Stripes in our Bucharest, Romania site have an 80% in-office expectation, and those in Stripe Delivery Center roles in Mexico City, Mexico and Bengaluru, India work 100% from the office. Also, some teams have greater in-office attendance requirements, to appropriately support our users and workflows, which the hiring manager will discuss. This approach helps strike a balance between bringing people together for in-person collaboration and learning from each other, while supporting flexibility when possible. Pay and benefits The annual US base salary range for this role is $129,000 - $193,400. For sales roles, the range provided is the role\u2019s On Target Earnings (\"OTE\") range, meaning that the range includes both the sales commissions/sales bonuses target and annual base salary for the role. This salary range may be inclusive of several career levels at Stripe and will be narrowed during the interview process based on a number of factors, including the candidate\u2019s experience, qualifications, and location. Applicants interested in this role and who are not located in the US may request the annual salary range for their location during the interview process. Additional benefits for this role may include: equity, company bonus or sales commissions/bonuses; 401(k) plan; medical, dental, and vision benefits; and wellness stipends.",
+        "locations": "Seattle, or South San Francisco HQ ::: None",
+        "entities": [
+            [5939, 5958, "SALARY"],
+            [3994, 4005, "EXPERIENCE"],
+            [0, 7, "LOCATION"],
+            [18, 31, "LOCATION"]
+        ]
+    },
+    {
+        "company": "Block",
+        "jobUrl": "https://block.xyz/careers/jobs/4939962008",
+        "jobDesc": "Block is one company built from many blocks, all united by the same purpose of economic empowerment. The blocks that form our foundational teams \u2014 People, Finance, Counsel, Hardware, Information Security, Platform Infrastructure Engineering, and more \u2014 provide support and guidance at the corporate level. They work across business groups and around the globe, spanning time zones and disciplines to develop inclusive People policies, forecast finances, give legal counsel, safeguard systems, nurture new initiatives, and more. Every challenge creates possibilities, and we need different perspectives to see them all. Bring yours to Block. The Role Bitkey is Block's Bitcoin self-custody wallet, built to make it safe and approachable for people everywhere to hold their own Bitcoin. Our team builds end-to-end product experiences \u2014 from backend services and APIs to public-facing web surfaces and in-product flows \u2014 that help customers discover Bitkey, purchase a device, and manage their funds with confidence. We're looking for a full-stack Software Engineer to help build and evolve Bitkey's customer-facing surfaces. This role spans public web experiences, purchase and checkout flows, and in-product web and service-backed experiences that support the Bitkey ecosystem. You'll design and operate the backend systems that power these experiences, while also contributing to the web interfaces customers interact with. This role is ideal for an engineer who enjoys owning customer journeys end-to-end, from service design and data modeling to web-based user experiences, and who is comfortable working close to revenue-impacting systems. techniques. You Will Design, build, and maintain backend services and APIs that support Bitkey's public website, purchase flows, and customer-facing products. Build and evolve web-based experiences, including product/marketing surfaces and checkout flows. Partner closely with product, design, and growth teams to improve conversion, reliability, and user experience across the Bitkey funnel. Own features end-to-end, from backend logic and data models through frontend workflows and integrations. Collaborate with mobile/platform teams and design technologists to ensure web and service-backed flows integrate cleanly into the broader Bitkey experience. Help improve system reliability, observability, and operational maturity for customer- and revenue-facing systems. Contribute to architectural discussions around service boundaries, scalability, and long-term maintainability. Leverage AI-powered development tools to accelerate iteration, improve code quality, and explore new ways of working across the stack. Actively contribute ideas and experimentation around engineering practices, tooling, and team workflows, with a bias toward continuous improvement. You Have 5+ years relevant industry experience building and operating backend systems in production, particularly APIs and services that support customer-facing applications. Solid full-stack experience, with the ability to contribute to modern web front-ends (e.g., React or similar frameworks). A strong backend skill set: comfort with data modeling, service design, and operational ownership. Experience collaborating closely with product managers, designers, and cross-functional partners. Strong engineering fundamentals, including testing, debugging, and performance tuning. Comfort learning new technologies and product domains as needed. Nice to Have Experience working on public websites, growth funnels, or marketing surfaces. Familiarity with Kotlin, Rust, or similar strongly typed languages. Experience contributing to mobile applications (Android or iOS). Interest in Bitcoin, financial products, or consumer fintech. Experience improving developer tooling, observability, or internal platforms. Mobile development experience We're working to build a more inclusive economy where our customers have equal access to opportunity, and we strive to live by these same values in building our workplace. Block is an equal opportunity employer evaluating all employees and job applicants without regard to identity or any legally protected class. We will consider qualified applicants with arrest or conviction records for employment in accordance with state and local laws and \"fair chance\" ordinances. We believe in being fair, and are committed to an inclusive interview experience, including providing reasonable accommodations to disabled applicants throughout the recruitment process. We encourage applicants to share any needed accommodations with their recruiter, who will treat these requests as confidentially as possible. Want to learn more about what we're doing to build a workplace that is fair and square? Check out our I+D page. While there is no specific deadline to apply for this role, U.S. roles are typically open for an average of 55 days before being filled by a successful candidate. Please refer to the date listed at the top of this job page for when this role was first posted. Block takes a market-based approach to pay, and pay may vary depending on your location. U.S. locations are categorized into one of four zones based on a cost of labor index for that geographic area. The successful candidate\u2019s starting pay will be determined based on job-related skills, experience, qualifications, work location, and market conditions. These ranges may be modified in the future. To find a location\u2019s zone designation, please refer to this resource. If a location of interest is not listed, please speak with a recruiter for additional information. Zone A: $217,800\u2014$326,800 USD Zone B: $207,000\u2014$310,400 USD Zone C: $196,100\u2014$294,100 USD Zone D: $185,200\u2014$277,800 USD Application Guidelines Candidates may submit up to 9 active applications within a 60-day period. Reapplications to the same role are accepted 90 days after a previous application has been reviewed. Use of AI in Our Hiring Process We may use automated AI tools to evaluate job applications for efficiency and consistency. These tools comply with local regulations, including bias audits, and we handle all personal data in accordance with state and local privacy laws. Contact us here with hiring practice or data usage questions. Every benefit we offer is designed with one goal: empowering you to do the best work of your career while building the life you want. Remote work, medical insurance, flexible time off, retirement savings plans, and modern family planning are just some of our offering. Check out our other benefits at Block. Block, Inc. (NYSE: XYZ) builds technology to increase access to the global economy. Each of our brands unlocks different aspects of the economy for more people. Square makes commerce and financial services accessible to sellers. Cash App is the easy way to spend, send, and store money. Afterpay is transforming the way customers manage their spending over time. TIDAL is a music platform that empowers artists to thrive as entrepreneurs. Bitkey is a simple self-custody wallet built for bitcoin. Proto is a suite of bitcoin mining products and services. Together, we\u2019re helping build a financial system that is open to everyone. Privacy Policy APPLY SEE ALL JOBS",
+        "locations": "None ::: None",
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },
+    {
+        "entities": [
+            [0, 0, "SALARY"],
+            [0, 0, "EXPERIENCE"],
+            [0, 0, "LOCATION"]
+        ]
+    },

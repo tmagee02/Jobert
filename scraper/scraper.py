@@ -1,7 +1,7 @@
 from dataLoader import loadExistingDatabaseData, loadJson
 from jobUrls import getAllJobUrls
 from jobDetails import getAllJobDetails
-from exportDetails import writeJobDetailsToFile, insertJobToDatabase
+from exportDetails import writeJobDetailsToFile, insertJobsToDatabase
 from utils import setupLogging, emailLogging
 import time
 from playwright.sync_api import sync_playwright
@@ -24,7 +24,7 @@ def main():
         jobDetails = getAllJobDetails(dbJobUrls, page, jobUrls, xpaths)
     
     writeJobDetailsToFile(jobDetails)
-    insertJobToDatabase(jobDetails)
+    insertJobsToDatabase(jobDetails)
     return
 
 

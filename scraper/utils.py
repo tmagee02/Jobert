@@ -47,7 +47,7 @@ def setupLogging():
     logger = logging.getLogger('Jobert Scraper')
     logger.setLevel(logging.DEBUG)
     loggerFile = f'./logs/debug/scraper_logs_{timestamp}.log'
-    loggerHandler = logging.FileHandler(loggerFile)
+    loggerHandler = logging.FileHandler(loggerFile, encoding='utf-8')
     loggerHandler.setFormatter(formatting)
     logger.addHandler(loggerHandler)
     
@@ -55,7 +55,7 @@ def setupLogging():
     jobActivity = logging.getLogger('Job Activity')
     jobActivity.setLevel(logging.INFO)
     jobActivityFile = f'./logs/jobActivity/job_activity_{timestamp}.log'
-    jobActivityHandler = logging.FileHandler(jobActivityFile)
+    jobActivityHandler = logging.FileHandler(jobActivityFile, encoding='utf-8')
     jobActivityHandler.setFormatter(formatting)
     jobActivity.addHandler(jobActivityHandler)
 

@@ -1,0 +1,889 @@
+
+0, https://careers.airbnb.com/positions/7568919/
+'$191,000—$225,000',
+'5+',
+'United States',
+
+1, https://careers.airbnb.com/positions/7609100/
+'$204,000—$255,000',
+'9+',
+'United States',
+
+2, https://careers.airbnb.com/positions/7525334/
+'$204,000—$255,000',
+'6+',
+'United States',
+
+3, https://careers.airbnb.com/positions/7528577/
+'$204,000—$255,000',
+'10+',
+'United States',
+
+4, https://careers.airbnb.com/positions/7434498/
+'7+',
+'São Paulo, Brazil',
+
+5, https://careers.airbnb.com/positions/7450356/
+'$212,000—$265,000',
+'9+',
+'United States',
+
+6, https://careers.airbnb.com/positions/7436260/
+'10+',
+'Bangalore, India',
+
+7, https://careers.airbnb.com/positions/7365942/
+'4+',
+'Brazil',
+
+8, https://careers.airbnb.com/positions/7532824/
+'£120,000—£150,000',
+'9+',
+'London, United Kingdom',
+
+9, https://careers.airbnb.com/positions/7600470/
+'$204,000—$255,000',
+'9+',
+'United States',
+
+10, https://careers.airbnb.com/positions/7609170/
+'$204,000—$255,000',
+'9+',
+'United States',
+
+11, https://careers.airbnb.com/positions/7565742/
+'$154,000—$191,500',
+'10+',
+'United States',
+
+12, https://careers.airbnb.com/positions/7527285/
+'$204,000—$255,000',
+'10+',
+'United States',
+
+13, https://careers.airbnb.com/positions/7612127/
+'$160,000—$180,000',
+'6+',
+'United States',
+
+14, https://careers.airbnb.com/positions/7609564/
+'$195,000—$225,000',
+'5+',
+'United States',
+
+15, https://careers.airbnb.com/positions/7572491/
+'$157,000—$180,600',
+'4+',
+'United States',
+
+16, https://careers.airbnb.com/positions/7569268/
+'$204,000—$255,000',
+'10+',
+'United States',
+
+17, https://careers.airbnb.com/positions/7362663/
+'9+',
+'Brazil',
+
+18, https://careers.airbnb.com/positions/7546721/
+'3+',
+'China',
+
+19, https://careers.airbnb.com/positions/7587950/
+'12+',
+'Bangalore, India',
+
+20, https://careers.airbnb.com/positions/6480711/
+'12+',
+'China',
+
+21, https://careers.airbnb.com/positions/7569920/
+'$191,000—$225,000',
+'5+',
+'United States',
+
+22, https://careers.airbnb.com/positions/7584614/
+'$70,000—$85,000',
+'10+',
+'Amsterdam, Netherlands',
+'Berlin, Germany',
+'London, United Kingdom',
+'Paris, France',
+
+23, https://careers.airbnb.com/positions/7360248/
+'$194,000—$240,000',
+'9+',
+'United States',
+
+0, https://jobs.apple.com/en-us/details/200636400-0836/aiml-sr-machine-learning-engineer-responsible-ai?team=MLAI
+'$181,100 and $318,400',
+'Cupertino, California, United States',
+
+1, https://jobs.apple.com/en-us/details/200645686-0836/aiml-applied-ml-engineer-responsible-ai?team=MLAI
+'$181,100 and $272,100',
+'2+',
+'Cupertino, California, United States',
+
+2, https://jobs.apple.com/en-us/details/200646596-0836/content-design-producer-apple-services?team=SFTWR
+'$161,300 and $242,500',
+'5+',
+'Cupertino, California, United States',
+
+3, https://jobs.apple.com/en-us/details/200644525-3760/launch-apple-finance-development-experience-2027-opportunities?team=STDNT
+'Santa Clara, California, United States',
+
+4, https://jobs.apple.com/en-us/details/200616343-0836/ios-software-engineer-generative-ai-health?team=HRDWR
+'$181,100 and $318,400',
+'5+',
+'Cupertino, California, United States',
+
+5, https://jobs.apple.com/en-us/details/200646709-0670/product-designer-video-apps?team=DESGN
+'$171,600 and $258,100',
+'10+',
+'Culver City, California, United States',
+
+6, https://jobs.apple.com/en-us/details/200616343-3337/ios-software-engineer-generative-ai-health?team=HRDWR
+'$171,600 and $302,200',
+'5+',
+'Seattle, Washington, United States',
+
+7, https://jobs.apple.com/en-us/details/200646704-0836/display-quality-engineer?team=HRDWR
+'$128,400 and $236,700',
+'3+',
+'Cupertino, California, United States',
+
+8, https://jobs.apple.com/en-us/details/200646124-0157/finance-development-program-2027-internship-opportunities?team=STDNT
+'Austin, Texas, United States',
+
+9, https://jobs.apple.com/en-us/details/200642810-3956/analog-ic-design-engineer?team=HRDWR
+'$181,100 and $318,400',
+'10+',
+'Sunnyvale, California, United States',
+
+10, https://jobs.apple.com/en-us/details/200646692-3543/wireless-software-test-engineer?team=SFTWR
+'$139,500 and $258,100',
+'3+',
+'San Diego, California, United States',
+
+11, https://jobs.apple.com/en-us/details/200643738-0836/graphics-engineer-platform-architecture?team=HRDWR
+'$147,400 and $272,100',
+'3+',
+'Cupertino, California, United States',
+
+12, https://jobs.apple.com/en-us/details/200642810-0836/analog-ic-design-engineer?team=HRDWR
+'$181,100 and $318,400',
+'10+',
+'Cupertino, California, United States',
+
+13, https://jobs.apple.com/en-us/details/200646699-0836/software-engineering-manager-siri-runtime-systems-and-interaction?team=SFTWR
+'$198,300 and $342,800',
+'10+',
+'Cupertino, California, United States',
+
+14, https://jobs.apple.com/en-us/details/200646255-0836/hardware-security-engineering-program-manager?team=HRDWR
+'$172,100 and $305,600',
+'10 years',
+'Cupertino, California, United States',
+
+15, https://jobs.apple.com/en-us/details/200646691-0836/test-instrumentation-development-engineer?team=HRDWR
+'$147,400 and $272,100',
+'3+ years',
+'Cupertino, California, United States',
+
+16, https://jobs.apple.com/en-us/details/200645316-0836/manager-central-quality-accessibility-engineering-apple-services-engineering?team=SFTWR
+'$198,300 and $342,800',
+'5 years',
+'Cupertino, California, United States',
+
+17, https://jobs.apple.com/en-us/details/200644871-0836/software-development-engineer-test-sdet-apps?team=SFTWR
+'$181,100 and $272,100',
+'1+ years',
+'Cupertino, California, United States',
+
+18, https://jobs.apple.com/en-us/details/200646124-0836/finance-development-program-2027-internship-opportunities?team=STDNT
+'Cupertino, California, United States',
+
+19, https://jobs.apple.com/en-us/details/200636400-3337/aiml-sr-machine-learning-engineer-responsible-ai?team=MLAI
+'$171,600 and $302,200',
+'Seattle, Washington, United States',
+
+20, https://jobs.apple.com/en-us/details/200619904-3401/clinical-product-manager-health?team=HRDWR
+'$203,300 and $305,600',
+'10+',
+'San Francisco Bay Area, California, United States',
+
+21, https://jobs.apple.com/en-us/details/200645033-0836/full-stack-sofware-engineer-creativity-apps?team=SFTWR
+'$181,100 and $318,400',
+'3+',
+'Cupertino, California, United States',
+
+22, https://jobs.apple.com/en-us/details/200646255-0505/hardware-security-engineering-program-manager?team=HRDWR
+'10 years',
+'Beaverton, Oregon, United States',
+
+23, https://jobs.apple.com/en-us/details/200645796-0157/data-scientist-strategic-data-solutions?team=OPMFG
+'3 years',
+'Austin, Texas, United States',
+
+24, https://jobs.apple.com/en-us/details/200645549-3337/senior-software-triage-automation-engineer?team=SFTWR
+'$171,600 and $302,200',
+'5+',
+'Seattle, Washington, United States',
+
+0, https://block.xyz/careers/jobs/5012298008
+'8+',
+'Melbourne, Australia',
+
+1, https://block.xyz/careers/jobs/5053949008
+'10+',
+
+2, https://block.xyz/careers/jobs/4967291008
+'$217,800—$326,800',
+'6+',
+'Bay Area, CA, US',
+
+3, https://block.xyz/careers/jobs/4971402008
+'$386,100—$579,100',
+'15+',
+'Bay Area, CA, US',
+
+4, https://block.xyz/careers/jobs/4939962008
+'$217,800—$326,800',
+'5+',
+'Bay Area, CA, US',
+
+5, https://block.xyz/careers/jobs/5069299008
+'$180,000—$270,000',
+'5+',
+
+6, https://block.xyz/careers/jobs/5069286008
+'$180,000—$270,000',
+'6+',
+
+7, https://block.xyz/careers/jobs/5083064008
+'Bay Area, CA, US',
+
+8, https://block.xyz/careers/jobs/5038746008
+'8+',
+'Sydney, Australia',
+
+9, https://block.xyz/careers/jobs/5083063008
+'Toronto, Ontario , Canada',
+
+10, https://block.xyz/careers/jobs/5065077008
+'$180,000—$270,000',
+'5+',
+'Bay Area, CA, US',
+
+11, https://block.xyz/careers/jobs/5083066008
+'Toronto, Ontario , Canada',
+
+12, https://block.xyz/careers/jobs/5057143008
+'$217,800—$326,800',
+'5+',
+'Seattle, WA, US',
+
+13, https://block.xyz/careers/jobs/5083061008
+'Bay Area, CA, US',
+
+14, https://block.xyz/careers/jobs/4811619008
+'$217,800—$326,800',
+'5+',
+'Bay Area, CA, US',
+
+15, https://block.xyz/careers/jobs/5069412008
+'$263,600—$395,400',
+'10+',
+'New York, NY, US',
+
+16, https://block.xyz/careers/jobs/4989505008
+'$217,800—$326,800',
+'8+',
+'Bay Area, CA, US',
+
+17, https://block.xyz/careers/jobs/4951399008
+'4+',
+'Melbourne, Australia',
+
+0, https://www.databricks.com/company/careers/engineering/sr-manager-observability-platform-engineering-8342738002
+'$222,000—$300,000',
+'5+',
+'Mountain View, California',
+
+1, https://www.databricks.com/company/careers/executive-engineering---pipeline/principal-engineer---privacy-7274624002
+'$232,000—$313,000',
+'15+',
+'New York City, New York',
+
+2, https://www.databricks.com/company/careers/executive-engineering---pipeline/director-engineering-governance--bellevue-wa-8295772002
+'$243,100—$290,100',
+'10+',
+'Mountain View, California',
+
+3, https://www.databricks.com/company/careers/engineering---pipeline/staff-technical-program-manager--genai-ops--capacity-planning-8381771002
+'$163,300—$228,625',
+'10+',
+'Seattle, Washington',
+
+4, https://www.databricks.com/company/careers/executive-engineering---pipeline/senior-engineering-manager---lakeflow-pipeline-8109905002
+'$217,000—$288,400',
+'5+',
+'Mountain View, California',
+
+5, https://www.databricks.com/company/careers/executive-engineering---pipeline/principal-engineer---privacy-8224828002
+'$278,200—$339,250',
+'15+',
+'Mountain View, California',
+
+6, https://www.databricks.com/company/careers/engineering/engineering-manager---notebook-dataplane-8190108002
+'$190,900—$253,750',
+'10+',
+'San Francisco, California',
+
+7, https://www.databricks.com/company/careers/engineering/sr-manager-engineering---search-7959180002
+'$222,000—$300,000',
+'5+',
+'Mountain View, California',
+
+8, https://www.databricks.com/company/careers/executive-engineering---pipeline/engineering-manager---identity-and-access-management-iam-8298018002
+'$181,300—$241,075',
+'9+',
+'Bellevue, Washington',
+
+9, https://www.databricks.com/company/careers/engineering---pipeline/staff-fullstack-engineer-agentic-applications-8220836002
+'$192,000—$260,000',
+'12+',
+'Mountain View, California',
+
+10, https://www.databricks.com/company/careers/executive-engineering---pipeline/principal-engineer---privacy-7274619002
+'$220,400—$297,400',
+'15+',
+'Seattle, Washington',
+
+11, https://www.databricks.com/company/careers/engineering---pipeline/senior-product-operation-analyst-8298108002
+'$130,400—$182,600',
+'5+',
+'Mountain View, California',
+
+12, https://www.databricks.com/company/careers/executive-engineering---pipeline/director-engineering-governance--mountain-view-ca-8295622002
+'$255,900—$305,350',
+'10+',
+'Mountain View, California',
+
+13, https://www.databricks.com/company/careers/executive-engineering---pipeline/engineering-manager---streaming-8324875002
+'$181,000—$253,750',
+'5+',
+'Bellevue, Washington',
+
+14, https://www.databricks.com/company/careers/executive-engineering---pipeline/senior-engineering-manager---trust-and-safety-8374883002
+'$206,100—$273,975',
+'Seattle, Washington',
+
+15, https://www.databricks.com/company/careers/executive-engineering---pipeline/principal-engineer---privacy-7274488002
+'$220,400—$297,400',
+'15+',
+'San Francisco, California',
+
+16, https://www.databricks.com/company/careers/engineering---pipeline/staff-frontend-engineer---seattle-8399551002
+'$181,000—$261,000',
+'10+',
+'Seattle, Washington',
+
+17, https://www.databricks.com/company/careers/engineering---pipeline/staff-software-engineer---fullstack-nyc-8384595002
+'$190,900—$253,750',
+'10+',
+'New York City, New York',
+
+18, https://www.databricks.com/company/careers/executive-engineering---pipeline/senior-engineering-manager---trust-and-safety-8374884002
+'$206,100—$273,975',
+'Bellevue, Washington',
+
+19, https://www.databricks.com/company/careers/engineering/sr-staff-software-engineer-observability--8391889002
+'$235,000—$295,000',
+'15+',
+'Mountain View, California',
+
+20, https://www.databricks.com/company/careers/engineering---pipeline/sr-staff-fullstack-engineer-agentic-applications-8220902002
+'$192,000—$260,000',
+'12+',
+'Mountain View, California',
+
+21, https://www.databricks.com/company/careers/engineering---pipeline/staff-technical-program-manager--genai-ops--capacity-planning-8381772002
+'71,900—$240,675 U',
+'10+',
+'Mountain View, California',
+
+22, https://www.databricks.com/company/careers/engineering/senior-engineering-manager-for-workspace-platform-7987658002
+'$217,000—$312,200',
+'15+',
+'San Francisco, California',
+
+23, https://www.databricks.com/company/careers/engineering/sr-software-engineer--backend-8379331002
+'$165,300—$219,675',
+'5+',
+'New York City, New York',
+
+0, https://openai.com/careers/full-stack-software-engineer-chatgpt-san-francisco/
+'$293K – $490K',
+'5+',
+'San Francisco',
+
+1, https://openai.com/careers/backend-software-engineer-chatgpt-engineering-san-francisco/
+'$185K – $385K',
+'San Francisco',
+
+2, https://openai.com/careers/software-engineer-platform-systems-san-francisco/
+'$310K – $460K',
+'San Francisco',
+
+3, https://openai.com/careers/software-engineer-codex-cloud-san-francisco/
+'$230K – $325K',
+'San Francisco',
+'Seattle',
+
+4, https://openai.com/careers/software-engineer-full-stack-revenue-platform-san-francisco/
+'$230K – $385K',
+'5+',
+'San Francisco',
+
+5, https://openai.com/careers/ios-software-engineer-chatgpt-engineering-san-francisco/
+'$185K – $385K',
+'San Francisco',
+
+6, https://openai.com/careers/software-engineer-internship-co-op-applied-emerging-talent-(fall-2026)-san-francisco/
+'San Francisco',
+
+7, https://openai.com/careers/software-engineer-sensing-consumer-products-san-francisco/
+'$325K',
+'San Francisco',
+
+8, https://openai.com/careers/software-engineer-ads-integrity-san-francisco/
+'$230K – $385K',
+'6 years',
+'San Francisco',
+
+9, https://openai.com/careers/backend-software-engineer-b2b-connectors-san-francisco/
+'$230K – $385K',
+'5+',
+'San Francisco',
+'New York City',
+
+10, https://openai.com/careers/software-engineer-identity-infrastructure-engineering-san-francisco/
+'$184K – $385K',
+'San Francisco',
+'New York City',
+'Seattle',
+'US',
+
+11, https://openai.com/careers/full-stack-software-engineer-chatgpt-engineering-san-francisco/
+'$185K – $385K',
+'San Francisco',
+
+12, https://openai.com/careers/software-engineer-encryption-san-francisco/
+'$292K – $490K',
+'5+',
+'San Francisco',
+'US',
+
+13, https://openai.com/careers/backend-software-engineer-(evals)-san-francisco/
+'$230K – $385K',
+'4+',
+'San Francisco',
+'Seattle',
+
+14, https://openai.com/careers/full-stack-software-engineer-b2b-applications-san-francisco/
+'$230K – $385K',
+'5+',
+'San Francisco',
+'New York City',
+
+15, https://openai.com/careers/software-engineer-fleet-infrastructure-san-francisco/
+'$230K – $490K',
+'San Francisco',
+
+16, https://openai.com/careers/software-engineer-monetization-infrastructure-(sfseattle)-san-francisco/
+'$230K – $385K',
+'10+',
+'San Francisco',
+
+17, https://openai.com/careers/software-engineer-productivity-san-francisco/
+'$230K – $385K',
+'San Francisco',
+
+18, https://openai.com/careers/software-engineer-monetization-aiml-(sfseattle)-san-francisco/
+'$230K – $385K',
+'6+',
+'San Francisco',
+
+19, https://openai.com/careers/qa-software-engineer-consumer-products-san-francisco/
+'$293K – $325K',
+'San Francisco',
+
+20, https://openai.com/careers/software-engineer-internal-applications-enterprise-san-francisco/
+'$230K – $325K',
+'San Francisco',
+
+21, https://openai.com/careers/software-engineer-cross-functional-systems-san-francisco/
+'$185K – $325K',
+'San Francisco',
+
+22, https://openai.com/careers/full-stack-software-engineer-chatgpt-partnerships-san-francisco/
+'$185K – $385K',
+'San Francisco',
+
+23, https://openai.com/careers/software-engineer-monetization-product-and-platform-(sfseattle)-san-francisco/
+'$230K – $385K',
+'7+',
+'San Francisco',
+
+24, https://openai.com/careers/software-engineer-full-stack-developer-experience-san-francisco/
+'$185K – $490K',
+'5+',
+'San Francisco',
+'Seattle',
+
+0, https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/6692166
+'$190,400 - $285,600',
+'2-12+',
+'New York',
+'Seattle',
+'United States',
+
+1, https://stripe.com/jobs/listing/full-stack-engineer-billing-tax/6343955
+'$155,700 - $235,200',
+'2-12+',
+'New York',
+'Seattle',
+'San Francisco',
+
+2, https://stripe.com/jobs/listing/backend-api-engineer-privacy-products/7579264
+'$190,400 - $285,600',
+'6+',
+'Seattle',
+'San Francisco',
+
+3, https://stripe.com/jobs/listing/security-engineer-bridge/7573236
+'$229,000 - $343,600',
+'8+',
+'New York',
+'San Francisco',
+
+4, https://stripe.com/jobs/listing/android-engineer-terminal-developer-productivity/7550154
+'$190,400 - $285,600',
+'6+',
+'Seattle',
+'San Francisco',
+'United States',
+
+5, https://stripe.com/jobs/listing/android-engineer-terminal-os-platform/7557403
+'$190,400 - $285,600',
+'2-6 years',
+'Seattle',
+'San Francisco',
+'United States',
+
+6, https://stripe.com/jobs/listing/full-stack-engineer-collaboration/7488253
+'$156,800 - $281,300',
+'7+',
+'Seattle',
+'San Francisco',
+'Toronto',
+
+7, https://stripe.com/jobs/listing/developer-support-engineer-privy/7488490
+'$119,900 - $179,900',
+'3+',
+'San Francisco',
+
+8, https://stripe.com/jobs/listing/client-onboarding-integration-engineer/7227066
+'$113,600 - $170,500',
+'4 - 6',
+'Chicago',
+'Toronto',
+
+9, https://stripe.com/jobs/listing/ai-ml-engineering-manager-payment-intelligence/7286376
+'$331,200 - $496,800',
+'10+',
+'Seattle',
+
+10, https://stripe.com/jobs/listing/software-engineer-intern-summer/7210115
+'$123,500 - $123,500',
+'San Francisco',
+'Seattle',
+'New York',
+
+11, https://stripe.com/jobs/listing/technical-solutions-engineer/7404437
+'$134,600 - $201,800',
+'4 years',
+'United States',
+
+12, https://stripe.com/jobs/listing/software-engineer-internal-systems/7009186
+'$156,800 - $235,200',
+'3+',
+'San Francisco',
+
+13, https://stripe.com/jobs/listing/senior-staff-software-engineer-developer-infrastructure/7409691
+'$271,200 - $406,800',
+'13+',
+'San Francisco',
+
+14, https://stripe.com/jobs/listing/engineering-manager-of-managers-document-databases/7576761
+'$280,000 - $420,000',
+'10 years',
+'Seattle',
+
+15, https://stripe.com/jobs/listing/backend-api-engineer-revenue-foundations/7326482
+'$190,400 - $285,600',
+'San Francisco',
+'New York',
+'Seattle',
+
+16, https://stripe.com/jobs/listing/backend-api-engineer-money-as-a-service/6176758
+'$156,800 - $235,200',
+'2-12+',
+'San Francisco',
+'New York',
+'Seattle',
+
+17, https://stripe.com/jobs/listing/software-engineer-smart-contract-bridge/7507904
+'$190,400 - $285,600',
+'5+',
+'New York',
+'San Francisco',
+
+18, https://stripe.com/jobs/listing/staff-engineer-account-engineering/7369269
+'$224,000 - $336,000',
+'10+',
+'New York',
+'San Francisco',
+
+19, https://stripe.com/jobs/listing/backend-engineer-data/6865161
+'$173,000 - $259,600',
+'6+',
+'Toronto',
+'United States',
+'Canada',
+
+20, https://stripe.com/jobs/listing/software-engineer-product-security-data-platforms/7545459
+'$170,400 - $255,700',
+'8+',
+'Seattle',
+'United States',
+
+21, https://stripe.com/jobs/listing/security-engineer-new-grad/7477571
+'$129,000 - $193,400',
+'Seattle',
+'San Francisco',
+
+22, https://stripe.com/jobs/listing/integration-engineering-manager-professional-services/7522107
+'$210,400 - $315,600',
+'3+',
+'Chicago',
+'San Francisco',
+'United States',
+
+23, https://stripe.com/jobs/listing/staff-full-stack-engineer-payments-dashboard/7492950
+'$224,000 - $336,000',
+'12+',
+'Seattle',
+
+0, https://www.uber.com/careers/list/153361
+'USD$187,000 per year - USD$205,000 per year',
+'5+ years',
+'Dallas, Texas',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Chicago, Illinois',
+'Washington, District of Columbia',
+
+1, https://www.uber.com/careers/list/154628
+'USD$171,000 per year - USD$190,000 per year',
+'3+ years',
+'Seattle, Washington',
+'San Francisco, California',
+
+2, https://www.uber.com/careers/list/152343
+'USD$232,000 per year - USD$258,000 per year',
+'8+ years',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+3, https://www.uber.com/careers/list/154812
+'USD$114,000 per year - USD$127,000',
+'5+ years',
+'Dallas, Texas',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Miami, Florida',
+'Chicago, Illinois',
+'Sunnyvale, California',
+'Washington, District of Columbia',
+
+4, https://www.uber.com/careers/list/153449
+'USD$171,000 per year - USD$190,000 per year',
+'2+ year',
+'New York, New York',
+'San Francisco, California',
+'Sunnyvale, California',
+
+5, https://www.uber.com/careers/list/154788
+'USD$202,000 per year - USD$224,000 per year',
+'6+ year',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+6, https://www.uber.com/careers/list/153457
+'USD$171,000 per year - USD$190,000 per year',
+'4+ years',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+7, https://www.uber.com/careers/list/153473
+'USD$171,000 per year - USD$190,000',
+'1 year',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+8, https://www.uber.com/careers/list/155442
+'USD$202,000 per year - USD$224,000 per year',
+'5+ years',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+9, https://www.uber.com/careers/list/154042
+'USD$202,000 per year - USD$224,000 per year',
+'4+ years',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+10, https://www.uber.com/careers/list/153458
+'USD$202,000 per year - USD$224,000 per year',
+'4+ years',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+11, https://www.uber.com/careers/list/152808
+'USD$202,000 per year - USD$224,000 per year',
+'4+ years',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+12, https://www.uber.com/careers/list/153451
+'USD$202,000 per year - USD$224,000 per year',
+'3 years',
+'New York, New York',
+'San Francisco, California',
+'Sunnyvale, California',
+
+13, https://www.uber.com/careers/list/153470
+'USD$171,000 per year - USD$190,000',
+'1 year',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+14, https://www.uber.com/careers/list/155273
+'USD$171,000 per year - USD$190,000 per year',
+'4+ years',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+15, https://www.uber.com/careers/list/153287
+'USD$134,000 per year - USD$148,500 per year',
+'5+ years',
+'Atlanta, Georgia',
+'Dallas, Texas',
+'New York, New York',
+'Houston, Texas',
+'Miami, Florida',
+'Washington, District of Columbia',
+
+16, https://www.uber.com/careers/list/154810
+'USD$83,500 per year - USD$92,750',
+'3+ years',
+'Dallas, Texas',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Miami, Florida',
+'Chicago, Illinois',
+'Sunnyvale, California',
+'Washington, District of Columbia',
+
+17, https://www.uber.com/careers/list/151351
+'USD$171,000 per year - USD$190,000 per year',
+'3+ years',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+18, https://www.uber.com/careers/list/154786
+'USD$171,000 per year - USD$190,000 per year',
+'4-years',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+19, https://www.uber.com/careers/list/154613
+'USD$171,000 per year - USD$190,000 per year',
+'3+ years',
+'San Francisco, California',
+'Sunnyvale, California',
+
+20, https://www.uber.com/careers/list/153471
+'USD$202,000 per year - USD$224,000',
+'3 years',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+21, https://www.uber.com/careers/list/153476
+'USD$202,000 per year - USD$224,000',
+'3 years',
+'New York, New York',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+22, https://www.uber.com/careers/list/152605
+'USD$202,000 per year - USD$224,000 per year',
+'New York, New York',
+'San Francisco, California',
+'Sunnyvale, California',
+
+23, https://www.uber.com/careers/list/155261
+'USD$202,000 per year - USD$224,000 per year',
+'6+ years',
+'Seattle, Washington',
+'San Francisco, California',
+'Sunnyvale, California',
+
+24, https://www.uber.com/careers/list/152293
+'USD$150,000 per year - USD$167,000 per year',
+'5+ years',
+'Dallas, Texas',
+'New York, New York',
+'Austin, Texas',
+'Orlando, Florida',
+'Houston, Texas',
+'San Francisco, California',
+'Miami, Florida',
+'Washington, District of Columbia',

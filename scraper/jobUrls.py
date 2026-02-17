@@ -4,6 +4,7 @@ from playwright.sync_api import Page, Locator
 from urllib.parse import urljoin
 from pandas import DataFrame
 from collections import defaultdict
+import time
 
 
 def getJobUrls(page: Page, xpaths: dict, companyName: str, idCompany: int, baseUrl: str, searchPath: str, urlRenderType: str) -> list[(str, str)]:
@@ -59,6 +60,7 @@ def isClickable(buttonNextPage: Locator) -> bool:
 
 
 def getAllJobUrls(dbCompanies: DataFrame, page: Page, urlRenderTypes: dict, xpaths: defaultdict) -> List[Tuple[str, int, str]]:
+    timeStart = time.perf_counter()
     jobUrls = []
 
     for row in dbCompanies.itertuples():
@@ -74,4 +76,7 @@ def getAllJobUrls(dbCompanies: DataFrame, page: Page, urlRenderTypes: dict, xpat
         companyJobUrls = getJobUrls(page, xpaths, companyName, idCompany, baseUrl, searchPath, urlRenderType)
         jobUrls.extend(companyJobUrls)
 
+    timeEnd = time.perf_counter()
+    timeGetAllJobUrls = timeEnd - timeStart
+    print(f'\ngetAllJobUrls Time: {timeGetAllJobUrls}\n')
     return jobUrls

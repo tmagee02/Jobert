@@ -409,7 +409,7 @@
 'Mountain View, California',
 
 21, https://www.databricks.com/company/careers/engineering---pipeline/staff-technical-program-manager--genai-ops--capacity-planning-8381772002
-'71,900—$240,675 U',
+'$171,900—$240,675',
 '10+',
 'Mountain View, California',
 

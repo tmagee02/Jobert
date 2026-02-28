@@ -1,6 +1,6 @@
 from typing import List, Tuple, Set
 from collections import defaultdict
-from utils import randomDelay
+from scraper.utils import randomDelay
 from playwright.sync_api import Page, Locator, TimeoutError as PlaywrightTimeoutError
 import logging
 import time

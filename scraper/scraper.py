@@ -1,8 +1,8 @@
-from dataLoader import loadExistingDatabaseData, loadJson
-from jobUrls import getAllJobUrls
-from jobDetails import getAllJobDetails
-from exportDetails import writeJobDetailsToFile, insertJobsToDatabase
-from utils import setupLogging, emailLogging
+from scraper.dataLoader import loadExistingDatabaseData, loadJson
+from scraper.jobUrls import getAllJobUrls
+from scraper.jobDetails import getAllJobDetails
+from scraper.exportDetails import writeJobDetailsToFile, insertJobsToDatabase
+from scraper.utils import setupLogging, emailLogging, totalDelay
 import time
 from playwright.sync_api import sync_playwright
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     timeEnd = time.perf_counter()
     programTime = timeEnd - timeStart
-    from utils import totalDelay
+    
     print(f'Total Delay: {totalDelay}')
     print(f'Program Time: {programTime}')
 

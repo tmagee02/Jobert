@@ -23,7 +23,7 @@ def main():
 
 def getData(purpose):
     folder = Path("./scraper/nlp/companyNER")
-    config = Path("./scraper/nlp/config.json")
+    config = Path("./scraper/nlp/configNLP.json")
     testSet = set(json.loads(config.read_text())['testFiles'])
 
     files = []

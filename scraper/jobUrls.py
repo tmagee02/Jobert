@@ -1,5 +1,5 @@
 from typing import List, Tuple
-from utils import randomDelay
+from scraper.utils import randomDelay
 from playwright.sync_api import Page, Locator
 from urllib.parse import urljoin
 from pandas import DataFrame

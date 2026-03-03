@@ -47,7 +47,7 @@ patterns = [
         "label": "EXPERIENCE",
         "pattern": [                       
             
-            {"TEXT": {"REGEX": r"\d{1,2}"}},                     #d(+) year(s)
+            {"TEXT": {"REGEX": r"^\d{1,2}$"}},                     #d(+) year(s)
             {"ORTH": "+", "OP": "?"},
             {"TEXT": {"REGEX": r"years?"}}
         ]
@@ -56,9 +56,9 @@ patterns = [
         "label": "EXPERIENCE",
         "pattern": [                       
             
-            {"TEXT": {"REGEX": r"\d{1,2}"}},                     #d-d or d - d
-            {"TEXT": {"REGEX": r"[—–-]"}},
-            {"TEXT": {"REGEX": r"\d{1,2}"}}
+            {"TEXT": {"REGEX": r"^\d{1,2}$"}},                     #d-d or d - d
+            {"TEXT": {"REGEX": r"^[—–-]$"}},
+            {"TEXT": {"REGEX": r"^\d{1,2}$"}}
         ]
     }
         

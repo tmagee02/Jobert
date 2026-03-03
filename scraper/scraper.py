@@ -22,9 +22,13 @@ def main():
 
         jobUrls = getAllJobUrls(dbCompanies, page, urlRenderTypes, xpaths)
         jobDetails = getAllJobDetails(dbJobUrls, page, jobUrls, xpaths)
+
+        from scraper.handleNLP import handleNLP
+        for jobUrl, (title, jobDesc, offices, remote, datePosted, idCompany) in jobDetails.items():
+            idkYet = handleNLP(jobUrl, jobDesc, offices, remote)
     
-    writeJobDetailsToFile(jobDetails)
-    insertJobsToDatabase(jobDetails)
+    # writeJobDetailsToFile(jobDetails)
+    # insertJobsToDatabase(jobDetails)
     return
 
 

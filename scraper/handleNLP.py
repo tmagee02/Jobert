@@ -40,9 +40,9 @@ def extractSalaryRange(salary: str) -> Tuple[int, int]:
     salaryVals = re.findall(regex, salary)
     
     if len(salaryVals) != 1 and len(salaryVals) != 2:
+        raise ValueError(f'Unexpected amount of values in salary string - {salary}')
         print(-1, -1, salary, salaryVals)
         return (-1, -1)
-        raise ValueError(f'Unexpected amount of values in salary string - {salary}')
 
     minSalary = int(salaryVals[0].replace(',', ''))
     maxSalary = int(salaryVals[1].replace(',', '')) if len(salaryVals) == 2 else minSalary
@@ -61,9 +61,20 @@ def extractExperience(experience: str) -> Tuple[int, int]:
     minExp = int(expVals[0])
     maxExp = int(expVals[1]) if len(expVals) == 2 else minExp
 
-    if minExp > 99 or maxExp > 99:
-        return (-1, -1)
+    if minExp < 0 or minExp > 99 or maxExp < minExp or maxExp > 99:
         raise ValueError(f'Unwanted years of experience in experience string - {experience}')
+        # return (-1, -1)
 
     # print(minExp, maxExp, experience)
     return minExp, maxExp
+
+
+
+
+def add(a, b):
+    return a + b
+
+def divide(a, b):
+    if b == 0:
+        raise ValueError
+    return a / b

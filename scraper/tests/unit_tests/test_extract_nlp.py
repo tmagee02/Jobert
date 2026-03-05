@@ -50,9 +50,10 @@ def test_extract_experience_invalid_type(bad_type):
     [
         ('$147,400 and $272,100 SALARY', (147400, 272100)),
         ('$190,400 - $285,600', (190400, 285600)),
-        ('$164,000—$204,000', (164000, 204000)),
+        ('$64,000—$204,000', (64000, 204000)),
         ('USD$171,000 per year - USD$190,000', (171000, 190000)),
-        pytest.param('$293K – $325K', (), marks=pytest.mark.xfail(reason='havent coded dddK case yet')),
+        ('$29K – $325K', (29000, 325000)),
+        ('$2k – $32k', (2000, 32000)),
         pytest.param('', (), marks=pytest.mark.skip(reason='need to grab other examples5')),
     ]
 )

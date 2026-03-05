@@ -46,14 +46,23 @@ def handleAllNLP(jobDetails: dict[str, Job]):
 
 
 def extractSalaryRange(salary: str) -> Tuple[int, int]:
-    regex = r'\d{1,3}(?:,\d{3}){1,2}'
-    salaryVals = re.findall(regex, salary)
+    regexStandard = r'\d{1,3}(?:,\d{3}){1,2}'
+    regexK = r'\d{1,3}[kK]'
+    salaryVals = re.findall(regexStandard, salary)
+    salaryVals.extend(re.findall(regexK, salary))
     
     if len(salaryVals) != 1 and len(salaryVals) != 2:
         raise ValueError(f'Unexpected amount of values in salary string - {salary} >>> amount of values seen is {len(salaryVals)}')
 
-    minSalary = int(salaryVals[0].replace(',', ''))
-    maxSalary = int(salaryVals[1].replace(',', '')) if len(salaryVals) == 2 else minSalary
+    minString = salaryVals[0][:len(salaryVals[0])-1] if 'k' in salaryVals[0].lower() else salaryVals[0]
+    maxString = salaryVals[1][:len(salaryVals[1])-1] if 'k' in salaryVals[1].lower() else salaryVals[1]
+    minSalary = int(minString.replace(',', ''))
+    maxSalary = int(maxString.replace(',', '')) if len(salaryVals) == 2 else minSalary
+
+    if 'k' in salaryVals[0].lower():
+        minSalary *= 1000    
+    if 'k' in salaryVals[0].lower():
+        maxSalary *= 1000
 
     return minSalary, maxSalary
 

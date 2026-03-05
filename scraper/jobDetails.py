@@ -36,7 +36,6 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
         locRemote = getLocator(page, xpaths, companyName, 'remote')
         locDatePosted = getLocator(page, xpaths, companyName, 'datePosted')
 
-        # print(companyName, locTitle.count(), locJobDesc.count(), locLocations.count(), locRemote.count(), locDatePosted.count(), url)
         title = getLocatorText(locTitle, onlyFirst=True)
         jobDesc = getLocatorText(locJobDesc)
         offices = getLocatorText(locOffices)
@@ -45,7 +44,6 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
         
         randomDelay(True)
         jobDetails[url] = Job(url, idCompany, title, jobDesc, offices, remote, datePosted)
-        if url == 'https://stripe.com/jobs/listing/sr-staff-engineer-data-ai-infrastructure/6718325': print(jobDetails[url])
         jobActivity.info(f'New job ( {title} ) found @ {url}')
         return 
     except PlaywrightTimeoutError:
@@ -60,7 +58,6 @@ def getAllJobDetails(dbJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, i
     jobActivity = logging.getLogger('Job Activity')
     jobDetails = {}
     count = 1
-    jobUrls.append(('Stripe', 1, 'https://stripe.com/jobs/listing/sr-staff-engineer-data-ai-infrastructure/6718325'))
     companyCount = defaultdict(int)
     for company, idCompany, jobUrl in jobUrls:
         if jobUrl not in dbJobUrls and jobUrl not in jobDetails and companyCount[company] < 5:

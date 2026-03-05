@@ -10,7 +10,6 @@ class Job:
     offices: str | None
     remote: str | None
     datePosted: str | None = None
-    #Job(url, title, jobDesc, locations, remote, datePosted, idCompany)
     minSalary: int = -1
     maxSalary: int = -1
     minExperience: int = -1

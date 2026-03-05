@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import Tuple
 from scraper.utils import randomDelay
 from playwright.sync_api import Page, Locator
 from urllib.parse import urljoin
@@ -42,7 +42,6 @@ def getJobUrls(page: Page, xpaths: dict, companyName: str, idCompany: int, baseU
                     jobUrls.append((companyName, idCompany, urljoin(baseUrl + searchPath, jobPath)))
 
                 page.locator(xpaths[companyName]['nextPage']).wait_for(timeout=5000)
-                # print("button found")
 
                 maxPages -= 1
                 buttonNextPage = page.locator(xpaths[companyName]['nextPage'])
@@ -59,7 +58,7 @@ def isClickable(buttonNextPage: Locator) -> bool:
     return not (isRemoved or isDisabled)
 
 
-def getAllJobUrls(dbCompanies: DataFrame, page: Page, urlRenderTypes: dict, xpaths: defaultdict) -> List[Tuple[str, int, str]]:
+def getAllJobUrls(dbCompanies: DataFrame, page: Page, urlRenderTypes: dict, xpaths: defaultdict) -> list[Tuple[str, int, str]]:
     timeStart = time.perf_counter()
     jobUrls = []
 

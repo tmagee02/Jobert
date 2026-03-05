@@ -8,7 +8,7 @@ from .models import Job
 
 def jobs(request):
     thirtyDays = timezone.now() - timedelta(days=300) #CHANGE
-    recentJobs = Job.objects.filter(date_scraped__gte=thirtyDays).order_by('-pk')[:10]
+    recentJobs = Job.objects.filter(date_scraped__gte=thirtyDays).order_by('-pk')[:100]
     jobList = []
     for job in recentJobs:
         jobDetails = {
@@ -30,11 +30,13 @@ def jobInfo(request, jobId):
         'JobUrl' : job.job_url,
         'Title' : job.title,
         #'Locations' : job.locations
-        # 'MinExperience' : job.min_experience,
-        # 'MaxExperience' : job.max_experience,
+        'MinExperience' : job.min_experience,
+        'MaxExperience' : job.max_experience,
         # 'DatePosted' : job.date_posted,
         'DateScraped' : job.date_scraped,
-        'JobDesc' : job.job_desc
+        'JobDesc' : job.job_desc,
+        'MinSalary' : job.min_salary,
+        'MaxSalary' : job.max_salary
     }
 
     return JsonResponse(jobInfo)

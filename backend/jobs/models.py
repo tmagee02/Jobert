@@ -22,6 +22,8 @@ class Job(models.Model):
     date_scraped = models.DateTimeField(blank=True, null=True)
     company = models.ForeignKey(Company, models.DO_NOTHING)
     date_posted = models.DateTimeField(blank=True, null=True)
+    min_salary = models.IntegerField(null=True, blank=True) 
+    max_salary = models.IntegerField(null=True, blank=True)
 
     class Meta:
         managed = False

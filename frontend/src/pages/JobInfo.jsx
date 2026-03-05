@@ -32,6 +32,12 @@ export default function JobInfo() {
       <h1>{jobInfo.Title}</h1>
       <h2>{jobInfo.Company}</h2>
       <h2>{jobInfo.DateScraped}</h2>
+      <h2>
+        YOE: {jobInfo.MinExperience} - {jobInfo.MaxExperience}
+      </h2>
+      <h2>
+        Salary Range: {jobInfo.MinSalary} - {jobInfo.MaxSalary}
+      </h2>
       <a href={jobInfo.JobUrl} target="_blank">
         Apply Now
       </a>

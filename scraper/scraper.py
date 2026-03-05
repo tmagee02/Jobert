@@ -5,6 +5,7 @@ from scraper.exportDetails import writeJobDetailsToFile, insertJobsToDatabase
 from scraper.utils import setupLogging, emailLogging, totalDelay
 import time
 from playwright.sync_api import sync_playwright
+from scraper.handleNLP import handleAllNLP
 
 
 def main():    
@@ -23,9 +24,15 @@ def main():
         jobUrls = getAllJobUrls(dbCompanies, page, urlRenderTypes, xpaths)
         jobDetails = getAllJobDetails(dbJobUrls, page, jobUrls, xpaths)
 
-        from scraper.handleNLP import handleNLP
-        for jobUrl, (title, jobDesc, offices, remote, datePosted, idCompany) in jobDetails.items():
-            idkYet = handleNLP(jobUrl, jobDesc, offices, remote)
+        handleAllNLP(jobDetails)
+
+        for job in jobDetails.values():
+            print('\n', job.url)
+            print(f'{job.minSalary}, {job.maxSalary} : SALARY')
+            print(f'{job.minExperience}, {job.maxExperience} : EXPERIENCE')
+            for location in job.locations:
+                print(f'{location} : LOCATION')
+
     
     # writeJobDetailsToFile(jobDetails)
     # insertJobsToDatabase(jobDetails)

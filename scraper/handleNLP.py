@@ -2,37 +2,47 @@ import spacy
 from scraper.nlp.patternsNLP import patterns
 import re
 from typing import Tuple
+from scraper.job import Job
 
-def handleNLP(jobUrl, jobDesc, offices, remote):
+def handleAllNLP(jobDetails: dict[str, Job]):
     nlp = spacy.load("./scraper/nlp/training/output/model-best")
     ruler = nlp.add_pipe("entity_ruler")
     ruler.add_patterns(patterns)
-    text = f'{offices} ::: {remote}  <><><><>  {jobDesc}'
-    doc = nlp(text)
 
-    labelLists = {
-        'SALARY' : [],
-        'EXPERIENCE' : [],
-        'LOCATION' : []
-    }
+    for job in jobDetails.values():
+        text = f'{job.offices} ::: {job.remote}  <><><><>  {job.jobDesc}'
+        doc = nlp(text)
 
-    sentences = text.split("\n\n")
-    for sent in sentences:
-        doc = nlp(sent)
-        for ent in doc.ents:
-            if ent.label_ in labelLists:
-                labelLists[ent.label_].append(ent.text)
-            else:
-                print(f'possible issue: {ent.text} -> {ent.label_}')
+        labelLists = {
+            'SALARY' : [],
+            'EXPERIENCE' : [],
+            'LOCATION' : []
+        }
 
-    minSalary, maxSalary = extractSalaryRange(labelLists['SALARY'][0]) if labelLists['SALARY'] else (-1, -1)
-    minExp, maxExp = extractExperience(labelLists['EXPERIENCE'][0]) if labelLists['EXPERIENCE'] else (-1, -1)
-    
-    print('\n', jobUrl)
-    print(f'{minSalary}, {maxSalary} : SALARY')
-    print(f'{minExp}, {maxExp} : EXPERIENCE')
-    for location in labelLists['LOCATION']:
-        print(f'{location} : LOCATION')
+        sentences = text.split("\n\n")
+        for sent in sentences:
+            doc = nlp(sent)
+            for ent in doc.ents:
+                if ent.label_ in labelLists:
+                    labelLists[ent.label_].append(ent.text)
+                else:
+                    print(f'possible issue: {ent.text} -> {ent.label_}')
+
+        try:
+            minSalary, maxSalary = extractSalaryRange(labelLists['SALARY'][0]) if labelLists['SALARY'] else (-1, -1)
+        except ValueError as e:
+            print(f'ValueError Caught: {e}')
+            minSalary, maxSalary = (-1, -1)
+
+        try:
+            minExp, maxExp = extractExperience(labelLists['EXPERIENCE'][0]) if labelLists['EXPERIENCE'] else (-1, -1)
+        except ValueError as e:
+            print(f'ValueError Caught: {e}')
+            minExp, maxExp = (-1, -1)
+
+        job.minSalary, job.maxSalary = minSalary, maxSalary
+        job.minExperience, job.maxExperience = minExp, maxExp
+        job.locations = labelLists['LOCATION']
 
 
 def extractSalaryRange(salary: str) -> Tuple[int, int]:
@@ -40,14 +50,11 @@ def extractSalaryRange(salary: str) -> Tuple[int, int]:
     salaryVals = re.findall(regex, salary)
     
     if len(salaryVals) != 1 and len(salaryVals) != 2:
-        raise ValueError(f'Unexpected amount of values in salary string - {salary}')
-        print(-1, -1, salary, salaryVals)
-        return (-1, -1)
+        raise ValueError(f'Unexpected amount of values in salary string - {salary} >>> amount of values seen is {len(salaryVals)}')
 
     minSalary = int(salaryVals[0].replace(',', ''))
     maxSalary = int(salaryVals[1].replace(',', '')) if len(salaryVals) == 2 else minSalary
 
-    # print(minSalary, maxSalary, salary, salaryVals)
     return minSalary, maxSalary
 
 
@@ -63,9 +70,7 @@ def extractExperience(experience: str) -> Tuple[int, int]:
 
     if minExp < 0 or minExp > 99 or maxExp < minExp or maxExp > 99:
         raise ValueError(f'Unwanted years of experience in experience string - {experience}')
-        # return (-1, -1)
 
-    # print(minExp, maxExp, experience)
     return minExp, maxExp
 
 

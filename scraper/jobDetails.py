@@ -4,6 +4,7 @@ from scraper.utils import randomDelay
 from playwright.sync_api import Page, Locator, TimeoutError as PlaywrightTimeoutError
 import logging
 import time
+from scraper.job import Job
 
 def getLocator(page: Page, xpaths: dict, companyName: str, key: str) -> Locator:
         locDummy = page.locator('//h1/h1/h1/h1')
@@ -31,19 +32,19 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
         page.locator(xpaths[companyName]['jobTitle']).nth(0).wait_for(timeout=5000)
         locTitle = getLocator(page, xpaths, companyName, 'jobTitle')
         locJobDesc = getLocator(page, xpaths, companyName, 'jobDesc')
-        locLocations = getLocator(page, xpaths, companyName, 'location')
+        locOffices = getLocator(page, xpaths, companyName, 'location')
         locRemote = getLocator(page, xpaths, companyName, 'remote')
         locDatePosted = getLocator(page, xpaths, companyName, 'datePosted')
 
         # print(companyName, locTitle.count(), locJobDesc.count(), locLocations.count(), locRemote.count(), locDatePosted.count(), url)
         title = getLocatorText(locTitle, onlyFirst=True)
         jobDesc = getLocatorText(locJobDesc)
-        locations = getLocatorText(locLocations)
+        offices = getLocatorText(locOffices)
         remote = getLocatorText(locRemote)
         datePosted = getLocatorText(locDatePosted)
         
         randomDelay(True)
-        jobDetails[url] = (title, jobDesc, locations, remote, datePosted, idCompany)
+        jobDetails[url] = Job(url, idCompany, title, jobDesc, offices, remote, datePosted)
         if url == 'https://stripe.com/jobs/listing/sr-staff-engineer-data-ai-infrastructure/6718325': print(jobDetails[url])
         jobActivity.info(f'New job ( {title} ) found @ {url}')
         return 
@@ -53,19 +54,21 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
         return
 
 
-def getAllJobDetails(dbJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, int, str]], xpaths: defaultdict) -> dict:   
+def getAllJobDetails(dbJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, int, str]], xpaths: defaultdict) -> dict[str, Job]:   
     timeStart = time.perf_counter()
     logger = logging.getLogger('Jobert Scraper')
     jobActivity = logging.getLogger('Job Activity')
     jobDetails = {}
     count = 1
     jobUrls.append(('Stripe', 1, 'https://stripe.com/jobs/listing/sr-staff-engineer-data-ai-infrastructure/6718325'))
+    companyCount = defaultdict(int)
     for company, idCompany, jobUrl in jobUrls:
-        if jobUrl not in dbJobUrls and jobUrl not in jobDetails:
+        if jobUrl not in dbJobUrls and jobUrl not in jobDetails and companyCount[company] < 5:
             try:
                 status = page.goto(jobUrl).status
                 print(count, jobUrl)
                 count += 1
+                companyCount[company] += 1
                 getJobDetails(page, status, xpaths, company, idCompany, jobDetails, jobUrl)
             except PlaywrightTimeoutError:
                 logger.error(f'Possible invalid job @ {jobUrl}.')

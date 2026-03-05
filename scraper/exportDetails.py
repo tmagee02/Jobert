@@ -1,7 +1,6 @@
 import sqlite3
 import logging
 import time
-from scraper.handleNLP import handleNLP
 
 
 def writeJobDetailsToFile(jobDetails: dict) -> None:
@@ -39,7 +38,6 @@ def insertJobsToDatabase(jobDetails: dict) -> None:
     with sqlite3.connect('./db/jobert.db') as conn:
         cursor = conn.cursor()
         for jobUrl, (title, jobDesc, offices, remote, datePosted, idCompany) in jobDetails.items():
-            idkYet = handleNLP(jobUrl, jobDesc, offices, remote)
             qInsertJob = '''
                 insert into Job (job_url, title, job_desc, company_id)
                 values (?, ?, ?, ?)

@@ -49,11 +49,11 @@ def test_extract_experience_invalid_type(bad_type):
     'text, expected',
     [
         ('$147,400 and $272,100 SALARY', (147400, 272100)),
-        pytest.param('', (), marks=pytest.mark.xfail(reason='need to grab other examples')),
-        pytest.param('', (), marks=pytest.mark.xfail(reason='need to grab other examples')),
-        pytest.param('', (), marks=pytest.mark.xfail(reason='need to grab other examples')),
-        pytest.param('', (), marks=pytest.mark.xfail(reason='need to grab other examples')),
-        pytest.param('', (), marks=pytest.mark.xfail(reason='need to grab other examples')),
+        ('$190,400 - $285,600', (190400, 285600)),
+        ('$164,000—$204,000', (164000, 204000)),
+        ('USD$171,000 per year - USD$190,000', (171000, 190000)),
+        pytest.param('$293K – $325K', (), marks=pytest.mark.xfail(reason='havent coded dddK case yet')),
+        pytest.param('', (), marks=pytest.mark.skip(reason='need to grab other examples5')),
     ]
 )
 def test_extract_salary_range(text, expected):
@@ -66,11 +66,11 @@ def test_extract_salary_range(text, expected):
         '',
         'Salary: ',
         '$147,400 and $272,100 and $347,400',
-        pytest.param('', marks=pytest.mark.xfail(reason='need to grab other examples')),
-        pytest.param('', marks=pytest.mark.xfail(reason='need to grab other examples')),
-        pytest.param('', marks=pytest.mark.xfail(reason='need to grab other examples')),
-        pytest.param('', marks=pytest.mark.xfail(reason='need to grab other examples')),
-        pytest.param('', marks=pytest.mark.xfail(reason='need to grab other examples')),
+        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
     ]
 )
 def test_extract_salary_range_invalid_format(text):

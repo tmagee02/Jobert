@@ -34,8 +34,8 @@ def main():
                 print(f'{location} : LOCATION')
 
     
-    # writeJobDetailsToFile(jobDetails)
-    # insertJobsToDatabase(jobDetails)
+    writeJobDetailsToFile(jobDetails)
+    insertJobsToDatabase(jobDetails)
     return
 
 

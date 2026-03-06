@@ -5,6 +5,7 @@ export default function Jobs() {
   const [backendData, setBackendData] = useState([]);
 
   useEffect(() => {
+    document.title = "Jobs";
     fetch("http://localhost:8000/jobs/")
       .then((response) => response.json())
       .then((data) => setBackendData(data));

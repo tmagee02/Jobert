@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import JobsGrid from "../components/JobsGrid.jsx";
 
 export default function Jobs() {
   const [backendData, setBackendData] = useState([]);
@@ -24,18 +24,7 @@ export default function Jobs() {
     <div id="jobs">
       <h1>Jobs</h1>
       <h2>jobs list here</h2>
-      <ul>
-        {backendData.map((job) => (
-          <div className="flex justify-left my-4">
-            <div>
-              {job.JobId} --- {job.Company}:
-            </div>
-            <li key={job.JobId} className="mx-4">
-              <Link to={`/jobs/${job.JobId}`}>{job.Title}</Link>
-            </li>
-          </div>
-        ))}
-      </ul>
+      <JobsGrid jobs={backendData} />
     </div>
   );
 }

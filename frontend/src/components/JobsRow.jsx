@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 
 export default function JobsRow({ job }) {
   const stringifySalaryRange = () => {
-    let minSalary = job.JobId.toString();
-    let maxSalary = job.JobId.toString();
+    let minSalary = job.MinSalary ? job.MaxSalary.toString() : null;
+    let maxSalary = job.MaxSalary ? job.MaxSalary.toString() : null;
 
+    if (!minSalary && !maxSalary) return "POOP";
+    console.log(minSalary, maxSalary);
     minSalary = `\$${minSalary.slice(0, -3)},${minSalary.slice(-3)}`;
     maxSalary = `\$${maxSalary.slice(0, -3)},${maxSalary.slice(-3)}`;
     return `${minSalary} - ${maxSalary}`;

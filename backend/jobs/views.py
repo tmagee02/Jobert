@@ -16,7 +16,11 @@ def jobs(request):
             'JobId' : job.pk,
             'JobUrl' : job.job_url,
             'Company' : job.company.company_name,
-            'Title' : job.title
+            'Title' : job.title,
+            'MinExperience' : job.min_experience,
+            'MaxExperience' : job.max_experience,
+            'MinSalary' : job.min_salary,
+            'MaxSalary' : job.max_salary
         }
         jobList.append(jobDetails)
 

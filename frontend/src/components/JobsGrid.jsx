@@ -1,4 +1,4 @@
-import JobsRow from "./JobsRow.jsx";
+import JobRow from "./JobRow.jsx";
 
 export default function JobsGrid({ jobs }) {
   return (
@@ -7,7 +7,7 @@ export default function JobsGrid({ jobs }) {
       <h1>poop</h1>
       <ul>
         {jobs.map((job) => (
-          <JobsRow job={job} />
+          <JobRow job={job} />
         ))}
       </ul>
     </div>

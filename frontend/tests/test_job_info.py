@@ -6,7 +6,7 @@ from typing import Tuple
 def jobInfoPage(page: Page):
     page.goto('http://localhost:5173/jobs')
 
-    firstJob = page.locator('//li').first
+    firstJob = page.locator('//div[@id="jobs"]//a').first
     firstJobText = firstJob.text_content()
     firstJob.click()
     return page, firstJobText

@@ -14,8 +14,8 @@ def test_jobs_page_loads(jobsPage: Page):
 
 
 def test_job_link_works(jobsPage: Page):
-    firstJob = jobsPage.locator('//li').first
-    firstJobText = firstJob.text_content()
+    firstJob = jobsPage.locator('//div[@id="jobs"]//a').first
+    firstJobText = firstJob.inner_text()
     firstJob.click()
 
     expect(jobsPage.get_by_role('heading', name=firstJobText)).to_be_visible()

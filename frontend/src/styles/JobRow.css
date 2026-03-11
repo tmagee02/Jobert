@@ -1,0 +1,41 @@
+
+#jobTitle{
+    color: greenyellow;
+    /* background-color: white !important; */
+    /* font-size: 22px; */
+}
+.jobTitle-span{
+    line-clamp: 2;
+}
+
+
+#company, img{
+    /* background-color: white !important; */
+
+}
+#jobRow, #company, img, #jobTitle, #salaryRange, #experienceRange{
+    background-color: white !important;
+    color: black;
+}
+/* *{background-color: white;} */
+hr{
+    background-color: gray;
+    border-color: rgba(0,0,0,0.1);
+    border-width: 2px;
+}
+#jobs{
+    background-color: white;
+}
+#jobsGrid{
+    background-color: rgba(245,245,245, 1);
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+#jobRow{
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(1,0,0,0.2);
+}
+#jobRow:hover{
+    box-shadow: 0 0 8px rgba(0,0,0,0.2)
+}

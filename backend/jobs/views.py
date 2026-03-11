@@ -8,7 +8,7 @@ from .models import Job
 
 def jobs(request):
     thirtyDays = timezone.now() - timedelta(days=300) #CHANGE
-    recentJobs = Job.objects.filter(date_scraped__gte=thirtyDays).order_by('-pk')[:100]
+    recentJobs = Job.objects.order_by('-pk')[:1000] #.filter(date_scraper__gte=thirtyDays)
     jobList = []
     for job in recentJobs:
         jobDetails = {

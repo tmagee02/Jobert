@@ -17,7 +17,11 @@ export default function JobRow({ job }) {
     let minExp = job.MinExperience;
     let maxExp = job.MaxExperience;
 
-    return `${minExp} – ${maxExp}`;
+    if (minExp === -1 && maxExp === -1) return "Years of Experience: N/A";
+    else if (maxExp === -1 || maxExp === minExp)
+      return `Years of Experience: ${minExp}+`;
+
+    return `Years of Experience: ${minExp} – ${maxExp}`;
   };
 
   const getSalaryRange = () => {
@@ -28,42 +32,47 @@ export default function JobRow({ job }) {
       (!minSalary && !maxSalary) ||
       (minSalary === "-1" && maxSalary === "-1")
     )
-      return "Salary N/A";
+      return "Salary Range: N/A";
     console.log(minSalary, maxSalary);
     minSalary = `\$${minSalary.slice(0, -3)},${minSalary.slice(-3)}`;
     maxSalary = `\$${maxSalary.slice(0, -3)},${maxSalary.slice(-3)}`;
-    return `${minSalary} – ${maxSalary}`;
+    return `Salary Range: ${minSalary} – ${maxSalary}`;
   };
 
   return (
-    <div
-      id="jobRow"
-      className="bg-white grid grid-cols-[80px_1fr_150px_150px] items-center gap-1"
-    >
+    <Link to={`/jobs/${job.JobId}`}>
       <div
-        id="company"
-        className="bg-green-500 text-black h-10 flex items-center justify-center px-3 py-1"
+        id="jobRow"
+        className="bg-white grid grid-cols-[80px_1fr_325px_35px] items-center gap-3"
       >
-        <img
-          src={getLogo(job.Company)}
-          alt={`${job.Company} logo`}
-          className="h-auto w-auto max-h-full max-w-full bg-blue-800"
-        />
+        <div
+          id="company"
+          className="bg-green-500 text-black h-10 flex items-center justify-center px-3 py-1"
+        >
+          <img
+            src={getLogo(job.Company)}
+            alt={`${job.Company} logo`}
+            className="h-auto w-auto max-h-full max-w-full bg-blue-800"
+          />
+        </div>
+        <div
+          id="jobTitle"
+          className="bg-gray-300 text-white min-w-0 pl-5 line-clamp-2 "
+        >
+          <span className="text-[22px] text-(--bg-mid) font-bold">
+            {job.Title}
+          </span>
+        </div>
+        <div id="ranges" className="bg-blue-300 text-[17px] font-semibold">
+          <div id="salaryRange" className="bg-green-600">
+            {getSalaryRange()}
+          </div>
+          <div id="experienceRange" className="bg-yellow-600">
+            {getExperienceRange()}
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right"></i>
       </div>
-      <div
-        id="jobTitle"
-        className="bg-gray-300 text-white min-w-0 pl-5 line-clamp-3"
-      >
-        <Link to={`/jobs/${job.JobId}`}>
-          <span className="text-[26px]">{job.Title}</span>
-        </Link>
-      </div>
-      <div id="salaryRange" className="bg-green-600">
-        {getSalaryRange()}
-      </div>
-      <div id="experienceRange" className="bg-yellow-600">
-        {getExperienceRange()}
-      </div>
-    </div>
+    </Link>
   );
 }

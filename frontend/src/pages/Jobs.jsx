@@ -21,7 +21,7 @@ export default function Jobs() {
   const jobTitle = backendData[1]["Title"];
 
   return (
-    <div id="jobs">
+    <div id="jobs" className="flex flex-col items-center">
       <h1>Jobs</h1>
       <h2>jobs list here</h2>
       <JobsGrid jobs={backendData} />

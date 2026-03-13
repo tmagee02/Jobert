@@ -45,7 +45,7 @@ export default function JobRow({ job }) {
     <Link to={`/jobs/${job.JobId}`}>
       <div
         id="jobRow"
-        className="bg-white grid grid-cols-[80px_1fr_310px_35px] items-center gap-4"
+        className="grid grid-cols-[80px_1fr_310px_35px] items-center gap-4"
       >
         <div
           id="company"

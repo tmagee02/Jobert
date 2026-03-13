@@ -1,48 +1,23 @@
-/* body{
-
-  /* font-family: "Inter", sans-serif; */
-
-/* }
-
-
-:root{
-    --bg-dark: #403F4C;
-    --bg-mid: #4F86C6;
-    --bg-mid-rgb: 79,134,198;
-    --bg-white: #FBFEF9;
-    --black: #0C1618;
-    --bg-grey: #848FA5;
-} */ */
-#jobTitle.Link.span{
-    color: greenyellow;
-    /* background-color: white !important; */
-    /* font-size: 22px; */
-}
-.jobTitle-span{
-    line-clamp: 2;
-}
-
-
-#company, img{
-    /* background-color: white !important; */
-
-}
 #jobRow, #company, img, #jobTitle, #salaryRange, #experienceRange{
     background-color: var(--bg-white) !important;
 }
-/* *{background-color: white;} */
+
+
 hr{
     border-color: rgba(var(--bg-mid-rgb),0.3);
 }
+
+
 #jobs{
     background-color: var(--bg-white);
-    /* background-color: white; */
 }
+
+
 #jobsGrid{
     background-color: var(--bg-white);
-    border-radius: 6px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
 }
+
+
 #jobRow{
     height: 120px;
     border-radius: 6px;
@@ -55,6 +30,8 @@ hr{
 #jobRow:active{
     box-shadow: 0 0 8px rgba(var(--bg-mid-rgb),0.8);
 }
+
+
 .secondary-text{
     font-size: 13px;
     font-weight: 600;

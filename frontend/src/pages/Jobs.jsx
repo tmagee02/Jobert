@@ -46,7 +46,9 @@ export default function Jobs() {
 
   return (
     <div id="jobs" className="flex flex-col items-center">
-      <h1>Jobs</h1>
+      <h1 className="my-10 font-semibold text-5xl tracking-tighter text-(--text-dark)">
+        Discover new job openings.
+      </h1>
       <h2>jobs list here</h2>
       <JobsGrid jobs={backendData} />
       {backendData.length < totalJobs && (

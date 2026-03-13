@@ -35,7 +35,7 @@ hr{
 .secondary-text{
     font-size: 13px;
     font-weight: 600;
-    color: rgba(var(--text-dark-2-rgb),0.7);
+    color: rgba(var(--text-dark-rgb),0.7);
 }
 #ranges{
     font-size: 16px;

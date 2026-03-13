@@ -7,8 +7,11 @@ from .models import Job
 
 
 def jobs(request):
-    thirtyDays = timezone.now() - timedelta(days=300) #CHANGE
-    recentJobs = Job.objects.order_by('-pk')[:1000] #.filter(date_scraper__gte=thirtyDays)
+    offset = int(request.GET.get('offset', 0))
+    jobCount = int(request.GET.get('jobCount', 20))
+    thirtyDays = timezone.now() - timedelta(days=30) #CHANGE
+    totalJobs = Job.objects.filter(date_scraped__gte=thirtyDays).count() 
+    recentJobs = Job.objects.filter(date_scraped__gte=thirtyDays).order_by('-pk')[offset : offset + jobCount] 
     jobList = []
     for job in recentJobs:
         jobDetails = {
@@ -20,11 +23,12 @@ def jobs(request):
             'MinExperience' : job.min_experience,
             'MaxExperience' : job.max_experience,
             'MinSalary' : job.min_salary,
-            'MaxSalary' : job.max_salary
+            'MaxSalary' : job.max_salary,
+            'DateScraped' : job.date_scraped,
         }
         jobList.append(jobDetails)
 
-    return JsonResponse(jobList, safe=False)
+    return JsonResponse({'jobList': jobList, 'totalJobs': totalJobs}, safe=False)
 
 def jobInfo(request, jobId):
     #need: Company Logo?, Company name, title, locations, minExperience, max experience, date posted, date scraped, job desc

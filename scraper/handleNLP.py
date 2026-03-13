@@ -10,6 +10,7 @@ def handleAllNLP(jobDetails: dict[str, Job]):
     ruler.add_patterns(patterns)
 
     for job in jobDetails.values():
+        print(job.url)
         text = f'{job.offices} ::: {job.remote}  <><><><>  {job.jobDesc}'
         doc = nlp(text)
 
@@ -50,14 +51,15 @@ def extractSalaryRange(salary: str) -> Tuple[int, int]:
     regexK = r'\d{1,3}[kK]'
     salaryVals = re.findall(regexStandard, salary)
     salaryVals.extend(re.findall(regexK, salary))
-    
+
     if len(salaryVals) != 1 and len(salaryVals) != 2:
         raise ValueError(f'Unexpected amount of values in salary string - {salary} >>> amount of values seen is {len(salaryVals)}')
 
     minString = salaryVals[0][:len(salaryVals[0])-1] if 'k' in salaryVals[0].lower() else salaryVals[0]
-    maxString = salaryVals[1][:len(salaryVals[1])-1] if 'k' in salaryVals[1].lower() else salaryVals[1]
+    maxString = salaryVals[1] if len(salaryVals) == 2 else salaryVals[0]
+    maxString = maxString[:len(maxString)-1] if 'k' in maxString.lower() else maxString
     minSalary = int(minString.replace(',', ''))
-    maxSalary = int(maxString.replace(',', '')) if len(salaryVals) == 2 else minSalary
+    maxSalary = int(maxString.replace(',', ''))
 
     if 'k' in salaryVals[0].lower():
         minSalary *= 1000    

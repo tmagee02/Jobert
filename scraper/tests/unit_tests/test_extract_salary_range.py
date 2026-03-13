@@ -11,7 +11,9 @@ from scraper.handleNLP import extractSalaryRange
         ('USD$171,000 per year - USD$190,000', (171000, 190000)),
         ('$29K – $325K', (29000, 325000)),
         ('$2k – $32k', (2000, 32000)),
-        pytest.param('', (), marks=pytest.mark.skip(reason='need to grab other examples5')),
+        ('$171,000', (171000, 171000)),
+        ('$2K', (2000, 2000))
+        # pytest.param('$171000', (171000, 171000), marks=pytest.mark.xfail(reason='need to grab other examples5')),
     ]
 )
 def test_extract_salary_range(text, expected):

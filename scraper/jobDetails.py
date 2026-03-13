@@ -60,7 +60,7 @@ def getAllJobDetails(dbJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, i
     count = 1
     companyCount = defaultdict(int)
     for company, idCompany, jobUrl in jobUrls:
-        if jobUrl not in dbJobUrls and jobUrl not in jobDetails and companyCount[company] < 5:
+        if jobUrl not in dbJobUrls and jobUrl not in jobDetails and companyCount[company] < 100:
             try:
                 status = page.goto(jobUrl).status
                 print(count, jobUrl)

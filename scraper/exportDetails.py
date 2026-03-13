@@ -4,12 +4,12 @@ import time
 from scraper.job import Job
 
 
-def writeJobDetailsToFile(jobDetails: dict[str, Job]) -> None:
+def writeJobDetailsToFile(jobs: list[Job]) -> None:
     timeStart = time.perf_counter()
     count = 1
 
     with open('./scraper/jobDetails.txt', 'w', encoding='utf-8') as f:
-        for job in jobDetails.values():
+        for job in jobs:
             f.write(f'{count}. {job.url}')
             count += 1
             f.write(f'\n{job.title}\n')
@@ -25,13 +25,13 @@ def writeJobDetailsToFile(jobDetails: dict[str, Job]) -> None:
     return
 
 
-def insertJobsToDatabase(jobDetails: dict[str, Job]) -> None:
+def insertJobsToDatabase(jobs: list[Job]) -> None:
     timeStart = time.perf_counter()
     logger = logging.getLogger('Jobert Scraper')
     logger.info('Inserting jobs into database')
     with sqlite3.connect('./db/jobert.db') as conn:
         cursor = conn.cursor()
-        for job in jobDetails.values():
+        for job in jobs:
             qInsertJob = '''
                 insert into Job (job_url, title, job_desc, company_id, min_salary, max_salary, min_experience, max_experience)
                 values (?, ?, ?, ?, ?, ?, ?, ?)

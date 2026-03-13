@@ -6,6 +6,7 @@ from scraper.utils import setupLogging, emailLogging, totalDelay
 import time
 from playwright.sync_api import sync_playwright
 from scraper.handleNLP import handleAllNLP
+import random
 
 
 def main():    
@@ -25,8 +26,10 @@ def main():
         jobDetails = getAllJobDetails(dbJobUrls, page, jobUrls, xpaths)
 
         handleAllNLP(jobDetails)
+        shuffledJobs = list(jobDetails.values())
+        random.shuffle(shuffledJobs)
 
-        for job in jobDetails.values():
+        for job in shuffledJobs:  
             print('\n', job.url)
             print(f'{job.minSalary}, {job.maxSalary} : SALARY')
             print(f'{job.minExperience}, {job.maxExperience} : EXPERIENCE')
@@ -34,8 +37,8 @@ def main():
                 print(f'{location} : LOCATION')
 
     
-    writeJobDetailsToFile(jobDetails)
-    insertJobsToDatabase(jobDetails)
+    writeJobDetailsToFile(shuffledJobs)
+    insertJobsToDatabase(shuffledJobs)
     return
 
 

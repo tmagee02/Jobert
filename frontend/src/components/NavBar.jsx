@@ -4,11 +4,11 @@ export default function NavBar() {
   return (
     <header
       id="nav-bar"
-      className="bg-red-500/20 h-12 sticky top-0 z-50 backdrop-blur-xs"
+      className="bg-red-500/0 h-12 sticky top-0 z-50 backdrop-blur-xs"
     >
       <div
         id="nav-content"
-        className="bg-orange-300/20 h-full flex justify-between items-center max-w-[1200px] mx-auto gap-8"
+        className="bg-orange-300/0 h-full flex justify-between items-center max-w-[1200px] mx-auto gap-8"
       >
         <div id="nav-brand" className="bg-purple-500">
           <Link to="/">Caria</Link>

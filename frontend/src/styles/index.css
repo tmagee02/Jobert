@@ -11,6 +11,14 @@
     --grey: #848FA5;
     --dark: #366ba7;
     --dark-rgb: 54, 107, 167;
+    --text1: #374151;
+    --text1-rgb: 55, 65, 81;
+    --text1-active: #2b5686; 
+    --text2: #6b7280;
+    --text2-rgb:107, 114, 128;
+    --text2-active: #366ba7;
+    --text3: #9CA3AF;
+    --text3-active: #2b5686b3;
 }
 
 body{

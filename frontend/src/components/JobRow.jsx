@@ -57,19 +57,25 @@ export default function JobRow({ job }) {
             className="h-auto w-auto max-h-full max-w-full"
           />
         </div>
-        <div id="jobTitle">
-          <span className="text-[22px] text-(--mid-active) font-bold line-clamp-2">
+        <div id="leftText">
+          <span
+            id="jobTitle"
+            className="text-[22px] text-(--text1) font-bold line-clamp-2"
+          >
             {job.Title}
           </span>
           <div id="location" className="secondary-text">
             San Francisco, California, United States{job.JobId}
           </div>
         </div>
-        <div id="ranges" className="secondary-text text-[16px]">
+        <div id="rightText" className="secondary-text text-[16px]">
           <div id="salaryRange">{getSalaryRange()}</div>
           <div id="experienceRange">{getExperienceRange()}</div>
         </div>
-        <i className="fa-solid fa-chevron-right text-(--dark)"></i>
+        <i
+          id="chevron"
+          className="fa-solid fa-chevron-right text-(--text2) transition-all"
+        ></i>
       </div>
     </Link>
   );

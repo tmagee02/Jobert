@@ -7,9 +7,10 @@
       radial-gradient(circle at 20% 70%, rgba(var(--mid-rgb),.7), transparent 35%),
       var(--white);
   
-    filter: blur(100px);
+    background-size: 200% 200%;
+    filter: blur(0px);
   
-    animation: drift 1s ease-in-out infinite alternate;
+    animation: drift 60s linear infinite alternate;
   
     pointer-events: none;
     z-index: -1;

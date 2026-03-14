@@ -49,31 +49,27 @@ export default function JobRow({ job }) {
       >
         <div
           id="company"
-          className="bg-green-500 text-black h-10 flex items-center justify-center px-3 py-1"
+          className="h-10 flex items-center justify-center px-3 py-1"
         >
           <img
             src={getLogo(job.Company)}
             alt={`${job.Company} logo`}
-            className="h-auto w-auto max-h-full max-w-full bg-blue-800"
+            className="h-auto w-auto max-h-full max-w-full"
           />
         </div>
-        <div id="jobTitle" className="bg-gray-300 text-white min-w-0 pl-0">
-          <span className="text-[22px] text-(--bg-mid-active) font-bold line-clamp-2">
+        <div id="jobTitle">
+          <span className="text-[22px] text-(--mid-active) font-bold line-clamp-2">
             {job.Title}
           </span>
           <div id="location" className="secondary-text">
             San Francisco, California, United States{job.JobId}
           </div>
         </div>
-        <div id="ranges" className="bg-blue-300 secondary-text text-[16px]">
-          <div id="salaryRange" className="bg-green-600">
-            {getSalaryRange()}
-          </div>
-          <div id="experienceRange" className="bg-yellow-600">
-            {getExperienceRange()}
-          </div>
+        <div id="ranges" className="secondary-text text-[16px]">
+          <div id="salaryRange">{getSalaryRange()}</div>
+          <div id="experienceRange">{getExperienceRange()}</div>
         </div>
-        <i className="fa-solid fa-chevron-right text-(--text-dark)"></i>
+        <i className="fa-solid fa-chevron-right text-(--dark)"></i>
       </div>
     </Link>
   );

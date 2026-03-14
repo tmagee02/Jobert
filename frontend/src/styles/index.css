@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root{
-    --bg-dark: #403F4C;
-    --bg-mid: #4F86C6;
-    --bg-mid-rgb: 79,134,198;
-    --bg-mid-hover: #3d78bc;
-    --bg-mid-active: #366ba7;
-    --bg-white: #FBFEF9;
+    --mid: #4F86C6;
+    --mid-rgb: 79,134,198;
+    --mid-hover: #3d78bc;
+    --mid-active: #366ba7;
+    --white: #FBFEF9;
+    --white-rgb: 251, 254, 249;
     --black: #0C1618;
-    --bg-grey: #848FA5;
-    --text-dark: #366ba7;
-    --text-dark-rgb: 54, 107, 167;
+    --grey: #848FA5;
+    --dark: #366ba7;
+    --dark-rgb: 54, 107, 167;
 }
 
 body{
@@ -19,25 +19,30 @@ body{
 
 button{
   border-radius: 6px;
-  border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 600;
   font-family: inherit;
-  background-color: var(--bg-mid);
-  color: var(--bg-white);
+  background-color: rgba(var(--mid-rgb), 1);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: transform .2s ease,
+              background-color .2s ease;
+
 }
 button:hover {
-  background-color: var(--bg-mid-hover);
-}
-button:focus,
-button:focus-visible {
-  outline: var(--bg-mid) solid 2px;
-  outline-offset: 2px;
+  background-color: var(--mid-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 button:active{
-  background-color: var(--bg-mid-active);
-  /* transform: scale(.975); */
+  background-color: var(--mid-active);
+  transform: translateY(0px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
 }
+
+
+
+

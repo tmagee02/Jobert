@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Background from "./components/Background";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home.jsx";
 import Jobs from "./pages/Jobs.jsx";
@@ -10,6 +11,7 @@ import NotFound from "./pages/NotFound.jsx";
 function App() {
   return (
     <div id="app" className="w-full">
+      <Background />
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -46,7 +46,7 @@ export default function Jobs() {
 
   return (
     <div id="jobs" className="flex flex-col items-center">
-      <h1 className="my-10 font-semibold text-5xl tracking-tighter text-(--text-dark)">
+      <h1 className="my-10 font-semibold text-5xl tracking-tighter text-(--dark)">
         Discover new job openings.
       </h1>
       <h2>jobs list here</h2>

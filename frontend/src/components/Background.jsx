@@ -1,0 +1,6 @@
+import "../styles/index.css";
+import "../styles/background.css";
+
+export default function Background() {
+  return <div class="bg"></div>;
+}

@@ -1,6 +1,7 @@
 import "../styles/Filters.css";
 
 export default function Filters({
+  setOffset,
   salary,
   setSalary,
   experience,
@@ -34,8 +35,8 @@ export default function Filters({
           }}
           onChange={(e) => {
             const onlyNumbers = e.target.value.replace(/\D/g, "");
+            setOffset(0);
             setSalary(onlyNumbers);
-            console.log(salary);
           }}
         />
       </div>
@@ -54,8 +55,8 @@ export default function Filters({
           }}
           onChange={(e) => {
             const onlyNumbers = e.target.value.replace(/\D/g, "");
+            setOffset(0);
             setExperience(onlyNumbers);
-            console.log(experience);
           }}
         />
       </div>

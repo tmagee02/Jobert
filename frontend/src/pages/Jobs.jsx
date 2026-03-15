@@ -16,51 +16,39 @@ export default function Jobs() {
 
   useEffect(() => {
     document.title = "Jobs";
-    const fetchInitialJobs = async () => {
+    const fetchJobs = async () => {
+      console.log(`${offset}, ${jobCount}`);
       const res = await fetch(
         `http://localhost:8000/jobs?offset=${offset}&jobCount=${jobCount}&salary=${salary}&experience=${experience}`
       );
       const data = await res.json();
-      setBackendData(data["jobList"]);
-      setTotalJobs(data["totalJobs"]);
-      setOffset(jobCount);
-      console.log(offset);
+      if (offset === 0) {
+        setTotalJobs(data["totalJobs"]);
+        setBackendData(data["jobList"]);
+      } else {
+        setBackendData((prev) => [...prev, ...data["jobList"]]);
+      }
     };
-    fetchInitialJobs();
-  }, [salary, experience]);
-
-  const fetchMoreJobs = async () => {
-    const res = await fetch(
-      `http://localhost:8000/jobs?offset=${offset}&jobCount=${jobCount}&salary=${salary}&experience=${experience}`
-    );
-    const data = await res.json();
-    console.log(`${offset}, ${jobCount}`);
-    setOffset((prev) => prev + jobCount);
-    console.log(offset);
-    setBackendData((prev) => [...prev, ...data["jobList"]]);
-  };
+    fetchJobs();
+  }, [offset, salary, experience]);
 
   if (backendData.length == 0) return <p></p>;
-
-  // console.log(backendData);
-  // console.log(backendData[0]["JobId"]);
-  const jobId = backendData[1]["JobId"];
-  const jobUrl = backendData[1]["JobUrl"];
-  const jobCompany = backendData[1]["Company"];
-  const jobTitle = backendData[1]["Title"];
 
   return (
     <div id="jobs" className="w-250 mx-auto flex flex-col items-center">
       <h1 className="text-5xl">Discover new job openings.</h1>
       <h2>jobs list here</h2>
       <Filters
+        setOffset={setOffset}
         salary={salary}
         setSalary={setSalary}
         experience={experience}
         setExperience={setExperience}
       />
       <div className="bg-amber-600 w-full flex items-center justify-between">
-        <h2 className="bg-purple-400">{`Showing ${offset} of ${totalJobs} open jobs`}</h2>
+        <h2 className="bg-purple-400">{`Showing ${
+          offset + jobCount
+        } of ${totalJobs} open jobs`}</h2>
         <div id="filterClear" className="bg-indigo-400">
           Clear filters
         </div>
@@ -69,7 +57,7 @@ export default function Jobs() {
       {backendData.length < totalJobs && (
         <button
           className="my-5 flex items-center justify-between"
-          onClick={() => fetchMoreJobs()}
+          onClick={() => setOffset((prev) => prev + jobCount)}
         >
           View more positions
           <i className="fa-solid fa-chevron-down ml-2" />

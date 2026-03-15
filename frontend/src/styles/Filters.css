@@ -1,0 +1,9 @@
+
+#filters, #filters *{
+    /* background-color: rgba(var(--white-rgb), 0.2) !important; */
+
+}
+
+#filterSalary input{
+    color: white
+}

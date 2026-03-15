@@ -2,10 +2,7 @@ import JobRow from "./JobRow.jsx";
 
 export default function JobsGrid({ jobs }) {
   return (
-    <div
-      id="jobsGrid"
-      className="flex flex-col bg-black w-250 px-3 py-3 space-y-4"
-    >
+    <div id="jobsGrid" className="flex flex-col bg-black w-250 py-3 space-y-4">
       {jobs.map((job, i) => (
         <div key={job.JobId} className="flex flex-col space-y-4">
           <JobRow job={job} />

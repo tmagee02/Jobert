@@ -25,6 +25,13 @@ body{
   font-family: "Montserrat", sans-serif;
 }
 
+h1{
+  margin: 40px 0;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  color: var(--text1);
+}
+
 button{
   border-radius: 6px;
   padding: 0.6em 1.2em;

@@ -12,7 +12,7 @@ function App() {
   return (
     <div id="app" className="w-full">
       <Background />
-      <NavBar />
+      {/* <NavBar /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />

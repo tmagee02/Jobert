@@ -58,9 +58,10 @@ export default function Jobs() {
         setExperience={setExperience}
       />
       <div className="bg-amber-600 w-full flex items-center justify-between">
-        <h2 className="bg-purple-400">{`Showing ${
-          offset + jobCount
-        } of ${totalJobs} open jobs`}</h2>
+        <h2 className="bg-purple-400">{`Showing ${Math.min(
+          offset + jobCount,
+          totalJobs
+        )} of ${totalJobs} open jobs`}</h2>
         <div id="filterClear" className="bg-indigo-400">
           Clear filters
         </div>

@@ -13,7 +13,7 @@ export default function Jobs() {
   //filter states
   const [committedCompanies, setCommittedCompanies] = useState([]);
   const [salary, setSalary] = useState("");
-  const [experience, setExperience] = useState("");
+  const [experience, setExperience] = useState(-1);
 
   useEffect(() => {
     document.title = "Jobs";
@@ -22,7 +22,7 @@ export default function Jobs() {
       params.append("offset", offset);
       params.append("jobCount", jobCount);
       if (salary) params.append("salary", salary);
-      if (experience) params.append("experience", experience);
+      params.append("experience", experience);
       committedCompanies.forEach((company) => {
         params.append("companies", company);
       });

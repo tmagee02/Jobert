@@ -13,13 +13,8 @@ def jobs(request):
     companies = request.GET.getlist('companies', [])
     salary = request.GET.get('salary', "")
     salary = None if salary == "" else int(salary)
-    experience = request.GET.get('experience', '')
-    if experience == '':
-        experience = None
-    else:
-        experience = int(experience)
-        if experience < 0:
-            experience = None
+    experience = int(request.GET.get('experience', -1))
+    experience = None if experience == -1 else experience
 
     thirtyDays = timezone.now() - timedelta(days=60) 
     recentJobs = Job.objects.filter(date_scraped__gte=thirtyDays) 

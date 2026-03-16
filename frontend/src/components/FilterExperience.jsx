@@ -3,25 +3,34 @@ export default function FilterExperience({
   experience,
   setExperience,
 }) {
+  const NO_FILTER = -1;
+  const MAX_EXPERIENCE = 30;
+
   return (
     <div id="filterExperience" className="bg-blue-200">
-      Experience
-      <input
-        type="number"
-        placeholder="Experience"
-        value={experience}
-        className="bg-cyan-500"
-        onKeyDown={(e) => {
-          if (["e", "E", "+", "-"].includes(e.key)) {
-            e.preventDefault();
+      <button
+        id="decrementExperience"
+        onClick={() => {
+          if (experience > NO_FILTER) {
+            setOffset(0);
+            setExperience((prev) => prev - 1);
           }
         }}
-        onChange={(e) => {
-          const onlyNumbers = e.target.value.replace(/\D/g, "");
-          setOffset(0);
-          setExperience(onlyNumbers);
+      >
+        <i className="fa-solid fa-minus" />
+      </button>
+      {experience >= 0 ? experience : "-"}
+      <button
+        id="incrementExperience"
+        onClick={() => {
+          if (experience < MAX_EXPERIENCE) {
+            setOffset(0);
+            setExperience((prev) => prev + 1);
+          }
         }}
-      />
+      >
+        <i className="fa-solid fa-plus" />
+      </button>
     </div>
   );
 }

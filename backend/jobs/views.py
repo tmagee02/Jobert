@@ -10,6 +10,7 @@ from .models import Job
 def jobs(request):
     offset = int(request.GET.get('offset', 0))
     jobCount = int(request.GET.get('jobCount', 20))
+    companies = request.GET.getlist('companies', [])
     salary = request.GET.get('salary', "")
     salary = None if salary == "" else int(salary)
     experience = request.GET.get('experience', '')
@@ -19,9 +20,11 @@ def jobs(request):
         experience = int(experience)
         if experience < 0:
             experience = None
+
     thirtyDays = timezone.now() - timedelta(days=60) 
     recentJobs = Job.objects.filter(date_scraped__gte=thirtyDays) 
 
+    recentJobs = filterCompanies(recentJobs, companies)
     recentJobs = filterSalary(recentJobs, salary)
     recentJobs = filterExperience(recentJobs, experience)
     
@@ -65,6 +68,12 @@ def jobInfo(request, jobId):
 
     return JsonResponse(jobInfo)
 
+
+def filterCompanies(jobs: QuerySet, companies: list[str]):
+    if not companies:
+        return jobs
+    
+    return jobs.filter(company__company_name__in=companies)
 
 
 def filterSalary(jobs: QuerySet, salary: int):

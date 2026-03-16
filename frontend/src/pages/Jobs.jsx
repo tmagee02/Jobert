@@ -29,7 +29,7 @@ export default function Jobs() {
       console.log(params.toString());
       const res = await fetch(
         // `http://localhost:8000/jobs?offset=${offset}&jobCount=${jobCount}&salary=${salary}&experience=${experience}`
-        `http://localhost:8000/jobs?${params}`
+        `http://localhost:8000/jobs?${params.toString()}`
       );
       const data = await res.json();
       if (offset === 0) {

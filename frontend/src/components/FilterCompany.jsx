@@ -3,11 +3,12 @@ import CompanyDropdown from "./CompanyDropdown.jsx";
 
 export default function FilterCompany({
   setOffset,
+  checkedCompanies,
+  setCheckedCompanies,
   committedCompanies,
   setCommittedCompanies,
 }) {
   const [open, setOpen] = useState(false);
-  const [checkedCompanies, setCheckedCompanies] = useState(new Set());
   const refDropdown = useRef(null);
   const refButton = useRef(null);
 

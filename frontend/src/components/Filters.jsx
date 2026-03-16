@@ -5,6 +5,8 @@ import "../styles/Filters.css";
 
 export default function Filters({
   setOffset,
+  checkedCompanies,
+  setCheckedCompanies,
   committedCompanies,
   setCommittedCompanies,
   salary,
@@ -19,6 +21,8 @@ export default function Filters({
     >
       <FilterCompany
         setOffset={setOffset}
+        checkedCompanies={checkedCompanies}
+        setCheckedCompanies={setCheckedCompanies}
         committedCompanies={committedCompanies}
         setCommittedCompanies={setCommittedCompanies}
       />

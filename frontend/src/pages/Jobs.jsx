@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Filters from "../components/Filters.jsx";
+import ResultsBar from "../components/ResultsBar.jsx";
 import JobsGrid from "../components/JobsGrid.jsx";
 import "../styles/index.css";
 import "../styles/JobRow.css";
@@ -11,6 +12,7 @@ export default function Jobs() {
   const jobCount = 20;
 
   //filter states
+  const [checkedCompanies, setCheckedCompanies] = useState(new Set());
   const [committedCompanies, setCommittedCompanies] = useState([]);
   const [salary, setSalary] = useState("");
   const [experience, setExperience] = useState(-1);
@@ -50,6 +52,8 @@ export default function Jobs() {
       <h2>jobs list here</h2>
       <Filters
         setOffset={setOffset}
+        checkedCompanies={checkedCompanies}
+        setCheckedCompanies={setCheckedCompanies}
         committedCompanies={committedCompanies}
         setCommittedCompanies={setCommittedCompanies}
         salary={salary}
@@ -57,15 +61,16 @@ export default function Jobs() {
         experience={experience}
         setExperience={setExperience}
       />
-      <div className="bg-amber-600 w-full flex items-center justify-between">
-        <h2 className="bg-purple-400">{`Showing ${Math.min(
-          offset + jobCount,
-          totalJobs
-        )} of ${totalJobs} open jobs`}</h2>
-        <div id="filterClear" className="bg-indigo-400">
-          Clear filters
-        </div>
-      </div>
+      <ResultsBar
+        offset={offset}
+        setOffset={setOffset}
+        jobCount={jobCount}
+        totalJobs={totalJobs}
+        setCheckedCompanies={setCheckedCompanies}
+        setCommittedCompanies={setCommittedCompanies}
+        setSalary={setSalary}
+        setExperience={setExperience}
+      />
       <JobsGrid jobs={backendData} />
       {backendData.length < totalJobs && (
         <button

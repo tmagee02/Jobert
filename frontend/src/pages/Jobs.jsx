@@ -11,15 +11,25 @@ export default function Jobs() {
   const jobCount = 20;
 
   //filter states
+  const [committedCompanies, setCommittedCompanies] = useState([]);
   const [salary, setSalary] = useState("");
   const [experience, setExperience] = useState("");
 
   useEffect(() => {
     document.title = "Jobs";
     const fetchJobs = async () => {
-      console.log(`${offset}, ${jobCount}`);
+      const params = new URLSearchParams();
+      params.append("offset", offset);
+      params.append("jobCount", jobCount);
+      if (salary) params.append("salary", salary);
+      if (experience) params.append("experience", experience);
+      committedCompanies.forEach((company) => {
+        params.append("companies", company);
+      });
+      console.log(params.toString());
       const res = await fetch(
-        `http://localhost:8000/jobs?offset=${offset}&jobCount=${jobCount}&salary=${salary}&experience=${experience}`
+        // `http://localhost:8000/jobs?offset=${offset}&jobCount=${jobCount}&salary=${salary}&experience=${experience}`
+        `http://localhost:8000/jobs?${params}`
       );
       const data = await res.json();
       if (offset === 0) {
@@ -30,7 +40,7 @@ export default function Jobs() {
       }
     };
     fetchJobs();
-  }, [offset, salary, experience]);
+  }, [offset, committedCompanies, salary, experience]);
 
   if (backendData.length == 0) return <p></p>;
 
@@ -40,6 +50,8 @@ export default function Jobs() {
       <h2>jobs list here</h2>
       <Filters
         setOffset={setOffset}
+        committedCompanies={committedCompanies}
+        setCommittedCompanies={setCommittedCompanies}
         salary={salary}
         setSalary={setSalary}
         experience={experience}

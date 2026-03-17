@@ -1,3 +1,6 @@
+import "../styles/index.css";
+import "../styles/filters.css";
+
 export default function FilterExperience({
   setOffset,
   experience,
@@ -7,7 +10,10 @@ export default function FilterExperience({
   const MAX_EXPERIENCE = 30;
 
   return (
-    <div id="filterExperience" className="bg-blue-200">
+    <div
+      id="filterExperience"
+      className="flex items-center justify-between border-2 rounded-md border-(--mid) box-border"
+    >
       <button
         id="decrementExperience"
         onClick={() => {
@@ -19,7 +25,9 @@ export default function FilterExperience({
       >
         <i className="fa-solid fa-minus" />
       </button>
-      {experience >= 0 ? experience : "-"}
+      <div className="w-6 flex items-center justify-center">
+        {experience >= 0 ? experience : "-"}
+      </div>
       <button
         id="incrementExperience"
         onClick={() => {

@@ -1,3 +1,4 @@
+import "../styles/index.css";
 export default function ResultsBar({
   offset,
   setOffset,
@@ -11,15 +12,15 @@ export default function ResultsBar({
   return (
     <div
       id="resultsBar"
-      className="bg-amber-600 w-full flex items-center justify-between"
+      className="w-full flex items-center justify-between pt-3"
     >
-      <h2 className="bg-purple-400">{`Showing ${Math.min(
+      <h2 className="text-(--text2)">{`Showing ${Math.min(
         offset + jobCount,
         totalJobs
       )} of ${totalJobs} open jobs`}</h2>
       <button
         id="filterClear"
-        className="bg-indigo-400"
+        className="underline-offset-2 bg-[#00000000]"
         onClick={() => {
           setOffset(0);
           setCheckedCompanies(new Set());

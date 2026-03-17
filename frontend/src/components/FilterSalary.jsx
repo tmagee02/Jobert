@@ -2,17 +2,17 @@ export default function FilterSalary({ setOffset, salary, setSalary }) {
   return (
     <div
       id="filterSalary"
-      className="bg-orange-300 flex items-center justify-around"
+      className="flex items-center justify-center w-full h-full"
     >
-      <i
+      {/* <i
         id="money"
         className="fa-solid fa-dollar-sign bg-violet-800 h-auto fa-lg"
-      />
+      /> */}
       <input
         type="number"
         placeholder="Salary"
         value={salary}
-        className="bg-cyan-500"
+        className="w-full h-full border-amber-300 border-2"
         onKeyDown={(e) => {
           if (["e", "E", "+", "-"].includes(e.key)) {
             e.preventDefault();

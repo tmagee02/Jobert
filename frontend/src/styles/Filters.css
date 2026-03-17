@@ -4,6 +4,40 @@
 
 }
 
+#filterCompany{
+    height: 100%;
+}
+
+#filterCompany button{
+    height: 100%;
+}
+
 #filterSalary input{
     color: white
+}
+
+#filterExperience button{
+    all: unset;
+    background-color: var(--mid);
+    color: var(--white);
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: inherit;
+}
+
+#filterClear{
+    all: unset;
+    color: var(--mid);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+#filterClear:hover{
+    color: var(--mid-hover);
+    transform: translateY(-1px);
+}
+#filterClear:active{
+    color: var(--mid-active);
+    transform: translateY(0px);
 }

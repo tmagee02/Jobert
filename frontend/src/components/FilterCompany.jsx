@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import CompanyDropdown from "./CompanyDropdown.jsx";
+import "../styles/index.css";
+import "../styles/filters.css";
 
 export default function FilterCompany({
   setOffset,
@@ -39,7 +41,7 @@ export default function FilterCompany({
   }, []);
 
   return (
-    <div id="filterCompany" className="bg-green-500">
+    <div id="filterCompany" className="flex items-center justify-center">
       <button ref={refButton} onClick={() => setOpen((prev) => !prev)}>
         Company filter
       </button>

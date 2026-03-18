@@ -12,10 +12,11 @@ export default function FilterExperience({
   return (
     <div
       id="filterExperience"
-      className="flex items-center justify-between border-2 rounded-md border-(--mid) box-border"
+      className="w-50 h-10 flex items-center justify-between font-semibold text-sm"
     >
       <button
         id="decrementExperience"
+        className="buttonExp"
         onClick={() => {
           if (experience > NO_FILTER) {
             setOffset(0);
@@ -25,11 +26,14 @@ export default function FilterExperience({
       >
         <i className="fa-solid fa-minus" />
       </button>
-      <div className="w-6 flex items-center justify-center">
-        {experience >= 0 ? experience : "-"}
+      <div className="h-full flex items-center justify-center">
+        {experience >= 0
+          ? `Experience: ${experience} yrs`
+          : "Experience: – yrs"}
       </div>
       <button
         id="incrementExperience"
+        className="buttonExp"
         onClick={() => {
           if (experience < MAX_EXPERIENCE) {
             setOffset(0);

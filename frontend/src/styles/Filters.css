@@ -1,43 +1,55 @@
-
-#filters, #filters *{
-    /* background-color: rgba(var(--white-rgb), 0.2) !important; */
-
+#inputSalary::-webkit-inner-spin-button,
+#inputSalary::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
 }
-
-#filterCompany{
-    height: 100%;
-}
-
-#filterCompany button{
-    height: 100%;
-}
-
-#filterSalary input{
-    color: white
-}
-
-#filterExperience button{
-    all: unset;
-    background-color: var(--mid);
-    color: var(--white);
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 600;
-    font-family: inherit;
-}
-
-#filterClear{
-    all: unset;
-    color: var(--mid);
-    text-decoration: underline;
-    cursor: pointer;
+#inputSalary{
+    -moz-appearance: textfield;
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+    border: 2px solid var(--mid);
+    border-radius: 9999px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
     transition: all .2s ease;
 }
-#filterClear:hover{
-    color: var(--mid-hover);
-    transform: translateY(-1px);
+input::placeholder{
+    color: var(--text3);
+    font-weight: 500;
 }
-#filterClear:active{
-    color: var(--mid-active);
-    transform: translateY(0px);
+#inputSalary:hover{
+    border-color: var(--mid-hover);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+#inputSalary:focus{
+    outline: none;
+    border-color: var(--mid-active);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+
+}
+
+
+.buttonExp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    color: var(--white);
+    background-color: var(--mid);
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all .2s ease;
+}
+.buttonExp:hover{
+    background-color: var(--mid-hover);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.buttonExp:active{
+    background-color: var(--mid-active);
+    transform:translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }

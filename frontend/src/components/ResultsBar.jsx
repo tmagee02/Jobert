@@ -12,7 +12,7 @@ export default function ResultsBar({
   return (
     <div
       id="resultsBar"
-      className="w-full flex items-center justify-between pt-3"
+      className="w-full flex items-center justify-between pt-3 text-sm"
     >
       <h2 className="text-(--text2)">{`Showing ${Math.min(
         offset + jobCount,

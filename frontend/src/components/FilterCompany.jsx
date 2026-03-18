@@ -41,8 +41,15 @@ export default function FilterCompany({
   }, []);
 
   return (
-    <div id="filterCompany" className="flex items-center justify-center">
-      <button ref={refButton} onClick={() => setOpen((prev) => !prev)}>
+    <div
+      id="filterCompany"
+      className="w-50 h-10 flex items-center justify-center bg-green-300"
+    >
+      <button
+        ref={refButton}
+        className="bg-orange-300"
+        onClick={() => setOpen((prev) => !prev)}
+      >
         Company filter
       </button>
       {open && (

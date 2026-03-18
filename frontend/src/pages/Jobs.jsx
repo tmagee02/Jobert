@@ -74,7 +74,7 @@ export default function Jobs() {
       <JobsGrid jobs={backendData} />
       {backendData.length < totalJobs && (
         <button
-          className="my-5 flex items-center justify-between"
+          className="my-5 flex items-center justify-between buttonAction"
           onClick={() => setOffset((prev) => prev + jobCount)}
         >
           View more positions

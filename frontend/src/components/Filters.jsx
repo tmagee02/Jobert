@@ -17,7 +17,7 @@ export default function Filters({
   return (
     <div
       id="filters"
-      className="w-full grid grid-cols-3 items-center gap-4 text-base"
+      className="w-full grid grid-cols-3 items-center gap-4 text-sm font-semibold text-[var(--text1)] "
     >
       <FilterCompany
         setOffset={setOffset}

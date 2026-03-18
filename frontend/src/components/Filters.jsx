@@ -17,7 +17,7 @@ export default function Filters({
   return (
     <div
       id="filters"
-      className="w-full grid grid-cols-3 items-center gap-4 text-sm font-semibold text-[var(--text1)] "
+      className="w-full py-4 flex items-center justify-around text-sm font-semibold text-[var(--text1)] sticky top-0 z-99"
     >
       <FilterCompany
         setOffset={setOffset}

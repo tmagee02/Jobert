@@ -49,7 +49,6 @@ export default function Jobs() {
   return (
     <div id="jobs" className="w-250 mx-auto flex flex-col items-center">
       <h1 className="text-5xl">Discover new job openings.</h1>
-      <h2>jobs list here</h2>
       <Filters
         setOffset={setOffset}
         checkedCompanies={checkedCompanies}

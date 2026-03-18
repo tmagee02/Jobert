@@ -47,10 +47,13 @@ export default function FilterCompany({
     >
       <button
         ref={refButton}
-        className="bg-orange-300"
+        className="filterCompanyButton"
         onClick={() => setOpen((prev) => !prev)}
       >
-        Company filter
+        {checkedCompanies.size > 0
+          ? `Companies (${checkedCompanies.size})`
+          : `Companies`}
+        <i className="fa-solid fa-chevron-down ml-2" />
       </button>
       {open && (
         <CompanyDropdown

@@ -43,25 +43,28 @@ export default function FilterCompany({
   return (
     <div
       id="filterCompany"
-      className="w-50 h-10 flex items-center justify-center bg-green-300"
+      className="w-50 h-10 flex items-center justify-center"
     >
       <button
         ref={refButton}
-        className="filterCompanyButton"
+        className={`filterCompanyButton ${open ? "dropdownOpen" : ""}`}
         onClick={() => setOpen((prev) => !prev)}
       >
         {checkedCompanies.size > 0
           ? `Companies (${checkedCompanies.size})`
           : `Companies`}
-        <i className="fa-solid fa-chevron-down ml-2" />
-      </button>
-      {open && (
-        <CompanyDropdown
-          ref={refDropdown}
-          checkedCompanies={checkedCompanies}
-          setCheckedCompanies={setCheckedCompanies}
+        <i
+          className={`fa-solid fa-chevron-down ml-2 filterCompanyChevron ${
+            open ? "flip" : ""
+          }`}
         />
-      )}
+      </button>
+      <CompanyDropdown
+        ref={refDropdown}
+        open={open}
+        checkedCompanies={checkedCompanies}
+        setCheckedCompanies={setCheckedCompanies}
+      />
     </div>
   );
 }

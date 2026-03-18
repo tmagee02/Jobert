@@ -26,7 +26,7 @@ export default function FilterExperience({
       >
         <i className="fa-solid fa-minus" />
       </button>
-      <div className="h-full flex items-center justify-center">
+      <div className="h-full flex items-center justify-center select-none">
         {experience >= 0
           ? `Experience: ${experience} yrs`
           : "Experience: – yrs"}

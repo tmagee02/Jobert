@@ -1,6 +1,7 @@
 import CompanyDropdownItem from "./CompanyDropdownItem.jsx";
 
 export default function CompanyDropdown({
+  open,
   checkedCompanies,
   setCheckedCompanies,
   ref,
@@ -16,8 +17,11 @@ export default function CompanyDropdown({
   ];
 
   return (
-    <div id="companyDropdown" ref={ref} className="bg-purple-500">
-      Poop
+    <div
+      id="companyDropdown"
+      ref={ref}
+      className={open ? "dropdownVisible" : ""}
+    >
       <ul>
         {companies.map((company, i) => (
           <CompanyDropdownItem

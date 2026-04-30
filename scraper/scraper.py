@@ -2,7 +2,7 @@ from scraper.dataLoader import loadExistingDatabaseData, loadJson
 from scraper.jobUrls import getAllJobUrls
 from scraper.jobDetails import getAllJobDetails
 from scraper.exportDetails import writeJobDetailsToFile, insertJobsToDatabase
-from scraper.utils import setupLogging, emailLogging, totalDelay
+from scraper.utils import setupLogging, emailLogging, emailJobsInExperienceRange, totalDelay
 import time
 from playwright.sync_api import sync_playwright
 from scraper.handleNLP import handleAllNLP
@@ -36,7 +36,7 @@ def main():
             for location in job.locations:
                 print(f'{location} : LOCATION')
 
-    
+    emailJobsInExperienceRange(shuffledJobs, 0, 2)
     writeJobDetailsToFile(shuffledJobs)
     insertJobsToDatabase(shuffledJobs)
     return

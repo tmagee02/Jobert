@@ -1,9 +1,10 @@
 from typing import Tuple, Set
-import sqlite3
+import psycopg2
 import json
 import pandas as pd
 from pandas import DataFrame
 from collections import defaultdict
+
 
 def loadExistingDatabaseData() -> Tuple[DataFrame, Set[str]]:
     qSelectCompany = '''
@@ -15,10 +16,16 @@ def loadExistingDatabaseData() -> Tuple[DataFrame, Set[str]]:
         from Job
         '''
 
-    with sqlite3.connect('./db/jobert.db') as conn:
-        dbCompanies = pd.read_sql_query(qSelectCompany, conn)
-        print(dbCompanies)
-        df_jobUrls = pd.read_sql_query(qSelectJobUrls, conn)
+    conn = psycopg2.connect(
+        host='localhost',
+        port='5333',
+        database='jobert_db',
+        user='timmagee',
+        password='password'
+    )
+    dbCompanies = pd.read_sql_query(qSelectCompany, conn)
+    print(dbCompanies)
+    df_jobUrls = pd.read_sql_query(qSelectJobUrls, conn)
     
     dbJobUrls = set(df_jobUrls['job_url'])
     return (dbCompanies, dbJobUrls)

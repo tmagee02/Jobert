@@ -6,6 +6,7 @@ import smtplib
 from email.message import EmailMessage
 from dotenv import load_dotenv
 from datetime import datetime
+from scraper.job import Job
 
 totalDelay = 0
 def randomDelay(shortDelay: bool=False) -> None:
@@ -60,3 +61,37 @@ def setupLogging():
     jobActivity.addHandler(jobActivityHandler)
 
     return logger, jobActivity, timestamp
+
+
+def emailJobsInExperienceRange(jobs: list[Job], minExp: int, maxExp: int):
+    jobsInRange = []
+    jobsNoExp = []
+    for job in jobs:
+        if minExp <= job.maxExperience and maxExp >= job.minExperience:
+            jobsInRange.append(f'Job with desired experience found: [{job.minExperience}, {job.maxExperience}] --- ( {job.title} ) found @ {job.url}')
+        if job.minExperience == -1 and job.maxExperience == -1:
+            jobsNoExp.append(f'No YOE specified --- ( {job.title} ) found @ {job.url}')
+
+    if not jobsInRange and not jobsNoExp: 
+        return print(f"No jobs found between {minExp} and {maxExp} years of experience")
+    
+    load_dotenv()
+    email, password = os.getenv('EMAIL_ADDR'), os.getenv('EMAIL_PASS')
+    subject = f'Scraper - Experience [{minExp}, {maxExp}]'
+    body = f'Found {len(jobsInRange)} jobs between {minExp} and {maxExp} years of experience. See below: \n\n\n'
+    sJobsInRange = '\n'.join(jobsInRange)
+    body += sJobsInRange
+    body += '\n\n\n---------------Jobs with no specified experience---------------\n\n\n'
+    sJobsNoExp = '\n'.join(jobsNoExp)
+    body += sJobsNoExp
+    
+    msg = EmailMessage()
+    msg.set_content(body)
+    msg["Subject"] = subject
+    msg["From"] = email
+    msg["To"] = email
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login(email, password)
+        smtp.send_message(msg)
+    return

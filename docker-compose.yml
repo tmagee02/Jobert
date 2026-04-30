@@ -1,0 +1,38 @@
+services:
+  tutorial_db:
+    container_name: postgres-spring-boot
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: timmagee
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    volumes:
+      - tutorial_data:/data/postgres
+    ports:
+      - "5332:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+  jobert_db:
+    container_name: postgres-jobert
+    image: postgres:16
+    environment:
+      POSTGRES_USER: timmagee
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: jobert_db
+    volumes:
+      - jobert_data:/var/lib/postgresql/data
+    ports:
+     - "5333:5432"
+    networks:
+     - db
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  tutorial_data:
+  jobert_data:

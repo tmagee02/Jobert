@@ -1,0 +1,42 @@
+GET http://localhost:8080/
+
+###
+GET http://localhost:8080/companies
+
+###
+POST http://localhost:8080/companies
+Content-Type: application/json
+
+{
+    "companyName": "Apple"
+}
+
+###
+POST http://localhost:8080/companies
+Content-Type: application/json
+
+{
+    "companyName": "Databricks"
+}
+
+
+###
+GET http://localhost:8080/jobs
+
+###
+POST http://localhost:8080/jobs 
+Content-Type: application/json
+
+{
+    "jobTitle": "job A",
+    "companyId": 2
+}
+
+###
+POST http://localhost:8080/jobs
+Content-Type: application/json
+
+{
+    "jobTitle": "job B",
+    "companyId": 1
+}

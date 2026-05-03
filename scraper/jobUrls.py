@@ -48,7 +48,7 @@ def getJobUrls(page: Page, xpaths: dict, companyName: str, idCompany: int, baseU
             except:
                 break
 
-    print(len(jobUrls))
+    print(f'{companyName}: {len(jobUrls)}')
     return jobUrls
 
 
@@ -62,6 +62,7 @@ def getAllJobUrls(dbCompanies: DataFrame, page: Page, urlRenderTypes: dict, xpat
     timeStart = time.perf_counter()
     jobUrls = []
 
+    print(f'\nNumber of Possible Company URLs:')
     for row in dbCompanies.itertuples():
         idCompany = row.id
         companyName = row.company_name

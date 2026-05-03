@@ -4,9 +4,11 @@ import json
 import pandas as pd
 from pandas import DataFrame
 from collections import defaultdict
+import time
 
 
 def loadExistingDatabaseData() -> Tuple[DataFrame, Set[str]]:
+    timeStart = time.perf_counter()
     qSelectCompany = '''
         select * 
         from Company
@@ -28,10 +30,15 @@ def loadExistingDatabaseData() -> Tuple[DataFrame, Set[str]]:
     df_jobUrls = pd.read_sql_query(qSelectJobUrls, conn)
     
     dbJobUrls = set(df_jobUrls['job_url'])
+
+    timeEnd = time.perf_counter()
+    timeLoadExistingDatabaseData = timeEnd - timeStart
+    print(f'\nloadExistingDatabaseData Time: {timeLoadExistingDatabaseData}')
     return (dbCompanies, dbJobUrls)
 
 
 def loadJson() -> Tuple[dict, defaultdict]:
+    timeStart = time.perf_counter()
     with open('./scraper/xpathCompany.json', 'r') as file:
         data = json.load(file)
 
@@ -40,4 +47,8 @@ def loadJson() -> Tuple[dict, defaultdict]:
     for company in data:
         urlRenderTypes[company['companyName']] = company['urlRenderType']
         xpaths[company['companyName']] = company['xpaths']
+    
+    timeEnd = time.perf_counter()
+    timeLoadJson = timeEnd - timeStart
+    print(f'\nloadJson Time: {timeLoadJson}')
     return urlRenderTypes, xpaths

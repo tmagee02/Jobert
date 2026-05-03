@@ -72,6 +72,10 @@ def getAllJobDetails(dbJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, i
                 jobActivity.error(f'Possible invalid job @ {jobUrl}.')
         else:
             logger.info(f'Job details already gathered for {jobUrl}. Skipping.')
+    
+    print('\nCompany URL Counts:')
+    for company, count in companyCount.items():
+        print(f'{company}: {count}')
 
     timeEnd = time.perf_counter()
     timeGetAllJobDetails = timeEnd - timeStart

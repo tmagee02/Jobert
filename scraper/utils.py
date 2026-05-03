@@ -67,10 +67,10 @@ def emailJobsInExperienceRange(jobs: list[Job], minExp: int, maxExp: int):
     jobsInRange = []
     jobsNoExp = []
     for job in jobs:
-        if minExp <= job.maxExperience and maxExp >= job.minExperience:
-            jobsInRange.append(f'Job with desired experience found: [{job.minExperience}, {job.maxExperience}] --- ( {job.title} ) found @ {job.url}')
-        if job.minExperience == -1 and job.maxExperience == -1:
+        if job.minExperience == None and job.maxExperience == None:
             jobsNoExp.append(f'No YOE specified --- ( {job.title} ) found @ {job.url}')
+        elif (not job.maxExperience or minExp <= job.maxExperience) and maxExp >= job.minExperience:
+            jobsInRange.append(f'Job with desired experience found: [{job.minExperience}, {job.maxExperience}] --- ( {job.title} ) found @ {job.url}')
 
     if not jobsInRange and not jobsNoExp: 
         return print(f"No jobs found between {minExp} and {maxExp} years of experience")

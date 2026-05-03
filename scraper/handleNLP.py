@@ -3,14 +3,15 @@ from scraper.nlp.patternsNLP import patterns
 import re
 from typing import Tuple
 from scraper.job import Job
+import time
 
 def handleAllNLP(jobDetails: dict[str, Job]):
+    timeStart = time.perf_counter()
     nlp = spacy.load("./scraper/nlp/training/output/model-best")
     ruler = nlp.add_pipe("entity_ruler")
     ruler.add_patterns(patterns)
 
     for job in jobDetails.values():
-        print(job.url)
         text = f'{job.offices} ::: {job.remote}  <><><><>  {job.jobDesc}'
         doc = nlp(text)
 
@@ -30,20 +31,26 @@ def handleAllNLP(jobDetails: dict[str, Job]):
                     print(f'possible issue: {ent.text} -> {ent.label_}')
 
         try:
-            minSalary, maxSalary = extractSalaryRange(labelLists['SALARY'][0]) if labelLists['SALARY'] else (-1, -1)
+            minSalary, maxSalary = extractSalaryRange(labelLists['SALARY'][0]) if labelLists['SALARY'] else (None, None)
         except ValueError as e:
             print(f'ValueError Caught: {e}')
-            minSalary, maxSalary = (-1, -1)
+            minSalary, maxSalary = (None, None)
 
         try:
-            minExp, maxExp = extractExperience(labelLists['EXPERIENCE'][0]) if labelLists['EXPERIENCE'] else (-1, -1)
+            minExp, maxExp = extractExperience(labelLists['EXPERIENCE'][0]) if labelLists['EXPERIENCE'] else (None, None)
+            if minExp == maxExp:
+                maxExp = None
         except ValueError as e:
             print(f'ValueError Caught: {e}')
-            minExp, maxExp = (-1, -1)
+            minExp, maxExp = (None, None)
 
         job.minSalary, job.maxSalary = minSalary, maxSalary
         job.minExperience, job.maxExperience = minExp, maxExp
         job.locations = labelLists['LOCATION']
+    
+    timeEnd = time.perf_counter()
+    timeHandleAllNLP = timeEnd - timeStart
+    return print(f'\nhandleAllNLP Time: {timeHandleAllNLP}\n')
 
 
 def extractSalaryRange(salary: str) -> Tuple[int, int]:

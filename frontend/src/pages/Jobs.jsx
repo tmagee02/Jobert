@@ -24,16 +24,17 @@ export default function Jobs() {
       params.append("offset", offset);
       params.append("jobCount", jobCount);
       if (salary) params.append("salary", salary);
-      params.append("experience", experience);
+      if (experience != -1) params.append("experience", experience);
       committedCompanies.forEach((company) => {
         params.append("companies", company);
       });
       console.log(params.toString());
       const res = await fetch(
         // `http://localhost:8000/jobs?offset=${offset}&jobCount=${jobCount}&salary=${salary}&experience=${experience}`
-        `http://localhost:8000/jobs?${params.toString()}`
+        `http://localhost:8080/jobs?${params.toString()}`,
       );
       const data = await res.json();
+      console.log(data);
       if (offset === 0) {
         setTotalJobs(data["totalJobs"]);
         setBackendData(data["jobList"]);

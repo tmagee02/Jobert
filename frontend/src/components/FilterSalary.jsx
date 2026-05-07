@@ -7,7 +7,7 @@ export default function FilterSalary({ setOffset, salary, setSalary }) {
       <input
         id="inputSalary"
         type="number"
-        placeholder="Minimum desired salary"
+        placeholder="Desired Salary"
         value={salary}
         onKeyDown={(e) => {
           if (["e", "E", "+", "-"].includes(e.key)) {

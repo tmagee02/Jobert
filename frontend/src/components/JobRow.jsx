@@ -5,6 +5,7 @@ import "../styles/JobRow.css";
 
 export default function JobRow({ job }) {
   const getLogo = (company) => {
+    console.log(job.id, job.jobTitle);
     const path = `/logos/${company.toLowerCase()}`;
     const svgs = new Set(["Airbnb", "Apple", "Databricks", "Block", "Uber"]);
     const pngs = new Set(["Block", "OpenAI"]);
@@ -15,34 +16,29 @@ export default function JobRow({ job }) {
     else if (jpegs.has(company)) return path + ".jpeg";
   };
   const getExperienceRange = () => {
-    let minExp = job.MinExperience;
-    let maxExp = job.MaxExperience;
+    let minExp = job.minExperience;
+    let maxExp = job.maxExperience;
 
-    if ((minExp === -1 && maxExp === -1) || (!minExp && !maxExp))
-      return "Years of Experience: N/A";
-    else if (maxExp === -1 || maxExp === minExp)
-      return `Years of Experience: ${minExp}+`;
-
+    if (!minExp && !maxExp) return "Years of Experience: N/A";
+    else if (!maxExp) return `Years of Experience: ${minExp}+`;
     return `Years of Experience: ${minExp} – ${maxExp}`;
   };
 
   const getSalaryRange = () => {
-    let minSalary = job.MinSalary ? job.MaxSalary.toString() : "-1";
-    let maxSalary = job.MaxSalary ? job.MaxSalary.toString() : "-1";
+    let minSalary = job.minSalary ? job.minSalary.toString() : null;
+    let maxSalary = job.maxSalary ? job.maxSalary.toString() : null;
 
-    if (
-      (!minSalary && !maxSalary) ||
-      (minSalary === "-1" && maxSalary === "-1")
-    )
-      return "Salary Range: N/A";
-    // console.log(minSalary, maxSalary);
+    if (!minSalary && !maxSalary) return "Salary Range: N/A";
+
     minSalary = `\$${minSalary.slice(0, -3)},${minSalary.slice(-3)}`;
+    if (!maxSalary) return `Salary Range: ${minSalary}+`;
+
     maxSalary = `\$${maxSalary.slice(0, -3)},${maxSalary.slice(-3)}`;
     return `Salary Range: ${minSalary} – ${maxSalary}`;
   };
 
   return (
-    <Link to={`/jobs/${job.JobId}`}>
+    <Link to={`/jobs/${job.id}`}>
       <div
         id="jobRow"
         className="grid grid-cols-[80px_1fr_310px_35px] items-center gap-4"
@@ -52,8 +48,8 @@ export default function JobRow({ job }) {
           className="h-10 flex items-center justify-center px-3 py-1"
         >
           <img
-            src={getLogo(job.Company)}
-            alt={`${job.Company} logo`}
+            src={getLogo(job.companyName)}
+            alt={`${job.companyName} logo`}
             className="h-auto w-auto max-h-full max-w-full"
           />
         </div>
@@ -62,7 +58,7 @@ export default function JobRow({ job }) {
             id="jobTitle"
             className="text-[22px] text-(--text1) font-bold line-clamp-2"
           >
-            {job.Title}
+            {job.jobTitle}
           </span>
           <div id="location" className="secondary-text">
             San Francisco, California, United States{job.JobId}

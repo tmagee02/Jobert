@@ -17,7 +17,7 @@ export default function ResultsBar({
     >
       <h2 className="text-(--text2) text-base">{`Showing ${Math.min(
         offset + jobCount,
-        totalJobs
+        totalJobs,
       )} of ${totalJobs} open jobs`}</h2>
       <button
         id="filterClear"

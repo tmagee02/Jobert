@@ -1,4 +1,6 @@
 # Jobert 
+Jobert is a full-stack job aggregation platform that collects software engineering job postings from company career pages that are often missing from major job boards like LinkedIn. By scraping and organizing these listings into a single platform, Jobert makes it easier to find opportunities without having to search through multiple company websites individually. 
+
 
 ## Table of Contents
 - [System Overview](#system-overview)  
@@ -9,12 +11,10 @@
 - [Lessons Learned](#lessons-learned)
 - [Future Improvements](#future-improvements)
 
-## Intro
-Jobert is a full-stack job aggregation platform that collects software engineering job postings from company career pages that are often missing from major job boards like LinkedIn. By scraping and organizing these listings into a single platform, Jobert makes it easier to find opportunities without having to search through multiple company websites individually. 
-
 
 ## System Overview
 - Scraper collects job postings from company career pages
+- PostgreSQL serves as the central database for job listings data
 - Spring Boot backend stores and serves structured job data via REST API
 - React frontend displays and filters job listings
 - Django backend was built as an alternative implementation for learning purposes
@@ -22,6 +22,7 @@ Jobert is a full-stack job aggregation platform that collects software engineeri
 
 ## Architecture
 ![Jobert Architecture](jobert-architecture.png)
+
 
 ## Data Flow
 1. Scraping & Extraction
@@ -32,7 +33,7 @@ Jobert is a full-stack job aggregation platform that collects software engineeri
     - Data is cleaned, structured, and normalized
 3. Data Storage
     - Processed job data is written to PostgreSQL
-    - Database interacts with the scraper and Spring Boot backend
+    - Acts as the shared storage layer between the scraping pipeline and API
 4. Backend Layer
     - Spring Boot exposes REST API for job data
     - DTOs are used to control what data is exposed to the frontend
@@ -55,7 +56,7 @@ Jobert is a full-stack job aggregation platform that collects software engineeri
 ### Backend (Spring Boot implementation) 
 - Spring Boot 
 - Java 
-- JPA / Hibernate 
+- Spring Data JPA / Hibernate 
 - PostgreSQL 
 ### Data Pipeline (Scraper)
 - Python 

@@ -1,19 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NotFound from "./NotFound.jsx";
+import { getExperienceRange, getSalaryRange } from "../utils/jobDetails.js";
 
 export default function JobInfo() {
     const [jobInfo, setJobInfo] = useState(undefined);
     const { jobId } = useParams();
-
-    const getExperienceRange = () => {
-        let minExp = jobInfo.minExperience;
-        let maxExp = jobInfo.maxExperience;
-
-        if (!minExp && !maxExp) return "Years of Experience: N/A";
-        else if (!maxExp) return `Years of Experience: ${minExp}+`;
-        return `Years of Experience: ${minExp} – ${maxExp}`;
-    };
 
     useEffect(() => {
         async function getJobInfo() {
@@ -102,6 +94,7 @@ export default function JobInfo() {
             prevWasBullet = curIsBullet;
         }
         console.log(groups);
+        return groups;
     }
 
     function scoreLine(line) {
@@ -139,13 +132,29 @@ export default function JobInfo() {
         return false;
     }
 
-    const formattedText = jobInfo.jobDesc.split("\n").map((line, i) => (
-        <span key={i}>
-            {line}
-            <br />
-            <br />
-        </span>
-    ));
+    const formattedText = formatJobDesc().map((group, i) => {
+        switch (group.type) {
+            case "bulletGroup":
+                return (
+                    <ul key={i}>
+                        {group.bullets.map((bullet, j) => (
+                            <li key={j}>{bullet}</li>
+                        ))}
+                    </ul>
+                );
+            case "header":
+                return (
+                    <>
+                        <br />
+                        <h2>{group.text}</h2>
+                    </>
+                );
+            case "text":
+                return <p key={i}>{group.text}</p>;
+            default:
+                return <br />;
+        }
+    });
 
     return (
         <div id="job-info">
@@ -154,10 +163,8 @@ export default function JobInfo() {
             <h1>{jobInfo.jobTitle}</h1>
             <h2>{jobInfo.company}</h2>
             <h2>{jobInfo.dateScraped}</h2>
-            <h2>{getExperienceRange()}</h2>
-            <h2>
-                Salary Range: {jobInfo.minExperience} - {jobInfo.maxExperience}
-            </h2>
+            <h2>{getExperienceRange(jobInfo)}</h2>
+            <h2>{getSalaryRange(jobInfo)}</h2>
             <a href={jobInfo.jobUrl} target="_blank">
                 Apply Now
             </a>
@@ -167,8 +174,8 @@ export default function JobInfo() {
             <br />
             <br />
             {/* <p>{JSON.stringify(jobInfo.jobDesc)}</p> */}
-            <div>{formattedText}</div>
-            <div>{formatJobDesc()}</div>
+            <div id="jobDesc">{formattedText}</div>
+            {/* <div>{formatJobDesc()}</div> */}
         </div>
     );
 }

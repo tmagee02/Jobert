@@ -27,9 +27,14 @@ body{
 
 h1{
   margin: 16px 0;
-  font-weight: 600;
-  letter-spacing: -0.06em;
+  font-weight: 700;
+  letter-spacing: -0.04em;
   color: var(--text1);
+}
+
+h2{
+  color: var(--text1);
+  font-weight: 600
 }
 
 .buttonAction{
@@ -57,7 +62,6 @@ h1{
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 
 }
-
 
 
 

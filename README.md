@@ -21,7 +21,7 @@ Jobert is a full-stack job aggregation platform that collects software engineeri
 
 
 ## Architecture
-![Jobert Architecture](jobert-architecture.png)
+![Jobert Architecture](./img/jobert-architecture.png)
 
 
 ## Data Flow
@@ -43,7 +43,10 @@ Jobert is a full-stack job aggregation platform that collects software engineeri
 
 
 ## UI Preview
-![Job Listings Page](job-listings.png)
+### Job Listings Page
+![Job Listings Page](./img/job-listings.png)
+### Job Info Page
+![Job Info Page](./img/job-info.png)
 
 
 ## Tech Stack 

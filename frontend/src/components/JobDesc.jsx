@@ -15,7 +15,12 @@ export default function JobDesc({ text }) {
         let bulletGroup = null;
         const commonBulletHeaders = new Set([
             "minimum qualifications",
+            "basic qualifications",
             "preferred qualifications",
+            "minimum requirements",
+            "Minimum requirements",
+            "preferred requirements",
+            "responsibilities",
         ]);
 
         for (const line of jobDesc.split("\n")) {
@@ -29,12 +34,19 @@ export default function JobDesc({ text }) {
                         ))) ||
                 (prevWasBullet && !curIsHeader && line.length != 0);
 
-            pushLine(groups, bulletGroup, line, curIsBullet, curIsHeader);
+            bulletGroup = pushLine(
+                groups,
+                bulletGroup,
+                line,
+                curIsBullet,
+                curIsHeader,
+                prevHeaderText,
+            );
 
             prevHeaderText = curIsHeader ? line : null;
             prevWasBullet = curIsBullet;
         }
-        // console.log(groups);
+        console.log(groups);
         return groups;
     }
 
@@ -64,6 +76,10 @@ export default function JobDesc({ text }) {
             "about the team",
             "minimum qualifications",
             "preferred qualifications",
+            "minimum requirements",
+            "preferred requirements",
+            "who we are",
+            "working remotely at stripe",
         ]);
         if (
             commonHeaders.has(line.toLowerCase()) ||
@@ -73,7 +89,15 @@ export default function JobDesc({ text }) {
         return false;
     }
 
-    function pushLine(groups, bulletGroup, line, curIsBullet, curIsHeader) {
+    //returns bulletGroup so it saves its state
+    function pushLine(
+        groups,
+        bulletGroup,
+        line,
+        curIsBullet,
+        curIsHeader,
+        prevHeaderText,
+    ) {
         if (curIsBullet) {
             if (!bulletGroup) {
                 bulletGroup = { type: types.BULLET_GROUP, bullets: [] };
@@ -85,21 +109,24 @@ export default function JobDesc({ text }) {
             let lineType = types.TEXT;
             if (curIsHeader) lineType = types.HEADER;
             else if (line.length === 0) lineType = types.SPACE;
+            if (lineType === types.SPACE && prevHeaderText) return;
             groups.push({ type: lineType, text: line });
         }
+        return bulletGroup;
     }
 
     const formattedJobDesc = formatJobDesc(text).map((group, i) => {
         switch (group.type) {
             case "bulletGroup":
                 return (
-                    <ul key={i}>
+                    <ul key={i} className="list-disc pl-6">
                         {group.bullets.map((bullet, j) => (
                             <li key={j}>{bullet}</li>
                         ))}
                     </ul>
                 );
             case "header":
+                if (i === 0) return <h2 key={i + 0.5}>{group.text}</h2>;
                 return (
                     <Fragment key={i}>
                         <br />

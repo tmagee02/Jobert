@@ -30,7 +30,7 @@ export default function MetadataBox({
                 className="metadata-child flex items-start"
             >
                 <div className="w-4 flex justify-center">
-                    <i className="fa-solid fa-briefcase text-[16px] mt-[4px]" />
+                    <i className="fa-solid fa-briefcase text-[16px] mt-[3px]" />
                 </div>
                 <div className="ml-4">
                     <p className="font-medium text-base">Experience</p>
@@ -44,7 +44,7 @@ export default function MetadataBox({
                 className="metadata-child flex items-start"
             >
                 <div className="w-4 flex justify-center">
-                    <i className="fa-solid fa-calendar-days text-[16px] mt-[4px]" />
+                    <i className="fa-solid fa-calendar-days text-[16px] mt-[3px]" />
                 </div>
                 <div className="ml-4">
                     <p className="font-medium text-base">Retrieved</p>

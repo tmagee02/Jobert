@@ -36,8 +36,12 @@ export default function JobRow({ job }) {
                     </div>
                 </div>
                 <div id="rightText" className="secondary-text text-[16px]">
-                    <div id="salaryRange">{getSalaryRange(job)}</div>
-                    <div id="experienceRange">{getExperienceRange(job)}</div>
+                    <div id="salaryRange">
+                        Salary Range: {getSalaryRange(job)}
+                    </div>
+                    <div id="experienceRange">
+                        Years of Experience: {getExperienceRange(job)}
+                    </div>
                 </div>
                 <i
                     id="chevron"

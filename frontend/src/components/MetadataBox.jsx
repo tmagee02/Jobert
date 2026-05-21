@@ -9,7 +9,7 @@ export default function MetadataBox({
         <div id="metadata-box" className="w-400">
             <div id="meta-company" className="metadata-child flex items-start">
                 <div className="w-4 flex justify-center">
-                    <i className="fa-solid fa-city text-[16px] mt-[3px]" />
+                    <i className="fa-solid fa-city text-[16px] mt-0.75" />
                 </div>
                 <div className="ml-4">
                     <p className="font-medium text-base">Company</p>
@@ -18,7 +18,7 @@ export default function MetadataBox({
             </div>
             <div id="meta-salary" className="metadata-child flex items-start">
                 <div className="w-4 flex justify-center">
-                    <i className="fa-solid fa-money-bill text-[16px] mt-[3px]" />
+                    <i className="fa-solid fa-money-bill text-[16px] mt-0.75" />
                 </div>
                 <div className="ml-4">
                     <p className="font-medium text-base">Salary</p>
@@ -30,7 +30,7 @@ export default function MetadataBox({
                 className="metadata-child flex items-start"
             >
                 <div className="w-4 flex justify-center">
-                    <i className="fa-solid fa-briefcase text-[16px] mt-[3px]" />
+                    <i className="fa-solid fa-briefcase text-[16px] mt-0.75" />
                 </div>
                 <div className="ml-4">
                     <p className="font-medium text-base">Experience</p>
@@ -44,7 +44,7 @@ export default function MetadataBox({
                 className="metadata-child flex items-start"
             >
                 <div className="w-4 flex justify-center">
-                    <i className="fa-solid fa-calendar-days text-[16px] mt-[3px]" />
+                    <i className="fa-solid fa-calendar-days text-[16px] mt-0.75" />
                 </div>
                 <div className="ml-4">
                     <p className="font-medium text-base">Retrieved</p>

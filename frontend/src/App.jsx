@@ -9,20 +9,20 @@ import JobInfo from "./pages/JobInfo.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 function App() {
-  return (
-    <div id="app" className="w-full">
-      <Background />
-      {/* <NavBar /> */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/jobs" element={<Jobs />} />
-        <Route path="/jobs/:jobId" element={<JobInfo />} />
-        <Route path="/watchlist" element={<Watchlist />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
-  );
+    return (
+        <div id="app" className="w-full">
+            <Background />
+            {/* <NavBar /> */}
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/jobs" element={<Jobs />} />
+                <Route path="/jobs/:jobId" element={<JobInfo />} />
+                <Route path="/watchlist" element={<Watchlist />} />
+                <Route path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </div>
+    );
 }
 
 export default App;

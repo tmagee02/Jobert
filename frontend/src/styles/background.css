@@ -10,7 +10,7 @@
     background-size: 200% 200%;
     filter: blur(0px);
   
-    animation: drift 60s linear infinite alternate;
+    animation: drift 30s linear infinite alternate;
   
     pointer-events: none;
     z-index: -1;

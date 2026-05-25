@@ -19,7 +19,7 @@ export default function JobRow({ job }) {
                     className="h-10 flex items-center justify-center px-3 py-1"
                 >
                     <img
-                        src={getLogo(job)}
+                        src={getLogo(job.companyName)}
                         alt={`${job.companyName} logo`}
                         className="h-auto w-auto max-h-full max-w-full"
                     />

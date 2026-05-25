@@ -67,18 +67,19 @@
 }
 #companyDropdown label{
     padding: 0 12px;
-    height: 30px;
-    margin: 4px 4px;
+    height: 36px;
+    margin: 6px 4px;
+    font-size: 16px;
     border-radius: 6px;
     color: var(--text1);
     cursor: pointer;
     transition: all .2s ease;
 }
 #companyDropdown label:hover{
-    background-color: rgba(0,0,0,.025);
+    background-color: rgba(0,0,0,.05);
 }
 #companyDropdown label:has(input:checked){
-    background-color: rgba(0,0,0,.05);
+    background-color: rgba(0,0,0,.1);
     color: var(--text1)
 
 }

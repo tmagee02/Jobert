@@ -42,7 +42,7 @@ export default function JobInfo() {
             <div id="job-info-heading" className="py-16 text-left">
                 <div className="flex items-center ">
                     <img
-                        src={getLogo(jobInfo)}
+                        src={getLogo(jobInfo.companyName)}
                         alt={`${jobInfo.companyName} logo`}
                         className="h-12 w-auto max-h-full max-w-full"
                     />

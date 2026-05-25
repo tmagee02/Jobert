@@ -1,12 +1,13 @@
-export function getLogo(job) {
-    const path = `/logos/${job.companyName.toLowerCase()}`;
-    const svgs = new Set(["Airbnb", "Apple", "Databricks", "Block", "Uber"]);
-    const pngs = new Set(["Block", "OpenAI"]);
+export function getLogo(companyName) {
+    const path = `/logos/${companyName.toLowerCase()}`;
+    const svgs = new Set(["Airbnb", "Apple", "Block", "Databricks"]);
+    const pngs = new Set(["OpenAI"]);
     const jpegs = new Set(["Stripe", "Uber"]);
 
-    if (svgs.has(job.companyName)) return path + ".svg";
-    else if (pngs.has(job.companyName)) return path + ".png";
-    else if (jpegs.has(job.companyName)) return path + ".jpeg";
+    if (svgs.has(companyName)) return path + ".svg";
+    else if (pngs.has(companyName)) return path + ".png";
+    else if (jpegs.has(companyName)) return path + ".jpeg";
+    else return "/logos/dne.jpg";
 }
 
 export function getDateScraped(job) {

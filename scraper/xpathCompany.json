@@ -89,5 +89,19 @@
             "remote" : null,
             "datePosted" : "//time[@id='jobdetails-jobpostdate']"
         }
+    },
+    {
+        "companyName" : "Plaid",
+        "urlRenderType" : null,
+        "xpaths" : {
+            "jobUrl" : "//li/div/div/a",
+            "nextPage" : null,
+            "jobTitle" : "//h1",
+            "jobDesc" : "//main/div/div/div[2]",
+            "location" : "//h1/following-sibling::div/div[3]",
+            "remote" : null,
+            "datePosted" : null
+        }
     }
+
 ]

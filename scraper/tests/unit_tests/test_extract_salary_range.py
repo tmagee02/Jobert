@@ -12,7 +12,9 @@ from scraper.handleNLP import extractSalaryRange
         ('$29K – $325K', (29000, 325000)),
         ('$2k – $32k', (2000, 32000)),
         ('$171,000', (171000, 171000)),
-        ('$2K', (2000, 2000))
+        ('$2K', (2000, 2000)),
+        ('$190,800.00 - $262,800.00 per year', (190800, 262800)),
+        ('$2,000.00 per year', (2000, 2000))
         # pytest.param('$171000', (171000, 171000), marks=pytest.mark.xfail(reason='need to grab other examples5')),
     ]
 )
@@ -26,11 +28,11 @@ def test_extract_salary_range(text, expected):
         '',
         'Salary: ',
         '$147,400 and $272,100 and $347,400',
-        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
-        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
-        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
-        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
-        pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
     ]
 )
 def test_extract_salary_range_invalid_format(text):

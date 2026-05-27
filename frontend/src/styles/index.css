@@ -32,7 +32,7 @@ h1{
   color: var(--text1);
 }
 
-h2{
+#jobs #h2{
   color: var(--text1);
   font-weight: 600
 }

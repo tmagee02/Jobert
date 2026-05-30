@@ -102,6 +102,19 @@
             "remote" : null,
             "datePosted" : null
         }
+    },
+    {
+        "companyName" : "Brex",
+        "urlRenderType" : null,
+        "xpaths" : {
+            "jobUrl" : "//h3/following-sibling::div//a",
+            "nextPage" : null,
+            "jobTitle" : "//h1",
+            "jobDesc" : "//main/div/div/div[2]/div",
+            "location" : "//h4",
+            "remote" : null,
+            "datePosted" : null
+        }
     }
 
 ]

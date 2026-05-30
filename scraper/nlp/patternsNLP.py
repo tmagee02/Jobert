@@ -1,6 +1,6 @@
 patterns = [
     {
-        "label": "LOCATION",
+        "label": "SALARY",
         "pattern": [                        #$ddd,ddd [—–-] $ddd,ddd
             {"IS_CURRENCY": True},
             {"LIKE_NUM": True},
@@ -10,7 +10,7 @@ patterns = [
         ]
     },
     {
-        "label": "LOCATION",
+        "label": "SALARY",
         "pattern": [                        #$ddd,ddd and $ddd,ddd
             {"IS_CURRENCY": True},
             {"LIKE_NUM": True},
@@ -20,7 +20,7 @@ patterns = [
         ]
     },
     {
-        "label": "LOCATION",
+        "label": "SALARY",
         "pattern": [                        #USD$ddd,ddd per year [—–-] USD$ddd,ddd per year
             {"TEXT": {"REGEX": r"USD\$\d{2,3},\d{3}"}},
             {"ORTH": "per"},
@@ -32,7 +32,7 @@ patterns = [
         ]
     },
     {
-        "label": "LOCATION",
+        "label": "SALARY",
         "pattern": [                        #$dddK [—–-] $dddK
             {"IS_CURRENCY": True},
             {"LIKE_NUM": True},

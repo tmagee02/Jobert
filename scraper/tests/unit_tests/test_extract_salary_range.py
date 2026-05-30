@@ -13,8 +13,9 @@ from scraper.handleNLP import extractSalaryRange
         ('$2k – $32k', (2000, 32000)),
         ('$171,000', (171000, 171000)),
         ('$2K', (2000, 2000)),
-        ('$190,800.00 - $262,800.00 per year', (190800, 262800)),
-        ('$2,000.00 per year', (2000, 2000))
+        ('$190,800.00 - $262,800.00 per year', (190800, 262800)), #Plaid
+        ('$2,000.00 per year', (2000, 2000)), #Plaid
+        ('$240,000 - $300,000', (240000, 300000)) #Brax
         # pytest.param('$171000', (171000, 171000), marks=pytest.mark.xfail(reason='need to grab other examples5')),
     ]
 )

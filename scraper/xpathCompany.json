@@ -1,10 +1,10 @@
 [
     {
         "companyName" : "Stripe",
-        "urlRenderType" : null,
+        "paginationType" : null,
         "xpaths" : {
             "jobUrl" : "//tr/td/a",
-            "nextPage" : null,
+            "pagination" : null,
             "jobTitle" : "//div[@class='Section__layout']/section/header/h1",
             "jobDesc" : "//div[contains(@class, 'RowLayout')]",
             "location" : "//p[contains(text(), 'Office locations')]/following-sibling::p",
@@ -14,10 +14,10 @@
     },
     {
         "companyName" : "Airbnb",
-        "urlRenderType" : "Next Page",
+        "paginationType" : "Next Page",
         "xpaths" : {
             "jobUrl" : "//span/a",
-            "nextPage" : "//a[@class='facetwp-page next']",
+            "pagination" : "//a[@class='facetwp-page next']",
             "jobTitle" : "//h1[@class='text-size-12  text-left']",
             "jobDesc" : "//div[@class='job-detail active']",
             "location" : "//div[@class='offices']/span",
@@ -27,10 +27,10 @@
     },
     {
         "companyName" : "Block",
-        "urlRenderType" : null,
+        "paginationType" : null,
         "xpaths" : {
             "jobUrl" : "//div[contains(@class, 'jobs-stack')]/div/a",
-            "nextPage" : null,
+            "pagination" : null,
             "jobTitle" : "//h1/div",
             "jobDesc" : "//div[@id='job-details-content']",
             "location" : "//div[contains(@class, 'job-info-container')]/div/span[2]/span",
@@ -40,10 +40,10 @@
     },
     {
         "companyName" : "Uber",
-        "urlRenderType" : "Show More",
+        "paginationType" : "Show More",
         "xpaths" : {
             "jobUrl" : "//span/a",
-            "nextPage" : "//button[text() = 'Show more openings']",
+            "pagination" : "//button[text() = 'Show more openings']",
             "jobTitle" : "//h1",
             "jobDesc" : "//div[contains(@class, 'job-details')]/div/div/div[3]",
             "location" : "//div[contains(@class, 'job-details')]/div/div/div/div/div",
@@ -53,10 +53,10 @@
     },
     {
         "companyName" : "OpenAI",
-        "urlRenderType" : null,
+        "paginationType" : null,
         "xpaths" : {
             "jobUrl" : "//div[contains(@class, '@container')]/div/a[1]",
-            "nextPage" : null,
+            "pagination" : null,
             "jobTitle" : "//h2",
             "jobDesc" : "//div[contains(@class, 'prose')]",
             "location" : "//div[@class='mt-sm']/p",
@@ -66,10 +66,10 @@
     },
     {
         "companyName" : "Databricks",
-        "urlRenderType" : null,
+        "paginationType" : null,
         "xpaths" : {
             "jobUrl" : "//div[@id='jobWrap']/div/div/a",
-            "nextPage" : null,
+            "pagination" : null,
             "jobTitle" : "//h1/div",
             "jobDesc" : "//div[contains(@class, 'rich-text-body b2')]",
             "location" : "//div[contains(@class, 'h4')]",
@@ -79,10 +79,10 @@
     },
     {
         "companyName" : "Apple",
-        "urlRenderType" : "Next Page",
+        "paginationType" : "Next Page",
         "xpaths" : {
             "jobUrl" : "//h3/a",
-            "nextPage" : "//button[@aria-label='Next Page']",
+            "pagination" : "//button[@aria-label='Next Page']",
             "jobTitle" : "//h1",
             "jobDesc" : "//section[@class='hyperlink-underline']",
             "location" : "//label[@id='jobdetails-joblocation']",
@@ -92,10 +92,10 @@
     },
     {
         "companyName" : "Plaid",
-        "urlRenderType" : null,
+        "paginationType" : null,
         "xpaths" : {
             "jobUrl" : "//li/div/div/a",
-            "nextPage" : null,
+            "pagination" : null,
             "jobTitle" : "//h1",
             "jobDesc" : "//main/div/div/div[2]",
             "location" : "//h1/following-sibling::div/div[3]",
@@ -105,10 +105,10 @@
     },
     {
         "companyName" : "Brex",
-        "urlRenderType" : null,
+        "paginationType" : null,
         "xpaths" : {
             "jobUrl" : "//h3/following-sibling::div//a",
-            "nextPage" : null,
+            "pagination" : null,
             "jobTitle" : "//h1",
             "jobDesc" : "//main/div/div/div[2]/div",
             "location" : "//h4",

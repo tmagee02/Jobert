@@ -10,8 +10,8 @@ import random
 
 
 def main():    
-    dbCompanies, dbJobUrls = loadExistingDatabaseData()
-    urlRenderTypes, xpaths = loadJson()
+    companies, oldJobUrls = loadExistingDatabaseData()
+    loadJson(companies)
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False, slow_mo=50)
@@ -22,8 +22,8 @@ def main():
             });
         """)
 
-        jobUrls = getAllJobUrls(dbCompanies, page, urlRenderTypes, xpaths)
-        jobDetails = getAllJobDetails(dbJobUrls, page, jobUrls, xpaths)
+        jobUrls = getAllJobUrls(companies, page)
+        jobDetails = getAllJobDetails(oldJobUrls, page, jobUrls, companies)
 
         handleAllNLP(jobDetails)
         shuffledJobs = list(jobDetails.values())

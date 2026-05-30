@@ -3,12 +3,12 @@ from pandas import DataFrame
 from collections import defaultdict
 
 def test_load_json():
-    urlRenderTypes, xpaths = loadJson()
-    possibleRenderTypes = {'Next Page', 'Show More', None}
+    paginationTypes, xpaths = loadJson()
+    possiblePaginationTypes = {'Next Page', 'Show More', None}
     requiredKeys = {'jobUrl', 'jobTitle', 'jobDesc', 'location'}
 
-    assert isinstance(urlRenderTypes, dict)
-    assert all(renderType in possibleRenderTypes for renderType in urlRenderTypes.values())
+    assert isinstance(paginationTypes, dict)
+    assert all(renderType in possiblePaginationTypes for renderType in paginationTypes.values())
 
     assert isinstance(xpaths, defaultdict)
     for company, xpath in xpaths.items():

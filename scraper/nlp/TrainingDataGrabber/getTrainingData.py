@@ -11,8 +11,8 @@ def main():
     companies = {'Brex'}
     dbCompanies, _ = loadExistingDatabaseData()
     dbCompanies = dbCompanies[dbCompanies['company_name'].isin(companies)]
-    urlRenderTypes, xpaths = loadJson()
-    print(dbCompanies, urlRenderTypes)
+    paginationTypes, xpaths = loadJson()
+    print(dbCompanies, paginationTypes)
 
     
     with sync_playwright() as p:
@@ -24,7 +24,7 @@ def main():
             });
         """)
 
-        jobUrls = getAllJobUrls(dbCompanies, page, urlRenderTypes, xpaths)
+        jobUrls = getAllJobUrls(dbCompanies, page, paginationTypes, xpaths)
         
         jobDetails = {}
         count = 1

@@ -1,14 +1,15 @@
 from typing import List, Tuple, Set
 from collections import defaultdict
+from scraper.company import Company
 from scraper.utils import randomDelay
 from playwright.sync_api import Page, Locator, TimeoutError as PlaywrightTimeoutError
 import logging
 import time
 from scraper.job import Job
 
-def getLocator(page: Page, xpaths: dict, companyName: str, key: str) -> Locator:
+def getLocator(page: Page, company: Company, key: str) -> Locator:
         locDummy = page.locator('//h1/h1/h1/h1')
-        xpath = xpaths[companyName][key]
+        xpath = company.xpaths[key]
         return page.locator(xpath) if xpath else locDummy
 
 
@@ -19,7 +20,7 @@ def getLocatorText(locator: Locator, onlyFirst: bool=False):
         return ' \n\n '.join(locator.all_inner_texts()) if locator.count() > 0 else None
 
 
-def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCompany: int, jobDetails: dict, url: str) -> None:
+def getJobDetails(page: Page, status: int, company: Company, jobDetails: dict, url: str) -> None:
     logger = logging.getLogger('Jobert Scraper')
     jobActivity = logging.getLogger('Job Activity')
     if status != 200:
@@ -29,12 +30,12 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
 
     try:
         logger.info(f'Status {status} @ {url}. Good.')
-        page.locator(xpaths[companyName]['jobTitle']).nth(0).wait_for(timeout=5000)
-        locTitle = getLocator(page, xpaths, companyName, 'jobTitle')
-        locJobDesc = getLocator(page, xpaths, companyName, 'jobDesc')
-        locOffices = getLocator(page, xpaths, companyName, 'location')
-        locRemote = getLocator(page, xpaths, companyName, 'remote')
-        locDatePosted = getLocator(page, xpaths, companyName, 'datePosted')
+        page.locator(company.xpaths['jobTitle']).nth(0).wait_for(timeout=5000)
+        locTitle = getLocator(page, company, 'jobTitle')
+        locJobDesc = getLocator(page, company, 'jobDesc')
+        locOffices = getLocator(page, company, 'location')
+        locRemote = getLocator(page, company, 'remote')
+        locDatePosted = getLocator(page, company, 'datePosted')
 
         title = getLocatorText(locTitle, onlyFirst=True)
         jobDesc = getLocatorText(locJobDesc)
@@ -43,7 +44,7 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
         datePosted = getLocatorText(locDatePosted)
         
         randomDelay(True)
-        jobDetails[url] = Job(url, idCompany, title, jobDesc, offices, remote, datePosted)
+        jobDetails[url] = Job(url, company.id, title, jobDesc, offices, remote, datePosted)
         jobActivity.info(f'New job ( {title} ) found @ {url}')
         return 
     except PlaywrightTimeoutError:
@@ -52,7 +53,7 @@ def getJobDetails(page: Page, status: int, xpaths: dict, companyName: str, idCom
         return
 
 
-def getAllJobDetails(dbJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, int, str]], xpaths: defaultdict) -> dict[str, Job]:  
+def getAllJobDetails(oldJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, str]], companies: defaultdict) -> dict[str, Job]:  
     MAX_COMPANY_COUNT = 5
     timeStart = time.perf_counter()
     logger = logging.getLogger('Jobert Scraper')
@@ -60,14 +61,14 @@ def getAllJobDetails(dbJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, i
     jobDetails = {}
     count = 1
     companyCount = defaultdict(int)
-    for company, idCompany, jobUrl in jobUrls:
-        if jobUrl not in dbJobUrls and jobUrl not in jobDetails and companyCount[company] < MAX_COMPANY_COUNT:
+    for companyName, jobUrl in jobUrls:
+        if jobUrl not in oldJobUrls and jobUrl not in jobDetails and companyCount[companyName] < MAX_COMPANY_COUNT:
             try:
                 status = page.goto(jobUrl).status
                 print(count, jobUrl)
                 count += 1
-                companyCount[company] += 1
-                getJobDetails(page, status, xpaths, company, idCompany, jobDetails, jobUrl)
+                companyCount[companyName] += 1
+                getJobDetails(page, status, companies[companyName], jobDetails, jobUrl)
             except PlaywrightTimeoutError:
                 logger.error(f'Possible invalid job @ {jobUrl}.')
                 jobActivity.error(f'Possible invalid job @ {jobUrl}.')

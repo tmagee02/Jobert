@@ -1,0 +1,3 @@
+The Text Annotation Tool is just a GUI tool that 
+allows for easy entity extraction from a job 
+description.

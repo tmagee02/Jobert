@@ -1,0 +1,21 @@
+General
+    Ensure the new company's robot.txt does not restrict their career pages
+
+
+Scraper
+    Set up xpaths in setupNewCompany.py
+    Add testcases for company's salary, experience
+    If tests fail, probably look into handleAllNLP()
+        If an NLP issue, you need to setup NER stuff for the company and 
+        create a new model 
+
+
+Database
+    Add row in Company table with url info
+    
+
+Frontend
+    Add logo img to public folder
+    Update getLogo() to grab new logo (Will be automated through db eventually)
+    Update companies list in CompanyDropdown
+    Update formatJobDesc() + related functions if needed

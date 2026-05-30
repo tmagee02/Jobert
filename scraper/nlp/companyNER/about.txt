@@ -3,4 +3,5 @@ This folder is for storing entities from the specified company.
 No need to delete any entries from these files for the most part.
 
 Dont necessarily need a new file for each added website, just if
-they have a unique way of displaying wanted entities.
+they have a unique way of displaying wanted entities or they fail 
+in the NLP portion of handleAllNLP().

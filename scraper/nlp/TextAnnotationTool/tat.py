@@ -16,12 +16,6 @@ def main():
     jobDescText = tk.Text(root, height=15, wrap="word", bg=GREY, fg='white')
     jobDescText.pack(padx=20, pady=5, fill="x")
 
-    # locations
-    locationsStrLabel = tk.Label(root, text="Locations String", font=("Arial", 10), bg=DARK, fg='white')
-    locationsStrLabel.pack(anchor="w", padx=20, pady=(10, 0))
-    locationsStrEntry = tk.Entry(root, width=160, bg=GREY, fg='white')
-    locationsStrEntry.pack(padx=20, pady=5, fill="x")
-
 
     entityFrame = tk.Frame(root, bg=DARK)
     entityFrame.pack(fill='both', padx=20, pady = (10, 0))
@@ -38,7 +32,10 @@ def main():
         curLabel = tk.Label(entityFrame, text=txt, font=("Arial", 10), bg=DARK, fg='white')
         curLabel.grid(row=i*2, column=0, sticky="w", pady=(10,0))
         
-        curEntry = tk.Entry(entityFrame, width=100, bg=GREY, fg='white')
+        if i == len(labelText)-1:
+            curEntry = tk.Text(entityFrame, width=50, height=10, wrap='word', bg=GREY, fg='white')
+        else:
+            curEntry = tk.Entry(entityFrame, width=100, bg=GREY, fg='white')
         curEntry.grid(row=i*2+1, column=0, pady=5, sticky='ew')
         entries.append(curEntry)
 
@@ -52,11 +49,10 @@ def main():
         command=lambda: getEntities(
             jobDescText, 
             entries, 
-            locationsStrEntry, 
             outputText
             )
         )
-    submit_button.grid(row=6, column=0, columnspan=1, padx=200, pady=20, sticky='ew')
+    submit_button.grid(row=6, column=0, columnspan=1, padx=100, pady=20, sticky='ew')
 
     # Clear button
     clearButton = tk.Button(entityFrame, 
@@ -67,14 +63,13 @@ def main():
         activeforeground='white', 
         command=lambda: clearFields(
             jobDescText, 
-            locationsStrEntry,
             entries
             )
         )
-    clearButton.grid(row=7, column=0, columnspan=1, padx=200, pady=10, sticky='ew')
+    clearButton.grid(row=7, column=0, columnspan=1, padx=100, pady=10, sticky='ew')
 
     # Output text
-    outputText = tk.Text(entityFrame, height=10, width=20, wrap="word", bg=GREY, fg='white')
+    outputText = tk.Text(entityFrame, height=10, width=70, wrap="word", bg=GREY, fg='white')
     outputText.grid(row=0, column=1, rowspan=8, padx=(20, 0), pady=5, sticky="nsew")
 
     entityFrame.grid_rowconfigure(0, weight=1)  # output text row
@@ -89,7 +84,7 @@ def main():
     root.mainloop()
 
 
-def getEntities(jobDescText, entries, locationsStrEntry, outputText):
+def getEntities(jobDescText, entries, outputText):
 
     entities = []
     jobDesc = jobDescText.get("1.0", tk.END)
@@ -104,25 +99,27 @@ def getEntities(jobDescText, entries, locationsStrEntry, outputText):
     experienceEnd = experienceStart + len(experience)
     entities.append(json.dumps([experienceStart, experienceEnd, "EXPERIENCE"]))
 
-    locationsStr = locationsStrEntry.get()
-    expectedLocations = entries[2].get()    
+    expectedLocations = entries[2].get("1.0", tk.END).strip() 
     expectedLocations = expectedLocations.split('; ')
 
     for loc in expectedLocations:
-        locationStart = locationsStr.find(loc)
+        print(repr(loc))
+        locationStart = jobDesc.find(loc)
         locationEnd = locationStart + len(loc)
         entities.append(json.dumps([locationStart, locationEnd, "LOCATION"]))
     
-    
     outputText.delete('1.0', tk.END)
-    outputText.insert('1.0', ', \n'.join(entities))
+    output = '\n\t\t\t' + ', \n\t\t\t'.join(entities) + '\n\t\t' #escape characters added for easy copy/paste
+    outputText.insert('1.0', output)
 
-def clearFields(jobDescText, locationsStrEntry, entries):
+def clearFields(jobDescText, entries):
     jobDescText.delete('1.0', tk.END)
-    locationsStrEntry.delete(0, tk.END)
     
     for e in entries:
-        e.delete(0, tk.END)
+        if isinstance(e, tk.Text):
+            e.delete('1.0', tk.END)
+        else:
+            e.delete(0, tk.END)
 
 
 if __name__ == '__main__':

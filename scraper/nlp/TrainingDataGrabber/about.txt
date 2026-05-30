@@ -1,0 +1,6 @@
+This program grabs jobs from specified companies
+that need to be added to the companyNER folder.
+
+It normalizes the job info so that the job 
+description, office locations and remote
+locations are all in the same string for NLP.

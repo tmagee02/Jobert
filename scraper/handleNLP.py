@@ -1,5 +1,7 @@
+from collections import defaultdict
+
 import spacy
-from scraper.nlp.patternsNLP import patterns
+from scraper.nlp.patternsNLP import salaryPatterns, experiencePatterns
 import re
 from typing import Tuple
 from scraper.job import Job
@@ -8,7 +10,8 @@ import time
 def handleAllNLP(jobDetails: dict[str, Job]):
     timeStart = time.perf_counter()
     nlp = spacy.load("./scraper/nlp/training/output/model-best")
-    ruler = nlp.add_pipe("entity_ruler")
+    ruler = nlp.add_pipe("entity_ruler", before="ner")
+    patterns = [*salaryPatterns, *experiencePatterns]
     ruler.add_patterns(patterns)
 
     for job in jobDetails.values():
@@ -20,15 +23,19 @@ def handleAllNLP(jobDetails: dict[str, Job]):
             'EXPERIENCE' : [],
             'LOCATION' : []
         }
+        # labelLists = defaultdict(list)
 
-        sentences = text.split("\n\n")
+        sentences = text.split("\n\n") #if job.title == 'Engineering Manager' else ''
         for sent in sentences:
             doc = nlp(sent)
             for ent in doc.ents:
+                # labelLists[ent.label_].append(ent.text) you can use a defaultdict to test specific labels, changing them in patternsNLP
                 if ent.label_ in labelLists:
+                    # print(ent, ent.label_)
                     labelLists[ent.label_].append(ent.text)
                 else:
                     print(f'possible issue: {ent.text} -> {ent.label_}')
+        print(labelLists['SALARY'], labelLists['EXPERIENCE'])
 
         try:
             minSalary, maxSalary = extractSalaryRange(labelLists['SALARY'][0]) if labelLists['SALARY'] else (None, None)

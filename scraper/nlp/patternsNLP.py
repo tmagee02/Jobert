@@ -1,11 +1,13 @@
-patterns = [
+salaryPatterns = [
+    #SPOTIFY SUCKS
+    #If salary range has 0 $ signs, patterns can grab stuff like 200630263-0836, NOT GOOD
     {
-        "label": "SALARY",
-        "pattern": [                        #$ddd,ddd [—–-] $ddd,ddd
+        "label": "SALARY",                  #$ddd,ddd [—–-] $?ddd,ddd
+        "pattern": [                        #$ddd,ddd [—–-]$?ddd,ddd  SPOTIFY SUCKS
             {"IS_CURRENCY": True},
             {"LIKE_NUM": True},
             {"TEXT": {"REGEX": r"[—–-]"}},
-            {"IS_CURRENCY": True},
+            {"IS_CURRENCY": True, "OP": "?"},
             {"LIKE_NUM": True}
         ]
     },
@@ -43,6 +45,26 @@ patterns = [
             {"TEXT": {"REGEX": r"[kK]"}}
         ]
     },
+    { ###SPOITFY_SUCKS
+        "label": "SALARY",                 #$ddd,ddd[—–-]$?ddd,ddd
+        "pattern": [
+            {"IS_CURRENCY": True},
+            {"TEXT": {"REGEX": r"\$?\d{2,3},\d{3}[—–-]\$?\d{2,3},\d{3}"}},
+        ]
+    },
+    { ###SPOTIFY SUCKS
+        "label": "SALARY",                 #$ddd,ddd[—–-] $?ddd,ddd
+        "pattern": [
+            {"IS_CURRENCY": True},
+            {"TEXT": {"REGEX": r"\$?\d{2,3},\d{3}[—–-]"}},
+            {"IS_CURRENCY": True, "OP": "?"},
+            {"LIKE_NUM": True}
+        ]
+    } 
+]
+
+experiencePatterns = [
+
     {
         "label": "EXPERIENCE",
         "pattern": [                       
@@ -61,5 +83,4 @@ patterns = [
             {"TEXT": {"REGEX": r"^\d{1,2}$"}}
         ]
     }
-        
 ]

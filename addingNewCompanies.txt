@@ -8,7 +8,8 @@ Scraper
     If tests fail, probably look into handleAllNLP()
         If an NLP issue, you need to setup NER stuff for the company and 
         create a new model 
-
+        or, you can add more patterns to the entity ruler
+    After tests pass, you can commit
 
 Database
     Add row in Company table with url info

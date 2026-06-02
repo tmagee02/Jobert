@@ -8,12 +8,13 @@ import re
 
 
 def main():
-    companies = {'Brex'}
-    dbCompanies, _ = loadExistingDatabaseData()
-    dbCompanies = dbCompanies[dbCompanies['company_name'].isin(companies)]
-    paginationTypes, xpaths = loadJson()
-    print(dbCompanies, paginationTypes)
-
+    companiesSet = {'Spotify'}
+    allCompanies, _ = loadExistingDatabaseData()
+    loadJson(allCompanies)
+    filteredCompanies = {}
+    for name, company in allCompanies.items():
+        if name in companiesSet:
+            filteredCompanies[name] = company
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False, slow_mo=50)
@@ -24,36 +25,39 @@ def main():
             });
         """)
 
-        jobUrls = getAllJobUrls(dbCompanies, page, paginationTypes, xpaths)
+        jobUrls = getAllJobUrls(filteredCompanies, page)
         
         jobDetails = {}
         count = 1
         companyCount = defaultdict(int)
-        for company, idCompany, jobUrl in jobUrls:
+        for company, jobUrl in jobUrls:
             if jobUrl not in jobDetails and companyCount[company] < 25:
                 try:
                     status = page.goto(jobUrl).status
                     print(count, jobUrl)
                     count += 1
                     companyCount[company] += 1
-                    getJobDetails(page, status, xpaths, company, idCompany, jobDetails, jobUrl)
+                    getJobDetails(page, status, filteredCompanies[company], jobDetails, jobUrl)
                 except PlaywrightTimeoutError:
                     print(f'Possible invalid job @ {jobUrl}.')
             else:
                 print(f'Either copy of prev url or already enough jobs. Skipping.')
 
-    trainingData = setTrainingData(dbCompanies, jobDetails)
+    trainingData = setTrainingData(filteredCompanies, jobDetails)
 
     with open('./scraper/nlp/trainingData.json', 'w', encoding="utf-8") as file: #encoding and ensureascii added to keep actual characters in json
         json.dump(trainingData, file, ensure_ascii=False, indent=4)
     return
 
 
-def setTrainingData(dbCompanies, jobDetails):
+def setTrainingData(companies, jobDetails):
     trainingData = []
     for url, job in jobDetails.items():
         #get company by id
-        companyName = dbCompanies.loc[dbCompanies['id'] == job.idCompany, 'company_name'].iloc[0]
+        companyName = ''
+        for company in companies.values():
+            if job.idCompany == company.id:
+                companyName = company.name
 
         #replace any /n, /t, etc. with spaces
         jobDesc, offices, remote = job.jobDesc, job.offices, job.remote

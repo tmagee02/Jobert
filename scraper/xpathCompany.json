@@ -2,6 +2,7 @@
     {
         "companyName" : "Stripe",
         "paginationType" : null,
+        "urlAttributeType" : "href",
         "xpaths" : {
             "jobUrl" : "//tr/td/a",
             "pagination" : null,
@@ -15,6 +16,7 @@
     {
         "companyName" : "Airbnb",
         "paginationType" : "Next Page",
+        "urlAttributeType" : "href",
         "xpaths" : {
             "jobUrl" : "//span/a",
             "pagination" : "//a[@class='facetwp-page next']",
@@ -28,6 +30,7 @@
     {
         "companyName" : "Block",
         "paginationType" : null,
+        "urlAttributeType" : "href",
         "xpaths" : {
             "jobUrl" : "//div[contains(@class, 'jobs-stack')]/div/a",
             "pagination" : null,
@@ -41,6 +44,7 @@
     {
         "companyName" : "Uber",
         "paginationType" : "Show More",
+        "urlAttributeType" : "href",
         "xpaths" : {
             "jobUrl" : "//span/a",
             "pagination" : "//button[text() = 'Show more openings']",
@@ -54,6 +58,7 @@
     {
         "companyName" : "OpenAI",
         "paginationType" : null,
+        "urlAttributeType" : "href",
         "xpaths" : {
             "jobUrl" : "//div[contains(@class, '@container')]/div/a[1]",
             "pagination" : null,
@@ -67,6 +72,7 @@
     {
         "companyName" : "Databricks",
         "paginationType" : null,
+        "urlAttributeType" : "href",
         "xpaths" : {
             "jobUrl" : "//div[@id='jobWrap']/div/div/a",
             "pagination" : null,
@@ -80,6 +86,7 @@
     {
         "companyName" : "Apple",
         "paginationType" : "Next Page",
+        "urlAttributeType" : "href",
         "xpaths" : {
             "jobUrl" : "//h3/a",
             "pagination" : "//button[@aria-label='Next Page']",
@@ -93,6 +100,7 @@
     {
         "companyName" : "Plaid",
         "paginationType" : null,
+        "urlAttributeType" : "href",
         "xpaths" : {
             "jobUrl" : "//li/div/div/a",
             "pagination" : null,
@@ -106,12 +114,27 @@
     {
         "companyName" : "Brex",
         "paginationType" : null,
+        "urlAttributeType" : "href",
         "xpaths" : {
             "jobUrl" : "//h3/following-sibling::div//a",
             "pagination" : null,
             "jobTitle" : "//h1",
             "jobDesc" : "//main/div/div/div[2]/div",
             "location" : "//h4",
+            "remote" : null,
+            "datePosted" : null
+        }
+    },
+    {
+        "companyName" : "Spotify",
+        "paginationType" : "Show More",
+        "urlAttributeType" : "data-info",
+        "xpaths" : {
+            "jobUrl" : "//div[@class='row']/div/div[@role='link']",
+            "pagination" : "//main//div[4]/div[@class='row']/following-sibling::div/div[1]/button",
+            "jobTitle" : "//main//h1",
+            "jobDesc" : "//main/div/div[1]/div[2]/div",
+            "location" : "//main/div/div[1]/div[2]/div/div[1]/div[3]/span",
             "remote" : null,
             "datePosted" : null
         }

@@ -25,10 +25,9 @@ def getJobUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
             break
     
     if company.paginationType != 'Next Page':
-        jobUrls.extend(getVisibleUrls(page, company))
+        jobUrls = getVisibleUrls(page, company)
 
     print(f'{company.name}: {len(jobUrls)}')
-    # print(jobUrls)
     return jobUrls
 
 
@@ -57,8 +56,9 @@ def isClickable(paginationButton: Locator) -> bool:
 
 def getVisibleUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
     visibleUrls = []
-    elements = page.query_selector_all(company.xpaths['jobUrl'])
-    for e in elements:
-        jobPath = e.get_attribute('href')
+    elements = page.locator(company.xpaths['jobUrl'])
+    for i in range(elements.count()):
+        element = elements.nth(i)
+        jobPath = element.get_attribute(company.urlAttributeType)
         visibleUrls.append((company.name, urljoin(company.baseUrl + company.searchPath, jobPath)))
     return visibleUrls

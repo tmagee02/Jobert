@@ -21,10 +21,11 @@ from scraper.company import Company
 def main():
     ID = 10
     NAME = 'Spotify'
-    BASE_URL = 'https://www.lifeatspotify.com/'
-    SEARCH_PATH = '/jobs'
+    BASE_URL = 'https://www.lifeatspotify.com'
+    SEARCH_PATH = '/jobs/'
     SEARCH_QUERY = '?l=new-york&l=boston&l=los-angeles&l=miami&l=washington-d-c&c=backend&c=client-c&c=data&c=developer-tools-infrastructure&c=engineering-leadership&c=machine-learning&c=mobile&c=network-engineering-it&c=security&c=tech-research&c=web'
     PAGINATION_TYPE = 'Show More'
+    URL_ATTRIBUTE_TYPE = 'data-info'
     JOB_URL = "//div[@class='row']/div/div[@role='link']"
     PAGINATION = "//main//div[4]/div[@class='row']/following-sibling::div/div[1]/button"
     JOB_TITLE = '//main//h1'
@@ -41,7 +42,7 @@ def main():
             "remote" : REMOTE,
             "datePosted" : DATE_POSTED
     }
-    company = Company(ID, NAME, BASE_URL, SEARCH_PATH, SEARCH_QUERY, PAGINATION_TYPE, XPATHS)
+    company = Company(ID, NAME, BASE_URL, SEARCH_PATH, SEARCH_QUERY, PAGINATION_TYPE, URL_ATTRIBUTE_TYPE, XPATHS)
     companies = {NAME: company}
     dbJobUrls = set()
 

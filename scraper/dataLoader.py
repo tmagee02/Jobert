@@ -2,13 +2,12 @@ from typing import Tuple, Set
 import psycopg2
 import json
 import pandas as pd
-from pandas import DataFrame
 from collections import defaultdict
 import time
 from scraper.company import Company
 
 
-def loadExistingDatabaseData() -> Tuple[DataFrame, Set[str]]:
+def loadExistingDatabaseData() -> Tuple[dict, Set[str]]:
     timeStart = time.perf_counter()
     qSelectCompany = '''
         select * 
@@ -55,6 +54,7 @@ def loadJson(companies: dict) -> Tuple[dict, defaultdict]:
 
     for company in data:
         companies[company['companyName']].paginationType = company['paginationType'] 
+        companies[company['companyName']].urlAttributeType = company['urlAttributeType']
         companies[company['companyName']].xpaths = company['xpaths']
     
     timeEnd = time.perf_counter()

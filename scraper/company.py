@@ -9,6 +9,7 @@ class Company:
     searchPath: str
     searchQuery: str
     paginationType: str | None = None
+    urlAttributeType: str = "href"
     xpaths: dict[str, str] = field(default_factory=dict)
 
     def searchUrl(self) -> str:

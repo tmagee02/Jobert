@@ -16,6 +16,7 @@ export default function CompanyDropdown({
         "Uber",
         "Plaid",
         "Brex",
+        "Spotify",
     ];
 
     return (

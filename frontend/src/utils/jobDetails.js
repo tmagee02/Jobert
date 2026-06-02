@@ -1,7 +1,7 @@
 export function getLogo(companyName) {
     const path = `/logos/${companyName.toLowerCase()}`;
     const svgs = new Set(["Airbnb", "Apple", "Block", "Databricks"]);
-    const pngs = new Set(["OpenAI", "Brex"]);
+    const pngs = new Set(["OpenAI", "Brex", "Spotify"]);
     const jpegs = new Set(["Stripe", "Uber", "Plaid"]);
 
     if (svgs.has(companyName)) return path + ".svg";

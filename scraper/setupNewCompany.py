@@ -12,25 +12,25 @@ from scraper.company import Company
 # Possible new companies:
 # FAANG: Meta, Amazon?, Netfix, Google, + NVIDIA
 # AI: Anthropic, xAI, Hugging Face, Cohere
-# Fintech: Brex, Ramp, Robinhood, Chime, Mercury
+# Fintech: *Plaid, *Brex, Ramp, Robinhood, Chime, Mercury
 # Infrastructure: Snowflake, Datadog, Cloudflare, Confluent
-# Consumer: Snap, Discord, Pintrest, Instacart, Doordash, Reddit, Spotify
+# Consumer: Snap, Discord, Pintrest, Instacart, Doordash, Reddit, *Spotify
 # DevTools: Vercel, Figma, Linear, Notion
-
+# Misc.: Waymo, Wing (Google subsidiaries)
 
 def main():
     ID = 10
-    NAME = 'Spotify'
-    BASE_URL = 'https://www.lifeatspotify.com'
-    SEARCH_PATH = '/jobs/'
-    SEARCH_QUERY = '?l=new-york&l=boston&l=los-angeles&l=miami&l=washington-d-c&c=backend&c=client-c&c=data&c=developer-tools-infrastructure&c=engineering-leadership&c=machine-learning&c=mobile&c=network-engineering-it&c=security&c=tech-research&c=web'
-    PAGINATION_TYPE = 'Show More'
-    URL_ATTRIBUTE_TYPE = 'data-info'
-    JOB_URL = "//div[@class='row']/div/div[@role='link']"
-    PAGINATION = "//main//div[4]/div[@class='row']/following-sibling::div/div[1]/button"
-    JOB_TITLE = '//main//h1'
-    JOB_DESC = '//main/div/div[1]/div[2]/div'
-    LOCATION = '//main/div/div[1]/div[2]/div/div[1]/div[3]/span'
+    NAME = 'Google'
+    BASE_URL = 'https://www.google.com'
+    SEARCH_PATH = '/about/careers/applications/jobs/results/'
+    SEARCH_QUERY = '?q="Software%20Engineer"&hl=en&location=United%20States&sort_by=date'
+    PAGINATION_TYPE = None
+    URL_ATTRIBUTE_TYPE = 'href'
+    JOB_URL = "//main//ul//a"
+    PAGINATION = None
+    JOB_TITLE = '//span/div[1]/div/h2'
+    JOB_DESC = '//c-wiz[1]//main//c-wiz/div/div/div/span/div[1]'
+    LOCATION = '//span/div/div/span[2]/span'
     REMOTE = None
     DATE_POSTED = None
     XPATHS = {
@@ -43,6 +43,7 @@ def main():
             "datePosted" : DATE_POSTED
     }
     company = Company(ID, NAME, BASE_URL, SEARCH_PATH, SEARCH_QUERY, PAGINATION_TYPE, URL_ATTRIBUTE_TYPE, XPATHS)
+    print(company.name, company.baseUrl, company.searchPath)
     companies = {NAME: company}
     dbJobUrls = set()
 

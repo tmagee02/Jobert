@@ -1,7 +1,7 @@
 from typing import Tuple
 from scraper.utils import randomDelay
 from playwright.sync_api import Page, Locator
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 import time
 from scraper.company import Company
 
@@ -60,5 +60,30 @@ def getVisibleUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
     for i in range(elements.count()):
         element = elements.nth(i)
         jobPath = element.get_attribute(company.urlAttributeType)
+        jobPath = normalizeJobPath(company.searchPath, jobPath)
+
         visibleUrls.append((company.name, urljoin(company.baseUrl + company.searchPath, jobPath)))
     return visibleUrls
+
+
+'''
+Removes any duplication between the searchPath suffix and jobPath 
+prefix if jobPath is not an absolute path
+
+ex. Google searchPath and jobPath overlap
+'''
+def normalizeJobPath(searchPath: str, jobPath: str) -> str:
+    if urlparse(jobPath).scheme:
+        return jobPath
+
+    search = [component for component in searchPath.split('/') if component]
+    job = [component for component in jobPath.split('/') if component]
+
+    common = 0
+    for i in range(min(len(search), len(job)), 0, -1):
+        if search[-i:] == job[:i]:
+            common = i
+            break
+    
+    return '/'.join(job[common:])
+    

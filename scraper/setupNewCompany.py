@@ -1,7 +1,4 @@
 from playwright.sync_api import sync_playwright
-from collections import defaultdict
-from pandas import DataFrame
-from scraper.dataLoader import loadExistingDatabaseData
 from scraper.jobUrls import getAllJobUrls
 from scraper.jobDetails import getAllJobDetails
 from scraper.exportDetails import writeJobDetailsToFile
@@ -29,7 +26,11 @@ def main():
     JOB_URL = "//main//ul//a"
     PAGINATION = None
     JOB_TITLE = '//span/div[1]/div/h2'
-    JOB_DESC = '//c-wiz[1]//main//c-wiz/div/div/div/span/div[1]'
+    JOB_DESC = [
+        "//span/div/div[4]",
+        "//span/div/div[5]",
+        "//span/div/div[6]",
+    ]
     LOCATION = '//span/div/div/span[2]/span'
     REMOTE = None
     DATE_POSTED = None
@@ -58,9 +59,12 @@ def main():
 
         jobUrls = getAllJobUrls(companies, page)
         jobDetails = getAllJobDetails(dbJobUrls, page, jobUrls, companies)
-        handleAllNLP(jobDetails)
-        jobDetails = list(jobDetails.values())
-        print(jobDetails[0].minSalary)
+    
+
+    handleAllNLP(jobDetails)
+    jobDetails = list(jobDetails.values())
+    for job in jobDetails:
+        print(job.title, job.minSalary, job.maxSalary, job.minExperience, job.maxExperience, sep=" | ")
 
     writeJobDetailsToFile(jobDetails)
     return

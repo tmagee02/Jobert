@@ -35,7 +35,7 @@ def handleAllNLP(jobDetails: dict[str, Job]):
                     labelLists[ent.label_].append(ent.text)
                 else:
                     print(f'possible issue: {ent.text} -> {ent.label_}')
-        print(labelLists['SALARY'], labelLists['EXPERIENCE'])
+        # print(labelLists['SALARY'], labelLists['EXPERIENCE'])
 
         try:
             minSalary, maxSalary = extractSalaryRange(labelLists['SALARY'][0]) if labelLists['SALARY'] else (None, None)
@@ -61,7 +61,7 @@ def handleAllNLP(jobDetails: dict[str, Job]):
 
 
 def extractSalaryRange(salary: str) -> Tuple[int, int]:
-    regexStandard = r'\d{1,3}(?:,\d{3}){1,2}'
+    regexStandard = r'\d{1,3}(?:,?\d{3}){1,2}'
     regexK = r'\d{1,3}[kK]'
     salaryVals = re.findall(regexStandard, salary)
     salaryVals.extend(re.findall(regexK, salary))

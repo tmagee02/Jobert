@@ -32,13 +32,12 @@ def getJobDetails(page: Page, status: int, company: Company, jobDetails: dict, u
         logger.info(f'Status {status} @ {url}. Good.')
         page.locator(company.xpaths['jobTitle']).nth(0).wait_for(timeout=5000)
         locTitle = getLocator(page, company, 'jobTitle')
-        locJobDesc = getLocator(page, company, 'jobDesc')
         locOffices = getLocator(page, company, 'location')
         locRemote = getLocator(page, company, 'remote')
         locDatePosted = getLocator(page, company, 'datePosted')
 
         title = getLocatorText(locTitle, onlyFirst=True)
-        jobDesc = getLocatorText(locJobDesc)
+        jobDesc = getJobDesc(page, company)
         offices = getLocatorText(locOffices)
         remote = getLocatorText(locRemote)
         datePosted = getLocatorText(locDatePosted)
@@ -83,3 +82,16 @@ def getAllJobDetails(oldJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, 
     timeGetAllJobDetails = timeEnd - timeStart
     print(f'\ngetAllJobDetails Time: {timeGetAllJobDetails}\n')
     return jobDetails
+
+
+def getJobDesc(page: Page, company: Company) -> str:
+    sections = company.xpaths['jobDesc']
+    sectionTexts = []
+
+    try:
+        for section in sections:
+            sectionTexts.append(page.locator(section).nth(0).inner_text())
+    except PlaywrightTimeoutError:
+        return 
+    
+    return '\n\n'.join(sectionTexts)

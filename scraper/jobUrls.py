@@ -73,7 +73,8 @@ prefix if jobPath is not an absolute path
 ex. Google searchPath and jobPath overlap
 '''
 def normalizeJobPath(searchPath: str, jobPath: str) -> str:
-    if urlparse(jobPath).scheme:
+    #absolute or root-relative
+    if urlparse(jobPath).scheme or jobPath[0] == '/':
         return jobPath
 
     search = [component for component in searchPath.split('/') if component]

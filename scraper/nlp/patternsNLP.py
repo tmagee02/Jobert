@@ -80,7 +80,8 @@ experiencePatterns = [
             
             {"TEXT": {"REGEX": r"^\d{1,2}$"}},                     #d-d or d - d
             {"TEXT": {"REGEX": r"^[—–-]$"}},
-            {"TEXT": {"REGEX": r"^\d{1,2}$"}}
+            {"TEXT": {"REGEX": r"^\d{1,2}$"}},
+            {"TEXT": {"REGEX": r"years?"}}
         ]
     }
 ]

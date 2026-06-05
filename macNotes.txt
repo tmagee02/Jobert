@@ -1,0 +1,68 @@
+jobDesc Xpaths
+    Stripe 
+        single works fine
+    Airbnb 
+        single works fine
+    Block 
+        single works fine
+    Uber 
+        single works fine
+    OpenAI 
+         currently grabs multiple wanted elements
+         maybe split up
+    Databricks
+        single works fine
+    Apple
+        single works fine, i dont hate it
+    Plaid
+        currently grabs extra (Other Opportunities)
+    Brex
+        single works fine
+    Spotify
+        currently grabs unwanted stuff in first section
+    Google
+        currently grabs unwanted stuff in first section
+        only grab h3, ul, h3, ul
+
+
+robots.txt
+    Stripe
+        All good
+        Nothing mentioning /jobs for my user-agent
+    Airbnb
+        All good
+        Nothing mentioning /positions for my user-agent
+    Block
+        All good
+        User-agent: *
+        Allow: /
+    Uber
+        All good
+        User-Agent: *
+        Allow: /
+    OpenAI
+        All good
+        User-agent: *
+        Allow: /
+    Databricks
+        All good
+        User-agent: *
+        Allow: /
+    Apple
+        All good
+        Nothing mentioning /careers for my user-agent
+    Plaid
+        All good
+        Nothing mentioning /careers for my user-agent
+    Brex
+        All good
+        Nothing mentioning /careers for my user-agent
+    Spotify
+        All good
+        Allow: /
+    Google
+        Can only grab the first page since it initially doesnt get the page param
+        Disallow: /about/careers/applications/jobs/results?page=
+        Disallow: /about/careers/applications/jobs/results/?page=
+        Disallow: /about/careers/applications/jobs/results?*&page=
+        Disallow: /about/careers/applications/jobs/results/?*&page=

@@ -3,6 +3,8 @@
 
 
 2. Scraper
+    Look at many jobs of the new company to find any differences in xpaths 
+    or additional sections
     Set up company variables in setupNewCompany.py
     Add testcases for company's salary, experience
     If tests fail, probably look into handleAllNLP()

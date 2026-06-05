@@ -63,7 +63,10 @@
             "jobUrl" : "//div[contains(@class, '@container')]/div/a[1]",
             "pagination" : null,
             "jobTitle" : "//h2",
-            "jobDesc" : [  "//div[contains(@class, 'prose')]" ],
+            "jobDesc" : [  
+                "//main/div/div[3]/div",
+                "//main/div/div[4]/div"
+                ],
             "location" : "//div[@class='mt-sm']/p",
             "remote" : null,
             "datePosted" : null
@@ -105,7 +108,11 @@
             "jobUrl" : "//li/div/div/a",
             "pagination" : null,
             "jobTitle" : "//h1",
-            "jobDesc" : [  "//main/div/div/div[2]" ],
+            "jobDesc" : [  
+                "//main/div/div/div/div[2]/div[1]",
+                "//main/div/div/div/div[2]/div[2]",
+                "//main/div/div/div/div[2]/div[3]"
+        ],
             "location" : "//h1/following-sibling::div/div[3]",
             "remote" : null,
             "datePosted" : null
@@ -133,7 +140,15 @@
             "jobUrl" : "//div[@class='row']/div/div[@role='link']",
             "pagination" : "//main//div[4]/div[@class='row']/following-sibling::div/div[1]/button",
             "jobTitle" : "//main//h1",
-            "jobDesc" : [  "//main/div/div[1]/div[2]/div" ],
+            "jobDesc" : [  
+                "//main/div/div[1]/div[2]/div/div[1]/div[4]",
+                "//main/div/div[1]/div[2]/div/div[1]/div[5]", 
+                "//main/div/div[1]/div[2]/div/div[2]",
+                "//main/div/div[1]/div[2]/div/div[3]",
+                "//main/div/div[1]/div[2]/div/div[4]",
+                "//main/div/div[1]/div[2]/div/div[5]",
+                "//main/div/div[1]/div[2]/div/div[6]"
+        ],
             "location" : "//main/div/div[1]/div[2]/div/div[1]/div[3]/span",
             "remote" : null,
             "datePosted" : null
@@ -148,7 +163,10 @@
             "pagination" : null,
             "jobTitle" : "//span/div[1]/div/h2",
             "jobDesc" : [
-                "//span/div/div[4]",
+                "//span/div/div[4]/h3[1]",
+                "//span/div/div[4]/ul[1]",
+                "//span/div/div[4]/h3[2]",
+                "//span/div/div[4]/ul[2]",
                 "//span/div/div[5]",
                 "//span/div/div[6]"
             ],

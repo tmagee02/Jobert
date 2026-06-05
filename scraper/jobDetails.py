@@ -90,8 +90,8 @@ def getJobDesc(page: Page, company: Company) -> str:
 
     try:
         for section in sections:
-            sectionTexts.append(page.locator(section).nth(0).inner_text())
+            sectionTexts.append(getLocatorText(page.locator(section), True))
     except PlaywrightTimeoutError:
         return 
     
-    return '\n\n'.join(sectionTexts)
+    return '\n\n'.join(text for text in sectionTexts if text)

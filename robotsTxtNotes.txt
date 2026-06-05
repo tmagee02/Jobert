@@ -1,30 +1,3 @@
-jobDesc Xpaths
-    Stripe 
-        single works fine
-    Airbnb 
-        single works fine
-    Block 
-        single works fine
-    Uber 
-        single works fine
-    OpenAI 
-         currently grabs multiple wanted elements
-         maybe split up
-    Databricks
-        single works fine
-    Apple
-        single works fine, i dont hate it
-    Plaid
-        currently grabs extra (Other Opportunities)
-    Brex
-        single works fine
-    Spotify
-        currently grabs unwanted stuff in first section
-    Google
-        currently grabs unwanted stuff in first section
-        only grab h3, ul, h3, ul
-
-
 robots.txt
     Stripe
         All good

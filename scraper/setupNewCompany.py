@@ -7,20 +7,20 @@ from scraper.company import Company
 
 
 # Possible new companies:
-# FAANG: Meta, Amazon?, Netfix, Google, + NVIDIA
-# AI: Anthropic, xAI, Hugging Face, Cohere
-# Fintech: *Plaid, *Brex, Ramp, Robinhood, Chime, Mercury
-# Infrastructure: Snowflake, Datadog, Cloudflare, Confluent
-# Consumer: Snap, Discord, Pintrest, Instacart, Doordash, Reddit, *Spotify
-# DevTools: Vercel, Figma, Linear, Notion
+# Big Tech: Meta, Amazon?, Netfix, *Google, NVIDIA, *Apple 2
+# AI: Anthropic, xAI, Hugging Face, Cohere, *OpenAI 1
+# Fintech: *Plaid, *Brex, Ramp, Robinhood, Chime, Mercury, *Stripe, *Block 4
+# Infrastructure: Snowflake, Datadog, Cloudflare, Confluent, *Databricks 1
+# Consumer: Snap, Discord, Pintrest, Instacart, Doordash, Reddit, *Spotify, *Airbnb, *Uber 3
+# DevTools: Vercel, Figma, Linear, Notion 0
 # Misc.: Waymo, Wing (Google subsidiaries)
 
 def main():
-    ID = 10
-    NAME = 'Google'
-    BASE_URL = 'https://www.google.com'
-    SEARCH_PATH = '/about/careers/applications/jobs/results/'
-    SEARCH_QUERY = '?q="Software%20Engineer"&hl=en&location=United%20States&sort_by=date'
+    ID = 12
+    NAME = 'Anthropic'
+    BASE_URL = 'https://www.anthropic.com'
+    SEARCH_PATH = '/careers/jobs'
+    SEARCH_QUERY = ''
     PAGINATION_TYPE = None
     URL_ATTRIBUTE_TYPE = 'href'
     JOB_URL = "//main//ul//a"

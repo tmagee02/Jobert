@@ -5,21 +5,16 @@ from scraper.utils import randomDelay
 class DiscoveryError(Exception):
     pass
 
+
 def runDiscoveryStrategy(company: Company, page: Page):
     if not company.urlDiscoveryStrategy:
         return print(f'{company.name}: No discovery strategy required')
-
-    actions = {
-        'TEXT_INPUT': textInput,
-        'CLICK': click,
-        'CLICK_ALL': clickAll
-    }
 
     print(f'{company.name}: {len(company.urlDiscoveryStrategy)} discovery strategy steps required')
     for i, step in enumerate(company.urlDiscoveryStrategy):
         print(f"\t{i+1}. {step['type']} --> {step['selector']}")
         randomDelay()
-        actions[step['type']](step, page)
+        DISCOVERY_ACTIONS[step['type']](step, page)
 
 
 def textInput(step: dict, page: Page):
@@ -53,3 +48,10 @@ def clickAll(step: dict, page: Page):
         element = locator.nth(i)
         element.click()
         randomDelay(shortDelay=True)
+
+
+DISCOVERY_ACTIONS = {
+    'TEXT_INPUT': textInput,
+    'CLICK': click,
+    'CLICK_ALL': clickAll
+}

@@ -1,5 +1,5 @@
 from scraper.dataLoader import loadExistingDatabaseData, loadJson
-from scraper.jobUrls import getAllJobUrls
+from scraper.jobUrls import collectAllCompanyJobUrls
 from scraper.jobDetails import getAllJobDetails
 from scraper.exportDetails import writeJobDetailsToFile, insertJobsToDatabase
 from scraper.utils import setupLogging, emailLogging, emailJobsInExperienceRange, totalDelay
@@ -22,7 +22,7 @@ def main():
             });
         """)
 
-        jobUrls = getAllJobUrls(companies, page)
+        jobUrls = collectAllCompanyJobUrls(companies, page)
         jobDetails = getAllJobDetails(oldJobUrls, page, jobUrls, companies)
 
         handleAllNLP(jobDetails)

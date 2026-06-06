@@ -1,11 +1,12 @@
 from typing import Tuple
+from scraper.discoveryStrategy import runDiscoveryStrategy
 from scraper.utils import randomDelay
 from playwright.sync_api import Page, Locator
 from urllib.parse import urljoin, urlparse
 import time
 from scraper.company import Company
 
-def getJobUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
+def collectCompanyJobUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
     jobUrls = []
 
     paginationLimit = 10
@@ -31,7 +32,7 @@ def getJobUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
     return jobUrls
 
 
-def getAllJobUrls(companies: dict, page: Page) -> list[Tuple[str, str]]:
+def collectAllCompanyJobUrls(companies: dict, page: Page) -> list[Tuple[str, str]]:
     timeStart = time.perf_counter()
     jobUrls = []
 
@@ -39,12 +40,13 @@ def getAllJobUrls(companies: dict, page: Page) -> list[Tuple[str, str]]:
     for company in companies.values():
         page.goto(company.searchUrl())
         randomDelay()
-        companyJobUrls = getJobUrls(page, company)
+        runDiscoveryStrategy(company, page) 
+        companyJobUrls = collectCompanyJobUrls(page, company)
         jobUrls.extend(companyJobUrls)
 
     timeEnd = time.perf_counter()
-    timeGetAllJobUrls = timeEnd - timeStart
-    print(f'\ngetAllJobUrls Time: {timeGetAllJobUrls}\n')
+    timecollectAllCompanyJobUrls = timeEnd - timeStart
+    print(f'\ncollectAllCompanyJobUrls Time: {timecollectAllCompanyJobUrls}\n')
     return jobUrls
 
 

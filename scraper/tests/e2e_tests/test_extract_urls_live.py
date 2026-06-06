@@ -1,6 +1,6 @@
 import pytest
 from scraper.dataLoader import loadExistingDatabaseData, loadJson
-from scraper.jobUrls import getAllJobUrls
+from scraper.jobUrls import collectAllCompanyJobUrls
 
 @pytest.mark.parametrize(
     'companyName', [
@@ -23,7 +23,7 @@ def test_extract_urls(companyName, page):
     loadJson(companies)
     company = {companyName: companies[companyName]}
 
-    jobUrls = getAllJobUrls(company, page)
+    jobUrls = collectAllCompanyJobUrls(company, page)
 
     assert len(jobUrls) > 0
     for c, url in jobUrls:

@@ -1,5 +1,5 @@
 from scraper.dataLoader import loadJson, loadExistingDatabaseData
-from scraper.jobUrls import getAllJobUrls
+from scraper.jobUrls import collectAllCompanyJobUrls
 from scraper.jobDetails import getJobDetails
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 from collections import defaultdict
@@ -25,7 +25,7 @@ def main():
             });
         """)
 
-        jobUrls = getAllJobUrls(filteredCompanies, page)
+        jobUrls = collectAllCompanyJobUrls(filteredCompanies, page)
         
         jobDetails = {}
         count = 1

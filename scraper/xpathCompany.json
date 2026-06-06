@@ -1,6 +1,7 @@
 [
     {
         "companyName" : "Stripe",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : null,
         "urlAttributeType" : "href",
         "xpaths" : {
@@ -15,6 +16,7 @@
     },
     {
         "companyName" : "Airbnb",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : "Next Page",
         "urlAttributeType" : "href",
         "xpaths" : {
@@ -29,6 +31,7 @@
     },
     {
         "companyName" : "Block",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : null,
         "urlAttributeType" : "href",
         "xpaths" : {
@@ -43,6 +46,7 @@
     },
     {
         "companyName" : "Uber",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : "Show More",
         "urlAttributeType" : "href",
         "xpaths" : {
@@ -57,6 +61,7 @@
     },
     {
         "companyName" : "OpenAI",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : null,
         "urlAttributeType" : "href",
         "xpaths" : {
@@ -74,6 +79,7 @@
     },
     {
         "companyName" : "Databricks",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : null,
         "urlAttributeType" : "href",
         "xpaths" : {
@@ -88,6 +94,7 @@
     },
     {
         "companyName" : "Apple",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : "Next Page",
         "urlAttributeType" : "href",
         "xpaths" : {
@@ -102,6 +109,7 @@
     },
     {
         "companyName" : "Plaid",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : null,
         "urlAttributeType" : "href",
         "xpaths" : {
@@ -120,6 +128,7 @@
     },
     {
         "companyName" : "Brex",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : null,
         "urlAttributeType" : "href",
         "xpaths" : {
@@ -134,6 +143,7 @@
     },
     {
         "companyName" : "Spotify",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : "Show More",
         "urlAttributeType" : "data-info",
         "xpaths" : {
@@ -156,6 +166,7 @@
     },
     {
         "companyName" : "Google",
+        "urlDiscoveryStrategy" : [],
         "paginationType" : null,
         "urlAttributeType" : "href",
         "xpaths" : {

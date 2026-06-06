@@ -8,6 +8,7 @@ class Company:
     baseUrl: str
     searchPath: str
     searchQuery: str
+    urlDiscoveryStrategy: list = field(default_factory=list)
     paginationType: str | None = None
     urlAttributeType: str = "href"
     xpaths: dict[str, str] = field(default_factory=dict)

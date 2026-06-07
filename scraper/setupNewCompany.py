@@ -1,5 +1,5 @@
 from playwright.sync_api import sync_playwright
-from scraper.jobUrls import getAllJobUrls
+from scraper.jobUrls import collectAllCompanyJobUrls
 from scraper.jobDetails import getAllJobDetails
 from scraper.exportDetails import writeJobDetailsToFile
 from scraper.handleNLP import handleAllNLP
@@ -21,17 +21,26 @@ def main():
     BASE_URL = 'https://www.anthropic.com'
     SEARCH_PATH = '/careers/jobs'
     SEARCH_QUERY = ''
+    URL_DISCOVERY_STRATEGY = [
+        {
+            'type': 'TEXT_INPUT',
+            'selector': '//input[@placeholder="Search roles"]',
+            'text': 'Software Engineer'
+        },
+        {
+            'type': 'CLICK_ALL',
+            'selector': '//section/div[position() > 1]'
+        }
+    ]
     PAGINATION_TYPE = None
     URL_ATTRIBUTE_TYPE = 'href'
-    JOB_URL = "//main//ul//a"
+    JOB_URL = '//section/div/div/a'
     PAGINATION = None
-    JOB_TITLE = '//span/div[1]/div/h2'
+    JOB_TITLE = '//h1'
     JOB_DESC = [
-        "//span/div/div[4]",
-        "//span/div/div[5]",
-        "//span/div/div[6]",
+        '//div[@class="job__description body"]'
     ]
-    LOCATION = '//span/div/div/span[2]/span'
+    LOCATION = '//div[@class="job__location"]/div'
     REMOTE = None
     DATE_POSTED = None
     XPATHS = {
@@ -43,7 +52,17 @@ def main():
             "remote" : REMOTE,
             "datePosted" : DATE_POSTED
     }
-    company = Company(ID, NAME, BASE_URL, SEARCH_PATH, SEARCH_QUERY, PAGINATION_TYPE, URL_ATTRIBUTE_TYPE, XPATHS)
+    company = Company(
+        id=ID, 
+        name=NAME, 
+        baseUrl=BASE_URL, 
+        searchPath=SEARCH_PATH, 
+        searchQuery=SEARCH_QUERY, 
+        urlDiscoveryStrategy=URL_DISCOVERY_STRATEGY,
+        paginationType=PAGINATION_TYPE, 
+        urlAttributeType=URL_ATTRIBUTE_TYPE, 
+        xpaths=XPATHS
+    )
     print(company.name, company.baseUrl, company.searchPath)
     companies = {NAME: company}
     dbJobUrls = set()
@@ -57,7 +76,7 @@ def main():
             });
         """)
 
-        jobUrls = getAllJobUrls(companies, page)
+        jobUrls = collectAllCompanyJobUrls(companies, page)
         jobDetails = getAllJobDetails(dbJobUrls, page, jobUrls, companies)
     
 

@@ -15,7 +15,8 @@ from scraper.jobDetails import getAllJobDetails
         'Plaid',
         'Brex',
         'Spotify',
-        'Google'
+        'Google',
+        'Anthropic'
     ],
     ids=lambda c: f'{c.lower()}-urls-live'
 )

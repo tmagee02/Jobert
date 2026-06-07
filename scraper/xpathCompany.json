@@ -185,6 +185,33 @@
             "remote" : null,
             "datePosted" : null
         }
+    },
+    {
+        "companyName" : "Anthropic",
+        "urlDiscoveryStrategy" : [
+            {
+                "type": "TEXT_INPUT",
+                "selector": "//input[@placeholder='Search roles']",
+                "text": "Software Engineer"
+            },
+            {
+                "type": "CLICK_ALL",
+                "selector": "//section/div[position() > 1]"
+            }
+        ],
+        "paginationType" : null,
+        "urlAttributeType" : "href",
+        "xpaths" : {
+            "jobUrl" : "//section/div/div/a",
+            "pagination" : null,
+            "jobTitle" : "//h1",
+            "jobDesc" : [
+                "//div[@class='job__description body']"
+            ],
+            "location" : "//div[@class='job__location']/div",
+            "remote" : null,
+            "datePosted" : null
+        }
     }
 
 ]

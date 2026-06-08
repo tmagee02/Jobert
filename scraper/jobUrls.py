@@ -12,12 +12,12 @@ def collectCompanyJobUrls(page: Page, company: Company) -> list[Tuple[str, str]]
     paginationLimit = 10
     paginationButton = page.locator(company.xpaths['pagination'])
     while paginationLimit > 0 and company.paginationType and isClickable(paginationButton):
+        if company.paginationType == 'Next Page': 
+            jobUrls.extend(getVisibleUrls(page, company))
+
         paginationButton.click()
+        randomDelay(True)
         try:
-            randomDelay(True)
-            
-            if company.paginationType == 'Next Page': 
-                jobUrls.extend(getVisibleUrls(page, company))
             page.locator(company.xpaths['pagination']).wait_for(timeout=5000)
 
             paginationLimit -= 1

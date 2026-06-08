@@ -52,7 +52,12 @@ def getJobDetails(page: Page, status: int, company: Company, jobDetails: dict, u
         return
 
 
-def getAllJobDetails(oldJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, str]], companies: defaultdict) -> dict[str, Job]:  
+def getAllJobDetails(page: Page, companies: defaultdict, jobUrls: List[Tuple[str, str]]) -> dict[str, Job]:  
+    counts = defaultdict(int)
+    for companyName, jobUrl in jobUrls:
+        counts[companyName] += 1
+
+    print(counts)
     MAX_COMPANY_COUNT = 5
     timeStart = time.perf_counter()
     logger = logging.getLogger('Jobert Scraper')
@@ -61,7 +66,7 @@ def getAllJobDetails(oldJobUrls: Set[str], page: Page, jobUrls: List[Tuple[str, 
     count = 1
     companyCount = defaultdict(int)
     for companyName, jobUrl in jobUrls:
-        if jobUrl not in oldJobUrls and jobUrl not in jobDetails and companyCount[companyName] < MAX_COMPANY_COUNT:
+        if jobUrl not in jobDetails and companyCount[companyName] < MAX_COMPANY_COUNT:
             try:
                 status = page.goto(jobUrl).status
                 print(count, jobUrl)

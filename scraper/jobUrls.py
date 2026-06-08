@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Set, Tuple
 from scraper.discoveryStrategy import runDiscoveryStrategy
 from scraper.utils import randomDelay
 from playwright.sync_api import Page, Locator
@@ -9,7 +9,7 @@ from scraper.company import Company
 def collectCompanyJobUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
     jobUrls = []
 
-    paginationLimit = 10
+    paginationLimit = 9
     paginationButton = page.locator(company.xpaths['pagination'])
     while paginationLimit > 0 and company.paginationType and isClickable(paginationButton):
         if company.paginationType == 'Next Page': 
@@ -25,23 +25,21 @@ def collectCompanyJobUrls(page: Page, company: Company) -> list[Tuple[str, str]]
         except: 
             break
     
-    if company.paginationType != 'Next Page':
-        jobUrls = getVisibleUrls(page, company)
+    jobUrls.extend(getVisibleUrls(page, company))
 
-    print(f'{company.name}: {len(jobUrls)}')
     return jobUrls
 
 
-def collectAllCompanyJobUrls(companies: dict, page: Page) -> list[Tuple[str, str]]:
+def collectAllCompanyJobUrls(page: Page, companies: dict, oldJobUrls: Set[str]) -> list[Tuple[str, str]]:
     timeStart = time.perf_counter()
     jobUrls = []
 
-    print(f'\nNumber of Possible Company URLs:')
     for company in companies.values():
         page.goto(company.searchUrl())
         randomDelay()
         runDiscoveryStrategy(company, page) 
         companyJobUrls = collectCompanyJobUrls(page, company)
+        companyJobUrls = filterOldUrls(company.name, companyJobUrls, oldJobUrls)
         jobUrls.extend(companyJobUrls)
 
     timeEnd = time.perf_counter()
@@ -90,3 +88,12 @@ def normalizeJobPath(searchPath: str, jobPath: str) -> str:
     
     return '/'.join(job[common:])
     
+
+def filterOldUrls(companyName: str, companyJobUrls: str, oldJobUrls: Set[str]):
+    newUrls = []
+    for company, url in companyJobUrls:
+        if url not in oldJobUrls:
+            newUrls.append((company, url))
+    
+    print(f'{companyName}: {len(newUrls)} new positions | Ignoring {len(companyJobUrls) - len(newUrls)} previously obtained urls')
+    return newUrls

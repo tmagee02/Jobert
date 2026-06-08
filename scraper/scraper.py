@@ -22,8 +22,8 @@ def main():
             });
         """)
 
-        jobUrls = collectAllCompanyJobUrls(companies, page)
-        jobDetails = getAllJobDetails(oldJobUrls, page, jobUrls, companies)
+        jobUrls = collectAllCompanyJobUrls(page, companies, oldJobUrls)
+        jobDetails = getAllJobDetails(page, companies, jobUrls)
 
         handleAllNLP(jobDetails)
         shuffledJobs = list(jobDetails.values())

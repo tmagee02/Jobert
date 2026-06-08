@@ -17,30 +17,21 @@ from scraper.company import Company
 
 def main():
     ID = 12
-    NAME = 'Anthropic'
-    BASE_URL = 'https://www.anthropic.com'
-    SEARCH_PATH = '/careers/jobs'
-    SEARCH_QUERY = ''
+    NAME = 'Datadog'
+    BASE_URL = 'https://careers.datadoghq.com'
+    SEARCH_PATH = '/all-jobs/'
+    SEARCH_QUERY = '?parent_department_Engineering%5B0%5D=Engineering&region_Americas%5B0%5D=Americas'
     URL_DISCOVERY_STRATEGY = [
-        {
-            'type': 'TEXT_INPUT',
-            'selector': '//input[@placeholder="Search roles"]',
-            'text': 'Software Engineer'
-        },
-        {
-            'type': 'CLICK_ALL',
-            'selector': '//section/div[position() > 1]'
-        }
     ]
-    PAGINATION_TYPE = None
+    PAGINATION_TYPE = 'Next Page'
     URL_ATTRIBUTE_TYPE = 'href'
-    JOB_URL = '//section/div/div/a'
-    PAGINATION = None
-    JOB_TITLE = '//h1'
+    JOB_URL = '//button/a'
+    PAGINATION = '//a[@aria-label="Next Page"]'
+    JOB_TITLE = '//main/h2'
     JOB_DESC = [
-        '//div[@class="job__description body"]'
+        '//div[@class="job-description"]'
     ]
-    LOCATION = '//div[@class="job__location"]/div'
+    LOCATION = '//main/div/p'
     REMOTE = None
     DATE_POSTED = None
     XPATHS = {

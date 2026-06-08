@@ -18,6 +18,8 @@ from scraper.handleNLP import extractSalaryRange
         ('$240,000 - $300,000', (240000, 300000)), #Brax
         ('$203,410–290,586 USD', (203410, 290586)), #Spotify
         ('US: $174000 - $253000 (USD)', (174000, 253000)), #Google
+        ('$350,000 - $500,000 USD', (350000, 500000)), #Anthropic
+        ('$140,000—$195,000 USD', (140000, 195000)) #Datadog
     ]
 )
 def test_extract_salary_range(text, expected):

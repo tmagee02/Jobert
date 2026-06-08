@@ -15,7 +15,8 @@ from scraper.jobUrls import collectAllCompanyJobUrls
         'Brex',
         'Spotify',
         'Google',
-        'Anthropic'
+        'Anthropic',
+        'Datadog'
     ],
     ids=lambda c: f'{c.lower()}-urls-live'
 )

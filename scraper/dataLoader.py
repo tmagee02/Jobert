@@ -53,9 +53,11 @@ def loadJson(companies: dict) -> Tuple[dict, defaultdict]:
         data = json.load(file)
 
     for company in data:
-        companies[company['companyName']].paginationType = company['paginationType'] 
-        companies[company['companyName']].urlAttributeType = company['urlAttributeType']
-        companies[company['companyName']].xpaths = company['xpaths']
+        c = companies[company['companyName']]
+        c.urlDiscoveryStrategy = company['urlDiscoveryStrategy']
+        c.paginationType = company['paginationType'] 
+        c.urlAttributeType = company['urlAttributeType']
+        c.xpaths = company['xpaths']
     
     timeEnd = time.perf_counter()
     timeLoadJson = timeEnd - timeStart

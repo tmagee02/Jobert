@@ -212,6 +212,23 @@
             "remote" : null,
             "datePosted" : null
         }
+    },
+    {
+        "companyName" : "Datadog",
+        "urlDiscoveryStrategy" : [],
+        "paginationType" : "Next Page",
+        "urlAttributeType" : "href",
+        "xpaths" : {
+            "jobUrl" : "//button/a",
+            "pagination" : "//a[@aria-label='Next Page']",
+            "jobTitle" : "//main/h2",
+            "jobDesc" : [
+                "//div[@class='job-description']"
+            ],
+            "location" : "//main/div/p",
+            "remote" : null,
+            "datePosted" : null
+        }
     }
 
 ]

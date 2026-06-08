@@ -18,6 +18,8 @@ export default function CompanyDropdown({
         "Brex",
         "Spotify",
         "Google",
+        "Anthropic",
+        "Datadog",
     ];
 
     return (

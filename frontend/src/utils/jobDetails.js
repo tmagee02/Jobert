@@ -6,6 +6,7 @@ export function getLogo(companyName) {
         "Block",
         "Databricks",
         "Anthropic",
+        "NVIDIA",
     ]);
     const pngs = new Set(["OpenAI", "Brex", "Spotify", "Google", "Datadog"]);
     const jpegs = new Set(["Stripe", "Uber", "Plaid"]);

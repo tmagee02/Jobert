@@ -20,6 +20,7 @@ export default function CompanyDropdown({
         "Google",
         "Anthropic",
         "Datadog",
+        "NVIDIA",
     ];
 
     return (

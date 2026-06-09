@@ -12,7 +12,9 @@
         create a new model 
         or, you can add more patterns to the entity ruler
     Add company xpaths to json
-    After tests pass, you can commit
+    Run e2e tests for new company
+    Do a real scraper run
+    After tests pass and run looks good, you can commit
 
 
 3. Database

@@ -60,7 +60,17 @@ salaryPatterns = [
             {"IS_CURRENCY": True, "OP": "?"},
             {"LIKE_NUM": True}
         ]
-    } 
+    },
+    { #NVIDIA
+        "label": "SALARY",              #ddd,ddd USD [—–-] ddd,ddd USD
+        "pattern": [
+            {"LIKE_NUM": True},
+            {"TEXT": "USD"},
+            {"TEXT": {"REGEX": r"[—–-]"}},
+            {"LIKE_NUM": True},
+            {"TEXT": "USD"}
+        ]
+    }
 ]
 
 experiencePatterns = [

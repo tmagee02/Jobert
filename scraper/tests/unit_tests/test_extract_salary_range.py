@@ -19,7 +19,8 @@ from scraper.handleNLP import extractSalaryRange
         ('$203,410–290,586 USD', (203410, 290586)), #Spotify
         ('US: $174000 - $253000 (USD)', (174000, 253000)), #Google
         ('$350,000 - $500,000 USD', (350000, 500000)), #Anthropic
-        ('$140,000—$195,000 USD', (140000, 195000)) #Datadog
+        ('$140,000—$195,000 USD', (140000, 195000)), #Datadog
+        ('152,000 USD - 241,500 USD', (152000, 241500)) #NVIDIA
     ]
 )
 def test_extract_salary_range(text, expected):

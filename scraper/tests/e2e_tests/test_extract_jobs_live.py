@@ -17,7 +17,8 @@ from scraper.jobDetails import getAllJobDetails
         'Spotify',
         'Google',
         'Anthropic',
-        'Datadog'
+        'Datadog',
+        'NVIDIA'
     ],
     ids=lambda c: f'{c.lower()}-urls-live'
 )
@@ -26,8 +27,8 @@ def test_extract_urls(companyName, page):
     loadJson(companies)
     company = {companyName: companies[companyName]}
 
-    jobUrls = collectAllCompanyJobUrls(company, page)
-    jobDetails = getAllJobDetails(set(), page, jobUrls, company)
+    jobUrls = collectAllCompanyJobUrls(page, company, set())
+    jobDetails = getAllJobDetails(page, company, jobUrls)
 
     for url, job in jobDetails.items():
         assert job.url == url

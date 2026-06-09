@@ -229,6 +229,23 @@
             "remote" : null,
             "datePosted" : null
         }
+    },
+    {
+        "companyName" : "NVIDIA",
+        "urlDiscoveryStrategy" : [],
+        "paginationType" : "Next Page",
+        "urlAttributeType" : "href",
+        "xpaths" : {
+            "jobUrl" : "//div/div[contains(@class, 'cardContainer')]/a",
+            "pagination" : "//button[@aria-label='Next jobs']",
+            "jobTitle" : "//h2",
+            "jobDesc" : [
+                "//div[@id='job-description-container']"
+            ],
+            "location" : "//div[contains(@class, 'location')]",
+            "remote" : null,
+            "datePosted" : null
+        }
     }
 
 ]

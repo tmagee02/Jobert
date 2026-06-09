@@ -16,7 +16,8 @@ from scraper.jobUrls import collectAllCompanyJobUrls
         'Spotify',
         'Google',
         'Anthropic',
-        'Datadog'
+        'Datadog',
+        'NVIDIA'
     ],
     ids=lambda c: f'{c.lower()}-urls-live'
 )
@@ -25,7 +26,7 @@ def test_extract_urls(companyName, page):
     loadJson(companies)
     company = {companyName: companies[companyName]}
 
-    jobUrls = collectAllCompanyJobUrls(company, page)
+    jobUrls = collectAllCompanyJobUrls(page, company, set())
 
     assert len(jobUrls) > 0
     for c, url in jobUrls:

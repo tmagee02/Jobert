@@ -7,7 +7,7 @@ ruler = nlp.add_pipe('entity_ruler')
 patterns = [*salaryPatterns, *experiencePatterns]
 ruler.add_patterns(patterns)
 
-text = 'The United States base range for this position is $164,448 - $234,926, plus equity. '
+text = 'The base salary range is 152,000 USD - 241,500 USD for Level 3, and 184,000 USD - 287,500 USD for Level 4.'
 doc = nlp(text)
 # $184,049–262,928 USD
 # $203,410–290,586 USD

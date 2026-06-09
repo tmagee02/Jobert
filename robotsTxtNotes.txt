@@ -39,3 +39,15 @@ robots.txt
         Disallow: /about/careers/applications/jobs/results/?page=
         Disallow: /about/careers/applications/jobs/results?*&page=
         Disallow: /about/careers/applications/jobs/results/?*&page=
+    Anthropic
+        All good
+        User-Agent: *
+        Allow: /
+    Datadog
+        All good, empty robots.txt besides sitemap
+    NVIDIA
+        All good, root disallow overridden by Allow: /careers
+        User-agent: *
+        Disallow: /
+        Allow: /$
+        Allow: /careers

@@ -7,31 +7,31 @@ from scraper.company import Company
 
 
 # Possible new companies:
-# Big Tech: Meta, Amazon?, Netfix, *Google, NVIDIA, *Apple 2
-# AI: Anthropic, xAI, Hugging Face, Cohere, *OpenAI 1
+# Big Tech: Meta, Amazon?, Netfix, *Google, *NVIDIA, *Apple 3
+# AI: *Anthropic, xAI, Hugging Face, Cohere, *OpenAI 2
 # Fintech: *Plaid, *Brex, Ramp, Robinhood, Chime, Mercury, *Stripe, *Block 4
-# Infrastructure: Snowflake, Datadog, Cloudflare, Confluent, *Databricks 1
+# Infrastructure: Snowflake, *Datadog, Cloudflare, Confluent, *Databricks 2
 # Consumer: Snap, Discord, Pintrest, Instacart, Doordash, Reddit, *Spotify, *Airbnb, *Uber 3
 # DevTools: Vercel, Figma, Linear, Notion 0
 # Misc.: Waymo, Wing (Google subsidiaries)
 
 def main():
-    ID = 12
-    NAME = 'Datadog'
-    BASE_URL = 'https://careers.datadoghq.com'
-    SEARCH_PATH = '/all-jobs/'
-    SEARCH_QUERY = '?parent_department_Engineering%5B0%5D=Engineering&region_Americas%5B0%5D=Americas'
+    ID = 14
+    NAME = 'NVIDIA'
+    BASE_URL = 'https://jobs.nvidia.com'
+    SEARCH_PATH = '/careers/'
+    SEARCH_QUERY = '?start=0&location=United+States&sort_by=timestamp&filter_include_remote=1&filter_job_category=engineering'
     URL_DISCOVERY_STRATEGY = [
     ]
     PAGINATION_TYPE = 'Next Page'
     URL_ATTRIBUTE_TYPE = 'href'
-    JOB_URL = '//button/a'
-    PAGINATION = '//a[@aria-label="Next Page"]'
-    JOB_TITLE = '//main/h2'
+    JOB_URL = "//div/div[contains(@class, 'cardContainer')]/a"
+    PAGINATION = "//button[@aria-label='Next jobs']"
+    JOB_TITLE = '//h2'
     JOB_DESC = [
-        '//div[@class="job-description"]'
+        "//div[@id='job-description-container']"
     ]
-    LOCATION = '//main/div/p'
+    LOCATION = "//div[contains(@class, 'location')]"
     REMOTE = None
     DATE_POSTED = None
     XPATHS = {
@@ -56,7 +56,7 @@ def main():
     )
     print(company.name, company.baseUrl, company.searchPath)
     companies = {NAME: company}
-    dbJobUrls = set()
+    oldJobUrls = set()
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False, slow_mo=50)
@@ -67,8 +67,8 @@ def main():
             });
         """)
 
-        jobUrls = collectAllCompanyJobUrls(companies, page)
-        jobDetails = getAllJobDetails(dbJobUrls, page, jobUrls, companies)
+        jobUrls = collectAllCompanyJobUrls(page, companies, oldJobUrls)
+        jobDetails = getAllJobDetails(page, companies, jobUrls)
     
 
     handleAllNLP(jobDetails)

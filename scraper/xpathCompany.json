@@ -1,251 +1,252 @@
 [
-    {
-        "companyName" : "Stripe",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : null,
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//tr/td/a",
-            "pagination" : null,
-            "jobTitle" : "//div[@class='Section__layout']/section/header/h1",
-            "jobDesc" : [  "//div[contains(@class, 'RowLayout')]" ],
-            "location" : "//p[contains(text(), 'Office locations')]/following-sibling::p",
-            "remote" : "//p[contains(text(), 'Remote locations')]/following-sibling::p",
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "Airbnb",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : "Next Page",
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//span/a",
-            "pagination" : "//a[@class='facetwp-page next']",
-            "jobTitle" : "//h1[@class='text-size-12  text-left']",
-            "jobDesc" : [  "//div[@class='job-detail active']" ],
-            "location" : "//div[@class='offices']/span",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "Block",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : null,
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//div[contains(@class, 'jobs-stack')]/div/a",
-            "pagination" : null,
-            "jobTitle" : "//h1/div",
-            "jobDesc" : [  "//div[@id='job-details-content']" ],
-            "location" : "//div[contains(@class, 'job-info-container')]/div/span[2]/span",
-            "remote" : null,
-            "datePosted" : "//div[contains(@class, 'job-info-container')]/div[3]/span"
-        }
-    },
-    {
-        "companyName" : "Uber",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : "Show More",
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//span/a",
-            "pagination" : "//button[text() = 'Show more openings']",
-            "jobTitle" : "//h1",
-            "jobDesc" : [  "//div[contains(@class, 'job-details')]/div/div/div[3]" ],
-            "location" : "//div[contains(@class, 'job-details')]/div/div/div/div/div",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "OpenAI",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : null,
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//div[contains(@class, '@container')]/div/a[1]",
-            "pagination" : null,
-            "jobTitle" : "//h2",
-            "jobDesc" : [  
-                "//main/div/div[3]/div",
-                "//main/div/div[4]/div"
-                ],
-            "location" : "//div[@class='mt-sm']/p",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "Databricks",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : null,
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//div[@id='jobWrap']/div/div/a",
-            "pagination" : null,
-            "jobTitle" : "//h1/div",
-            "jobDesc" : [  "//div[contains(@class, 'rich-text-body b2')]" ],
-            "location" : "//div[contains(@class, 'h4')]",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "Apple",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : "Next Page",
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//h3/a",
-            "pagination" : "//button[@aria-label='Next Page']",
-            "jobTitle" : "//h1",
-            "jobDesc" : [  "//section[@class='hyperlink-underline']" ],
-            "location" : "//label[@id='jobdetails-joblocation']",
-            "remote" : null,
-            "datePosted" : "//time[@id='jobdetails-jobpostdate']"
-        }
-    },
-    {
-        "companyName" : "Plaid",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : null,
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//li/div/div/a",
-            "pagination" : null,
-            "jobTitle" : "//h1",
-            "jobDesc" : [  
-                "//main/div/div/div/div[2]/div[1]",
-                "//main/div/div/div/div[2]/div[2]",
-                "//main/div/div/div/div[2]/div[3]"
-        ],
-            "location" : "//h1/following-sibling::div/div[3]",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "Brex",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : null,
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//h3/following-sibling::div//a",
-            "pagination" : null,
-            "jobTitle" : "//h1",
-            "jobDesc" : [  "//main/div/div/div[2]/div" ],
-            "location" : "//h4",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "Spotify",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : "Show More",
-        "urlAttributeType" : "data-info",
-        "xpaths" : {
-            "jobUrl" : "//div[@class='row']/div/div[@role='link']",
-            "pagination" : "//main//div[4]/div[@class='row']/following-sibling::div/div[1]/button",
-            "jobTitle" : "//main//h1",
-            "jobDesc" : [  
-                "//main/div/div[1]/div[2]/div/div[1]/div[4]",
-                "//main/div/div[1]/div[2]/div/div[1]/div[5]", 
-                "//main/div/div[1]/div[2]/div/div[2]",
-                "//main/div/div[1]/div[2]/div/div[3]",
-                "//main/div/div[1]/div[2]/div/div[4]",
-                "//main/div/div[1]/div[2]/div/div[5]",
-                "//main/div/div[1]/div[2]/div/div[6]"
-        ],
-            "location" : "//main/div/div[1]/div[2]/div/div[1]/div[3]/span",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "Google",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : null,
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//main//ul//a",
-            "pagination" : null,
-            "jobTitle" : "//span/div[1]/div/h2",
-            "jobDesc" : [
-                "//span/div/div[4]/h3[1]",
-                "//span/div/div[4]/ul[1]",
-                "//span/div/div[4]/h3[2]",
-                "//span/div/div[4]/ul[2]",
-                "//span/div/div[5]",
-                "//span/div/div[6]"
-            ],
-            "location" : "//span/div/div/span[2]/span",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "Anthropic",
-        "urlDiscoveryStrategy" : [
-            {
-                "type": "TEXT_INPUT",
-                "selector": "//input[@placeholder='Search roles']",
-                "text": "Software Engineer"
-            },
-            {
-                "type": "CLICK_ALL",
-                "selector": "//section/div[position() > 1]"
-            }
-        ],
-        "paginationType" : null,
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//section/div/div/a",
-            "pagination" : null,
-            "jobTitle" : "//h1",
-            "jobDesc" : [
-                "//div[@class='job__description body']"
-            ],
-            "location" : "//div[@class='job__location']/div",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "Datadog",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : "Next Page",
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//button/a",
-            "pagination" : "//a[@aria-label='Next Page']",
-            "jobTitle" : "//main/h2",
-            "jobDesc" : [
-                "//div[@class='job-description']"
-            ],
-            "location" : "//main/div/p",
-            "remote" : null,
-            "datePosted" : null
-        }
-    },
-    {
-        "companyName" : "NVIDIA",
-        "urlDiscoveryStrategy" : [],
-        "paginationType" : "Next Page",
-        "urlAttributeType" : "href",
-        "xpaths" : {
-            "jobUrl" : "//div/div[contains(@class, 'cardContainer')]/a",
-            "pagination" : "//button[@aria-label='Next jobs']",
-            "jobTitle" : "//h2",
-            "jobDesc" : [
-                "//div[@id='job-description-container']"
-            ],
-            "location" : "//div[contains(@class, 'location')]",
-            "remote" : null,
-            "datePosted" : null
-        }
+  {
+    "companyName": "Stripe",
+    "urlDiscoveryStrategy": [],
+    "paginationType": "Next Page",
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//li/div/a",
+      "pagination": "//button[@aria-label='Next page']",
+      "jobTitle": "//h1",
+      "jobDesc": [
+        "//div[@class='careers-listing-details__body'][1]",
+        "//div[@class='careers-listing-details__body'][2]",
+        "//div[@class='careers-listing-details__body'][3]",
+        "//div[@class='careers-listing-details__body'][4]",
+        "//div[@class='careers-listing-details__body'][5]"
+      ],
+      "location": "//dt[contains(., 'Office location')]/following-sibling::dd",
+      "remote": "//dt[contains(., 'Remote location')]/following-sibling::dd",
+      "datePosted": null
     }
-
+  },
+  {
+    "companyName": "Airbnb",
+    "urlDiscoveryStrategy": [],
+    "paginationType": "Next Page",
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//span/a",
+      "pagination": "//a[@class='facetwp-page next']",
+      "jobTitle": "//h1[@class='text-size-12  text-left']",
+      "jobDesc": ["//div[@class='job-detail active']"],
+      "location": "//div[@class='offices']/span",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "Block",
+    "urlDiscoveryStrategy": [],
+    "paginationType": null,
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//div[contains(@class, 'jobs-stack')]/div/a",
+      "pagination": null,
+      "jobTitle": "//h1/div",
+      "jobDesc": ["//div[@id='job-details-content']"],
+      "location": "//div[contains(@class, 'job-info-container')]/div/span[2]/span",
+      "remote": null,
+      "datePosted": "//div[contains(@class, 'job-info-container')]/div[3]/span"
+    }
+  },
+  {
+    "companyName": "Uber",
+    "urlDiscoveryStrategy": [
+      {
+        "type": "CLICK",
+        "selector": "//button[text()='Accept All']"
+      }
+    ],
+    "paginationType": "Next Page",
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//div[@data-slot='card']//a",
+      "pagination": "//a[@aria-label='Go to next page']",
+      "jobTitle": "//h1",
+      "jobDesc": ["//div/div/div[@class='container']/div[1]/div"],
+      "location": "//dd[1]",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "OpenAI",
+    "urlDiscoveryStrategy": [],
+    "paginationType": null,
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//div[contains(@class, '@container')]/div/a[1]",
+      "pagination": null,
+      "jobTitle": "//h2",
+      "jobDesc": ["//main/div/div[3]/div", "//main/div/div[4]/div"],
+      "location": "//div[@class='mt-sm']/p",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "Databricks",
+    "urlDiscoveryStrategy": [],
+    "paginationType": null,
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//div[@id='jobWrap']/div/div/a",
+      "pagination": null,
+      "jobTitle": "//h1/div",
+      "jobDesc": ["//div[contains(@class, 'rich-text-body b2')]"],
+      "location": "//div[contains(@class, 'h4')]",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "Apple",
+    "urlDiscoveryStrategy": [],
+    "paginationType": "Next Page",
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//h3/a",
+      "pagination": "//button[@aria-label='Next Page']",
+      "jobTitle": "//h1",
+      "jobDesc": ["//section[@class='hyperlink-underline']"],
+      "location": "//label[@id='jobdetails-joblocation']",
+      "remote": null,
+      "datePosted": "//time[@id='jobdetails-jobpostdate']"
+    }
+  },
+  {
+    "companyName": "Plaid",
+    "urlDiscoveryStrategy": [],
+    "paginationType": null,
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//li/div/div/a",
+      "pagination": null,
+      "jobTitle": "//h1",
+      "jobDesc": [
+        "//main/div/div/div/div[2]/div[1]",
+        "//main/div/div/div/div[2]/div[2]",
+        "//main/div/div/div/div[2]/div[3]"
+      ],
+      "location": "//h1/following-sibling::div/div[3]",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "Brex",
+    "urlDiscoveryStrategy": [],
+    "paginationType": null,
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//h3/following-sibling::div//a",
+      "pagination": null,
+      "jobTitle": "//h1",
+      "jobDesc": ["//main/div/div/div[2]/div"],
+      "location": "//h4",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "Spotify",
+    "urlDiscoveryStrategy": [],
+    "paginationType": "Show More",
+    "urlAttributeType": "data-info",
+    "xpaths": {
+      "jobUrl": "//div[@class='row']/div/div[@role='link']",
+      "pagination": "//main//div[4]/div[@class='row']/following-sibling::div/div[1]/button",
+      "jobTitle": "//main//h1",
+      "jobDesc": [
+        "//main/div/div[1]/div[2]/div/div[1]/div[4]",
+        "//main/div/div[1]/div[2]/div/div[1]/div[5]",
+        "//main/div/div[1]/div[2]/div/div[2]",
+        "//main/div/div[1]/div[2]/div/div[3]",
+        "//main/div/div[1]/div[2]/div/div[4]",
+        "//main/div/div[1]/div[2]/div/div[5]",
+        "//main/div/div[1]/div[2]/div/div[6]"
+      ],
+      "location": "//main/div/div[1]/div[2]/div/div[1]/div[3]/span",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "Google",
+    "urlDiscoveryStrategy": [],
+    "paginationType": null,
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//main//ul//a",
+      "pagination": null,
+      "jobTitle": "//span/div[1]/div/h2",
+      "jobDesc": [
+        "//span/div/div[4]/h3[1]",
+        "//span/div/div[4]/ul[1]",
+        "//span/div/div[4]/h3[2]",
+        "//span/div/div[4]/ul[2]",
+        "//span/div/div[5]",
+        "//span/div/div[6]"
+      ],
+      "location": "//span/div/div/span[2]/span",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "Anthropic",
+    "urlDiscoveryStrategy": [
+      {
+        "type": "TEXT_INPUT",
+        "selector": "//input[@placeholder='Search roles']",
+        "text": "Software Engineer"
+      },
+      {
+        "type": "CLICK_ALL",
+        "selector": "//section/div[position() > 1]"
+      }
+    ],
+    "paginationType": null,
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//section/div/div/a",
+      "pagination": null,
+      "jobTitle": "//h1",
+      "jobDesc": ["//div[@class='job__description body']"],
+      "location": "//div[@class='job__location']/div",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "Datadog",
+    "urlDiscoveryStrategy": [],
+    "paginationType": "Next Page",
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//button/a",
+      "pagination": "//a[@aria-label='Next Page']",
+      "jobTitle": "//main/h2",
+      "jobDesc": ["//div[@class='job-description']"],
+      "location": "//main/div/p",
+      "remote": null,
+      "datePosted": null
+    }
+  },
+  {
+    "companyName": "NVIDIA",
+    "urlDiscoveryStrategy": [],
+    "paginationType": "Next Page",
+    "urlAttributeType": "href",
+    "xpaths": {
+      "jobUrl": "//div/div[contains(@class, 'cardContainer')]/a",
+      "pagination": "//button[@aria-label='Next jobs']",
+      "jobTitle": "//h2",
+      "jobDesc": ["//div[@id='job-description-container']"],
+      "location": "//div[contains(@class, 'location')]",
+      "remote": null,
+      "datePosted": null
+    }
+  }
 ]

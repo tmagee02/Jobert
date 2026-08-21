@@ -7,14 +7,14 @@ from typing import Tuple
 from scraper.job import Job
 import time
 
-def handleAllNLP(jobDetails: dict[str, Job]):
+def handleAllNLP(jobsScraped: list[Job]):
     timeStart = time.perf_counter()
     nlp = spacy.load("./scraper/nlp/training/output/model-best")
     ruler = nlp.add_pipe("entity_ruler", before="ner")
     patterns = [*salaryPatterns, *experiencePatterns]
     ruler.add_patterns(patterns)
 
-    for job in jobDetails.values():
+    for job in jobsScraped:
         text = f'{job.offices} ::: {job.remote}  <><><><>  {job.jobDesc}'
         doc = nlp(text)
 

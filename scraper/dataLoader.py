@@ -7,6 +7,10 @@ import time
 from scraper.company import Company
 
 
+NEED_TO_FIX = {}
+WHITELIST = {}
+
+
 def loadExistingDatabaseData() -> Tuple[dict, Set[str]]:
     timeStart = time.perf_counter()
     qSelectCompany = '''
@@ -29,13 +33,15 @@ def loadExistingDatabaseData() -> Tuple[dict, Set[str]]:
     dbCompanies = pd.read_sql_query(qSelectCompany, conn)
     for row in dbCompanies.itertuples():
         company = Company(
-            id=row.id, 
+            id=row.company_id, 
             name=row.company_name, 
             baseUrl=row.base_url, 
             searchPath=row.search_path, 
             searchQuery=row.search_query
             )
-        companies[row.company_name] = company
+        if ((WHITELIST and row.company_name in WHITELIST) or 
+            (not WHITELIST and row.company_name not in NEED_TO_FIX)):
+            companies[row.company_name] = company
     print(dbCompanies)
 
     df_jobUrls = pd.read_sql_query(qSelectJobUrls, conn)
@@ -53,6 +59,10 @@ def loadJson(companies: dict) -> Tuple[dict, defaultdict]:
         data = json.load(file)
 
     for company in data:
+        companyName = company['companyName']
+        if (WHITELIST and companyName not in WHITELIST) or companyName in NEED_TO_FIX:
+            continue
+
         c = companies[company['companyName']]
         c.urlDiscoveryStrategy = company['urlDiscoveryStrategy']
         c.paginationType = company['paginationType'] 
@@ -61,4 +71,4 @@ def loadJson(companies: dict) -> Tuple[dict, defaultdict]:
     
     timeEnd = time.perf_counter()
     timeLoadJson = timeEnd - timeStart
-    print(f'\nloadJson Time: {timeLoadJson}')
+    print(f'\nloadJson Time: {timeLoadJson}\n')

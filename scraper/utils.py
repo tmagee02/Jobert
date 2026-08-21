@@ -3,10 +3,60 @@ import random
 import time
 import logging
 import smtplib
+import asyncio
 from email.message import EmailMessage
 from dotenv import load_dotenv
 from datetime import datetime
 from scraper.job import Job
+from functools import wraps
+from inspect import iscoroutinefunction
+
+
+
+load_dotenv()
+email, password = os.getenv('EMAIL_ADDR'), os.getenv('EMAIL_PASS_MACAIR')
+
+
+def timed(printPrefix: str):
+    def decorator(timedFunction: function):
+        if iscoroutinefunction(timedFunction):
+            @wraps(timedFunction)
+            async def asyncWrapper(*args, **kwargs):
+                timeStart = time.perf_counter()
+
+                try:
+                    return await timedFunction(*args, **kwargs)
+                finally:
+                    timeEnd = time.perf_counter()
+                    totalTime = timeEnd - timeStart
+                    print(f'{printPrefix} Time: {totalTime}\n')
+            return asyncWrapper
+        else:
+            @wraps(timedFunction)
+            def syncWrapper(*args, **kwargs):
+                timeStart = time.perf_counter()
+
+                try:
+                    return timedFunction(*args, **kwargs)
+                finally:
+                    timeEnd = time.perf_counter()
+                    totalTime = timeEnd - timeStart
+                    print(f'{printPrefix}: {totalTime}\n')
+            return syncWrapper
+
+    return decorator
+
+
+async def asyncRandomDelay(shortDelay: bool=False) -> None:
+    # global totalDelay
+    # logger = logging.getLogger('Jobert Scraper')
+    randomTime = random.uniform(0.5, 1.5) if shortDelay else random.uniform(1.5, 5)
+    # totalDelay += randomTime
+    # logger.debug(f'Random Delay: {randomTime} sec')
+    # print(f'Waiting {randomTime} sec.')
+    await asyncio.sleep(randomTime)
+    return
+
 
 totalDelay = 0
 def randomDelay(shortDelay: bool=False) -> None:
@@ -19,8 +69,6 @@ def randomDelay(shortDelay: bool=False) -> None:
     return
 
 def emailLogging(timestamp: str, programTime: float, loggerFile: str):
-    load_dotenv()
-    email, password = os.getenv('EMAIL_ADDR'), os.getenv('EMAIL_PASS')
     body = f'Scraper run time: {programTime}. See logs attatched.'
     subject = f'Scraper - {timestamp}'
     
@@ -75,8 +123,6 @@ def emailJobsInExperienceRange(jobs: list[Job], minExp: int, maxExp: int):
     if not jobsInRange and not jobsNoExp: 
         return print(f"No jobs found between {minExp} and {maxExp} years of experience")
     
-    load_dotenv()
-    email, password = os.getenv('EMAIL_ADDR'), os.getenv('EMAIL_PASS')
     subject = f'Scraper - Experience [{minExp}, {maxExp}]'
     body = f'Found {len(jobsInRange)} jobs between {minExp} and {maxExp} years of experience. See below: \n\n\n'
     sJobsInRange = '\n'.join(jobsInRange)

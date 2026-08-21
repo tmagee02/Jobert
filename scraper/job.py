@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 class Job:
     url: str
     idCompany: int
+    company: str
     title: str
     jobDesc: str
     offices: str | None
@@ -15,3 +16,7 @@ class Job:
     minExperience: int = -1
     maxExperience: int = -1
     locations: list[str] = field(default_factory=dict)
+
+
+    def __str__(self):
+        return f'{self.title[:10]} ({self.idCompany}) - {self.jobDesc[:3]}'

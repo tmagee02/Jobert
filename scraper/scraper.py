@@ -1,4 +1,5 @@
 from scraper.dataLoader import loadExistingDatabaseData, loadJson
+from scraper.job import Job
 from scraper.jobUrls import collectAllCompanyJobUrls
 from scraper.jobDetails import getAllJobDetails
 from scraper.exportDetails import writeJobDetailsToFile, insertJobsToDatabase
@@ -10,6 +11,7 @@ import random
 
 
 def main():    
+    # emailJobsInExperienceRange([Job('www.google.com', 100, 'test', 'test', None, None, None, 0, 500, 0, 500, ['test1, test2'])], 0, 2)
     companies, oldJobUrls = loadExistingDatabaseData()
     loadJson(companies)
 

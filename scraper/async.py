@@ -5,9 +5,8 @@ from scraper.dataLoader import loadExistingDatabaseData, loadJson
 from scraper.jobUrls import asyncCollectAllCompanyJobUrls
 from scraper.jobDetails import asyncGetAllJobDetails
 from scraper.handleNLP import handleAllNLP
-from scraper.utils import timed, emailJobsInExperienceRange
+from scraper.utils import timed, emailJobsInExperienceRange, sendExperiencePushNotification
 from scraper.exportDetails import writeJobDetailsToFile, insertJobsToDatabase
-import requests
 
 
 @timed('Program')
@@ -37,7 +36,12 @@ async def main():
     emailJobsInExperienceRange(shuffledJobs, 0, 2)
     writeJobDetailsToFile(shuffledJobs)
     insertJobsToDatabase(shuffledJobs)
-    requests.post('https://ntfy.sh/jobert_scraper', data='poop!')
+
+    try:
+        sendExperiencePushNotification(shuffledJobs, 0)
+        sendExperiencePushNotification(shuffledJobs, 1)
+    except Exception as e:
+        print(f'Failed to send push notifications: {e}')
     return
 
 

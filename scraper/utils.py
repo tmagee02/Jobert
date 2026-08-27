@@ -3,6 +3,7 @@ import random
 import time
 import logging
 import smtplib
+import requests
 import asyncio
 from email.message import EmailMessage
 from dotenv import load_dotenv
@@ -141,3 +142,19 @@ def emailJobsInExperienceRange(jobs: list[Job], minExp: int, maxExp: int):
         smtp.login(email, password)
         smtp.send_message(msg)
     return
+
+
+def sendExperiencePushNotification(jobs: list[Job], experience: int) -> None:
+    jobsInRange = []
+
+    for job in jobs:
+        if (not job.maxExperience or experience <= job.maxExperience) and job.minExperience and experience >= job.minExperience:
+            jobsInRange.append(job)
+
+    if not jobsInRange:
+        return
+
+    url = f'https://ntfy.sh/jobert-scraper-{experience}yoe'
+    data = f'{len(jobsInRange)} job(s) scraped asking for {experience} year(s) of experience'
+    response = requests.post(url, data, timeout=10)
+    response.raise_for_status()

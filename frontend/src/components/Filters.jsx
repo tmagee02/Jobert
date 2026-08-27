@@ -1,7 +1,7 @@
 import FilterCompany from "./FilterCompany.jsx";
 import FilterSalary from "./FilterSalary.jsx";
 import FilterExperience from "./FilterExperience.jsx";
-import "../styles/filters.css";
+import "../styles/Filters.css";
 
 export default function Filters({
   setOffset,

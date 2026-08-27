@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import CompanyDropdown from "./CompanyDropdown.jsx";
 import "../styles/index.css";
-import "../styles/filters.css";
+import "../styles/Filters.css";
 
 export default function FilterCompany({
   setOffset,

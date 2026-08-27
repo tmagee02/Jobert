@@ -1,5 +1,5 @@
 import "../styles/index.css";
-import "../styles/filters.css";
+import "../styles/Filters.css";
 export default function ResultsBar({
   offset,
   setOffset,

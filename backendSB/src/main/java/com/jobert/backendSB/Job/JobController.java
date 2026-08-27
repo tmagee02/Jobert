@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jobert.backendSB.Job.dto.GetJobsResponse;
 import com.jobert.backendSB.Job.dto.JobDetailsDTO;
 
-@CrossOrigin(origins="http://localhost:5173")
+@CrossOrigin(origins={
+    "http://localhost:3000",
+    "http://localhost:5173"
+})
 @RestController
 @RequestMapping("/jobs")
 public class JobController {

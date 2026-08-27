@@ -2,60 +2,77 @@
     background-color: rgba(var(--white-rgb), .2) !important;
 } */
 
-
-hr{
-    border-color: rgba(var(--mid-rgb),0.3);
+hr {
+  border-color: rgba(var(--mid-rgb), 0.3);
 }
 
-
-#jobs{
-    /* background-color: var(--white); */
+#jobs {
+  /* background-color: var(--white); */
 }
 
-
-#jobsGrid{
-    background-color: rgba(0,0,0,0);
+#jobsGrid {
+  background-color: rgba(0, 0, 0, 0);
 }
 
+#jobRow {
+  height: 120px;
+  border-radius: 6px;
+  border: 1px solid rgba(var(--mid-rgb), 0.2);
+  background-color: rgba(var(--white-rgb), 0.3);
+  box-shadow: 0 0 8px rgba(var(--mid-rgb), 0.3);
+  backdrop-filter: blur(5px);
+  transition: all 0.2s ease;
+}
+#newJobIndicator {
+  --newJobIndicator: var(--text3-active);
 
-#jobRow{
-    height: 120px;
-    border-radius: 6px;
-    border: 1px solid rgba(var(--mid-rgb),0.2);
-    background-color: rgba(var(--white-rgb), 0.3);
-    box-shadow: 0 0 8px rgba(var(--mid-rgb),0.3);
-    backdrop-filter: blur(5px);
-    transition: all .2s ease;
+  margin-left: 16px;
+
+  padding: 1px 5px;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  color: var(--newJobIndicator);
+
+  border: 1px solid var(--newJobIndicator);
+
+  border-radius: 4px;
+
+  opacity: 0.85;
 }
-#jobRow:hover{
-    box-shadow: 0 0 8px rgba(var(--mid-rgb),0.5);
-    transform: translateY(-2px);
+#jobRow:hover {
+  box-shadow: 0 0 8px rgba(var(--mid-rgb), 0.5);
+  transform: translateY(-2px);
 }
-#jobRow:hover #chevron{
-    color: var(--text2-active);
-    transform: translateX(1px);
+#jobRow:hover #chevron {
+  color: var(--text2-active);
+  transform: translateX(1px);
 }
-#jobRow:hover #jobTitle{
-    color: var(--text1-active);
+#jobRow:hover #jobTitle {
+  color: var(--text1-active);
 }
-#jobRow:hover #location{
-    color: var(--text3-active);
+#jobRow:hover #location {
+  color: var(--text3-active);
 }
-#jobRow:hover #rightText{
-    color: var(--text2-active)
+#jobRow:hover #newJobIndicator {
+  color: var(--text2-active);
+  border-color: var(--text2-active);
 }
-#jobRow:active{
-    box-shadow: 0 0 8px rgba(var(--mid-rgb),0.8);
+#jobRow:hover #rightText {
+  color: var(--text2-active);
+}
+#jobRow:active {
+  box-shadow: 0 0 8px rgba(var(--mid-rgb), 0.8);
 }
 
-
-.secondary-text{
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text3);
+.secondary-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text3);
 }
-#rightText{
-    font-size: 16px;
-    color: var(--text2);
+#rightText {
+  font-size: 16px;
+  color: var(--text2);
 }
-

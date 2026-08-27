@@ -1,11 +1,12 @@
 import JobRow from "./JobRow.jsx";
+import { getDateScraped } from "../utils/jobDetails";
 
 export default function JobsGrid({ jobs }) {
   return (
     <div id="jobsGrid" className="flex flex-col bg-black w-250 py-3 space-y-4">
       {jobs.map((job, i) => (
         <div key={job.JobId} className="flex flex-col space-y-4">
-          <JobRow job={job} />
+          <JobRow job={job} newestDateScraped={getDateScraped(jobs[0])} />
           {i < jobs.length - 1 && <hr />}
         </div>
       ))}

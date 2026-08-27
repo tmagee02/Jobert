@@ -14,6 +14,26 @@ services:
       - db
     restart: unless-stopped
 
+  backend:
+    container_name: jobert-backend
+    build:
+      context: ./backendSB
+    ports:
+      - "8080:8080"
+    networks:
+      - db
+    depends_on:
+      - jobert_db
+    restart: unless-stopped
+
+  frontend:
+    container_name: jobert-frontend
+    build:
+      context: ./frontend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+
 networks:
   db:
     driver: bridge

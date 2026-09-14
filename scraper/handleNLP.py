@@ -42,11 +42,7 @@ def handleAllNLP(jobsScraped: list[Job]):
             print(f'ValueError Caught: {e}\n')
             job.minSalary, job.maxSalary = None, None
 
-        try:
-            job.minExperience, job.maxExperience = extractExperience(labelLists['EXPERIENCE'])
-        except ValueError as e:
-            print(f'ValueError Caught: {e}\n')
-            job.minExperience, job.maxExperience = None, None
+        job.minExperience, job.maxExperience = extractExperience(labelLists['EXPERIENCE'])
 
 
 def extractSalaryRange(salary: str) -> Tuple[int, int]:

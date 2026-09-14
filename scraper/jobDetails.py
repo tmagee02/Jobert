@@ -113,7 +113,7 @@ def getLocator(page: Page, company: Company, key: str) -> Locator:
 #-------async
 #-------async
 #-------async
-@timed('getAllJobs134')
+@timed('getAllJobs')
 async def asyncGetAllJobDetails(browser: Browser, companies: defaultdict, jobUrls: List[Tuple[str, str]]) -> list[Job]:  
     #get maximum of X urls per company
     MAX_COMPANY_COUNT = 100
@@ -138,7 +138,7 @@ async def asyncGetAllJobDetails(browser: Browser, companies: defaultdict, jobUrl
     for result in jobScrapeResults:
         if not result.job:
             companyCount[result.company.name] -= 1
-    print(*(f'{company}: {count}' for company, count in companyCount.items()), f'Successful Scrapes: {sum(companyCount.values())}', sep='\n')
+    print(*(f'{company}: {count}' for company, count in companyCount.items()), f'Successful Scrapes: {sum(companyCount.values())}\n')
 
     return [result.job for result in jobScrapeResults if result.job]
 

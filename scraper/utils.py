@@ -30,7 +30,7 @@ def timed(printPrefix: str):
                 finally:
                     timeEnd = time.perf_counter()
                     totalTime = timeEnd - timeStart
-                    print(f'{printPrefix} Time: {totalTime}\n')
+                    print(f'>> {printPrefix} Time: {totalTime}\n')
             return asyncWrapper
         else:
             @wraps(timedFunction)

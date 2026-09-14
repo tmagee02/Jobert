@@ -42,7 +42,7 @@ def timed(printPrefix: str):
                 finally:
                     timeEnd = time.perf_counter()
                     totalTime = timeEnd - timeStart
-                    print(f'{printPrefix}: {totalTime}\n')
+                    print(f'>> {printPrefix}: {totalTime}\n')
             return syncWrapper
 
     return decorator

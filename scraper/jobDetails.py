@@ -138,7 +138,7 @@ async def asyncGetAllJobDetails(browser: Browser, companies: defaultdict, jobUrl
     for result in jobScrapeResults:
         if not result.job:
             companyCount[result.company.name] -= 1
-    print(*(f'{company}: {count}' for company, count in companyCount.items()), f'Successful Scrapes: {sum(companyCount.values())}\n')
+    print(*(f'{company}: {count}' for company, count in companyCount.items()), f'Successful Scrapes: {sum(companyCount.values())}\n', sep='\n')
 
     return [result.job for result in jobScrapeResults if result.job]
 

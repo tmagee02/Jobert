@@ -1,14 +1,12 @@
-from collections import defaultdict
-
-import spacy
-from scraper.nlp.patternsNLP import salaryPatterns, experiencePatterns
 import re
+import spacy
 from typing import Tuple
 from scraper.job import Job
-import time
+from scraper.utils import timed
+from scraper.nlp.patternsNLP import salaryPatterns, experiencePatterns
 
+@timed('handleAllNLP')
 def handleAllNLP(jobsScraped: list[Job]):
-    timeStart = time.perf_counter()
     nlp = spacy.load("./scraper/nlp/training/output/model-best")
     ruler = nlp.add_pipe("entity_ruler", before="ner")
     patterns = [*salaryPatterns, *experiencePatterns]
@@ -39,25 +37,16 @@ def handleAllNLP(jobsScraped: list[Job]):
 
         try:
             minSalary, maxSalary = extractSalaryRange(labelLists['SALARY'][0]) if labelLists['SALARY'] else (None, None)
+            job.minSalary, job.maxSalary = minSalary, maxSalary
         except ValueError as e:
-            print(f'ValueError Caught: {e}')
-            minSalary, maxSalary = (None, None)
+            print(f'ValueError Caught: {e}\n')
+            job.minSalary, job.maxSalary = None, None
 
         try:
-            minExp, maxExp = extractExperience(labelLists['EXPERIENCE'][0]) if labelLists['EXPERIENCE'] else (None, None)
-            if minExp == maxExp:
-                maxExp = None
+            job.minExperience, job.maxExperience = extractExperience(labelLists['EXPERIENCE'])
         except ValueError as e:
-            print(f'ValueError Caught: {e}')
-            minExp, maxExp = (None, None)
-
-        job.minSalary, job.maxSalary = minSalary, maxSalary
-        job.minExperience, job.maxExperience = minExp, maxExp
-        job.locations = labelLists['LOCATION']
-    
-    timeEnd = time.perf_counter()
-    timeHandleAllNLP = timeEnd - timeStart
-    return print(f'\nhandleAllNLP Time: {timeHandleAllNLP}\n')
+            print(f'ValueError Caught: {e}\n')
+            job.minExperience, job.maxExperience = None, None
 
 
 def extractSalaryRange(salary: str) -> Tuple[int, int]:
@@ -83,18 +72,32 @@ def extractSalaryRange(salary: str) -> Tuple[int, int]:
     return minSalary, maxSalary
 
 
-def extractExperience(experience: str) -> Tuple[int, int]:
+'''
+Goes through each experience entity found and returns the first valid min/max YOE
+
+Prints warnings of unexpected counts or YOE found in experience entities
+'''
+def extractExperience(experienceEntities: list[str]) -> Tuple[int | None, int | None]:            
+    MAX_VALID_EXP = 20
+    minExp, maxExp = None, None
     regex = r'\d+'
-    expVals = re.findall(regex, experience)
+    warnings = []
+
+    for expEnt in experienceEntities:
+        expVals = re.findall(regex, expEnt)
     
-    if len(expVals) != 1 and len(expVals) != 2:
-        raise ValueError(f'Unexpected amount of values in experience string - {experience}')
+        if len(expVals) != 1 and len(expVals) != 2:
+            warnings.append(f'Unexpected amount of values in experience string - {expEnt}')
+            continue
 
-    minExp = int(expVals[0])
-    maxExp = int(expVals[1]) if len(expVals) == 2 else minExp
+        minExp = int(expVals[0])
+        maxExp = int(expVals[1]) if len(expVals) == 2 else None
 
-    if minExp < 0 or minExp > 99 or maxExp < minExp or maxExp > 99:
-        raise ValueError(f'Unwanted years of experience in experience string - {experience}')
+        if 0 <= minExp <= MAX_VALID_EXP and (maxExp is None or minExp < maxExp < 100):
+            break
+        else:
+            warnings.append(f'Unexpected years of experience in experience string - {expEnt}')
+            minExp, maxExp = None, None
 
+    print(*warnings, sep='\n')
     return minExp, maxExp
-

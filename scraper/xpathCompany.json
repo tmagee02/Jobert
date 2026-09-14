@@ -93,7 +93,7 @@
     "xpaths": {
       "jobUrl": "//div[@id='jobWrap']/div/div/a",
       "pagination": null,
-      "jobTitle": "//h1/div",
+      "jobTitle": "//h1/span",
       "jobDesc": ["//div[contains(@class, 'rich-text-body b2')]"],
       "location": "//div[contains(@class, 'h4')]",
       "remote": null,

@@ -1,11 +1,14 @@
 import re
 import spacy
+import logging
 from typing import Tuple
 from scraper.job import Job
 from scraper.utils import timed
 from scraper.nlp.patternsNLP import salaryPatterns, experiencePatterns
 
-@timed('handleAllNLP')
+logger = logging.getLogger(__name__)
+
+@timed('handleAllNLP', debugOnly=False)
 def handleAllNLP(jobsScraped: list[Job]):
     nlp = spacy.load("./scraper/nlp/training/output/model-best")
     ruler = nlp.add_pipe("entity_ruler", before="ner")
@@ -42,7 +45,7 @@ def handleAllNLP(jobsScraped: list[Job]):
             print(f'ValueError Caught: {e}\n')
             job.minSalary, job.maxSalary = None, None
 
-        job.minExperience, job.maxExperience = extractExperience(labelLists['EXPERIENCE'])
+        job.minExperience, job.maxExperience = extractExperience(job.url, labelLists['EXPERIENCE'])
 
 
 def extractSalaryRange(salary: str) -> Tuple[int, int]:
@@ -73,17 +76,16 @@ Goes through each experience entity found and returns the first valid min/max YO
 
 Prints warnings of unexpected counts or YOE found in experience entities
 '''
-def extractExperience(experienceEntities: list[str]) -> Tuple[int | None, int | None]:            
+def extractExperience(jobUrl: str, experienceEntities: list[str]) -> Tuple[int | None, int | None]:            
     MAX_VALID_EXP = 20
     minExp, maxExp = None, None
     regex = r'\d+'
-    warnings = []
-
+    
     for expEnt in experienceEntities:
         expVals = re.findall(regex, expEnt)
     
         if len(expVals) != 1 and len(expVals) != 2:
-            warnings.append(f'Unexpected amount of values in experience string - {expEnt}')
+            logger.warning('%s - Unexpected amount of values in experience string - %s', jobUrl, expEnt)
             continue
 
         minExp = int(expVals[0])
@@ -92,8 +94,7 @@ def extractExperience(experienceEntities: list[str]) -> Tuple[int | None, int | 
         if 0 <= minExp <= MAX_VALID_EXP and (maxExp is None or minExp < maxExp < 100):
             break
         else:
-            warnings.append(f'Unexpected years of experience in experience string - {expEnt}')
+            logger.warning('%s - Unexpected years of experience in experience string - %s', jobUrl, expEnt)
             minExp, maxExp = None, None
 
-    print(*warnings, sep='\n')
     return minExp, maxExp

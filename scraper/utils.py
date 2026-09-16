@@ -1,5 +1,6 @@
 import os
 import random
+import sys
 import time
 import logging
 import smtplib
@@ -13,12 +14,20 @@ from functools import wraps
 from inspect import iscoroutinefunction
 
 
-
+logger = logging.getLogger(__name__)
 load_dotenv()
 email, password = os.getenv('EMAIL_ADDR'), os.getenv('EMAIL_PASS_MACAIR')
 
 
-def timed(printPrefix: str):
+'''
+Decorator to time a function
+- messagePrefix: What you want the output to say ({message} Time: x.xxxxx)
+- loggingLevel: Whether or not this should only be displayed in debug logs only
+    True only inserts the time in debug log file
+    False inserts in debug log file and stdout
+'''
+def timed(messagePrefix: str, debugOnly: bool=True):
+    timeMessage = '%s Time: %f'
     def decorator(timedFunction: function):
         if iscoroutinefunction(timedFunction):
             @wraps(timedFunction)
@@ -30,7 +39,10 @@ def timed(printPrefix: str):
                 finally:
                     timeEnd = time.perf_counter()
                     totalTime = timeEnd - timeStart
-                    print(f'>> {printPrefix} Time: {totalTime}\n')
+                    if debugOnly:
+                        logger.debug(timeMessage, messagePrefix, totalTime)
+                    else:
+                        logger.info(timeMessage, messagePrefix, totalTime)
             return asyncWrapper
         else:
             @wraps(timedFunction)
@@ -42,7 +54,10 @@ def timed(printPrefix: str):
                 finally:
                     timeEnd = time.perf_counter()
                     totalTime = timeEnd - timeStart
-                    print(f'>> {printPrefix}: {totalTime}\n')
+                    if debugOnly:
+                        logger.debug(timeMessage, messagePrefix, totalTime)
+                    else:
+                        logger.info(timeMessage, messagePrefix, totalTime)
             return syncWrapper
 
     return decorator
@@ -88,28 +103,25 @@ def emailLogging(timestamp: str, programTime: float, loggerFile: str):
     return
 
 def setupLogging():
-    os.makedirs("logs", exist_ok=True)
-    os.makedirs('logs/debug', exist_ok=True)
-    os.makedirs('logs/jobActivity', exist_ok=True)
-    timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    formatting = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    os.makedirs('logs/scraper', exist_ok=True)
 
-    logger = logging.getLogger('Jobert Scraper')
+    timestamp = datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+    loggerFile = f'./logs/scraper/scraper_{timestamp}.log'
+
+    fileFormatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    stdoutFormatter = logging.Formatter('%(levelname)s (%(name)s)\n%(message)s\n')
+
+    fileHandler = logging.FileHandler(loggerFile, encoding="utf-8")
+    fileHandler.setFormatter(fileFormatter)
+
+    stdoutHandler = logging.StreamHandler(sys.stdout)
+    stdoutHandler.setLevel(logging.INFO)
+    stdoutHandler.setFormatter(stdoutFormatter)
+
+    logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
-    loggerFile = f'./logs/debug/scraper_logs_{timestamp}.log'
-    loggerHandler = logging.FileHandler(loggerFile, encoding='utf-8')
-    loggerHandler.setFormatter(formatting)
-    logger.addHandler(loggerHandler)
-    
-    
-    jobActivity = logging.getLogger('Job Activity')
-    jobActivity.setLevel(logging.INFO)
-    jobActivityFile = f'./logs/jobActivity/job_activity_{timestamp}.log'
-    jobActivityHandler = logging.FileHandler(jobActivityFile, encoding='utf-8')
-    jobActivityHandler.setFormatter(formatting)
-    jobActivity.addHandler(jobActivityHandler)
-
-    return logger, jobActivity, timestamp
+    logger.addHandler(fileHandler)
+    logger.addHandler(stdoutHandler)
 
 
 def emailJobsInExperienceRange(jobs: list[Job], minExp: int, maxExp: int):

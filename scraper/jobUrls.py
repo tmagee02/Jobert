@@ -1,13 +1,16 @@
 import asyncio
 import random
+import logging
 from typing import Set, Tuple
-from scraper.discoveryStrategy import runDiscoveryStrategy, asyncRunDiscoveryStrategy
+from scraper.discoveryStrategy import asyncRunDiscoveryStrategy
 from scraper.utils import randomDelay, asyncRandomDelay, timed
 from playwright.sync_api import Page, Locator
 from playwright.async_api import async_playwright, Playwright, Browser, TimeoutError
 from urllib.parse import urljoin, urlparse
 import time
 from scraper.company import Company
+
+logger = logging.getLogger(__name__)
 
 # def collectCompanyJobUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
 #     jobUrls = []
@@ -98,7 +101,11 @@ def filterOldUrls(companyName: str, companyJobUrls: str, oldJobUrls: Set[str]):
         if url not in oldJobUrls:
             newUrls.append((company, url))
     
-    print(f'{companyName}: {len(newUrls)} new positions | Ignoring {len(companyJobUrls) - len(newUrls)} previously obtained urls')
+    logger.info(
+        '%s: %d new urls | Ignoring %d previously obtained urls', 
+        companyName, len(newUrls), 
+        len(companyJobUrls) - len(newUrls)
+        )
     return newUrls
 
 
@@ -108,7 +115,7 @@ def filterOldUrls(companyName: str, companyJobUrls: str, oldJobUrls: Set[str]):
 #----------async 
 #----------async 
 #----------async 
-@timed('collectAllCompanyJobUrls')
+@timed('collectAllCompanyJobUrls', debugOnly=False)
 async def asyncCollectAllCompanyJobUrls(browser: Browser, companies: dict, oldJobUrls: Set[str]):
     jobUrls = []
     companyUrls = await asyncio.gather(*(asyncCollectCompanyUrls(browser, company, oldJobUrls) for company in companies.values()))
@@ -116,7 +123,7 @@ async def asyncCollectAllCompanyJobUrls(browser: Browser, companies: dict, oldJo
     for urls in companyUrls:
         jobUrls.extend(urls)
 
-    print(f'Total URLS: {len(jobUrls)}')
+    logger.info('Total URLs: %d', len(jobUrls))
     return jobUrls
 
 

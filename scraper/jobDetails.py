@@ -12,6 +12,8 @@ from scraper.job import Job
 from scraper.jobScrapeResult import JobScrapeResult
 from tqdm.asyncio import tqdm
 
+logger = logging.getLogger(__name__)
+
 def getLocator(page: Page, company: Company, key: str) -> Locator:
         locDummy = page.locator('//h1/h1/h1/h1')
         xpath = company.xpaths[key]
@@ -113,7 +115,7 @@ def getLocator(page: Page, company: Company, key: str) -> Locator:
 #-------async
 #-------async
 #-------async
-@timed('getAllJobs')
+@timed('getAllJobs', debugOnly=False)
 async def asyncGetAllJobDetails(browser: Browser, companies: defaultdict, jobUrls: List[Tuple[str, str]]) -> list[Job]:  
     #get maximum of X urls per company
     MAX_COMPANY_COUNT = 100
@@ -138,7 +140,15 @@ async def asyncGetAllJobDetails(browser: Browser, companies: defaultdict, jobUrl
     for result in jobScrapeResults:
         if not result.job:
             companyCount[result.company.name] -= 1
-    print(*(f'{company}: {count}' for company, count in companyCount.items()), f'Successful Scrapes: {sum(companyCount.values())}\n', sep='\n')
+
+    logger.info(
+        '%s\nSuccessful Scrapes: %d',
+        '\n'.join(
+            f'{company}: {count}'
+            for company, count in companyCount.items()
+        ),
+        sum(companyCount.values())
+    )
 
     return [result.job for result in jobScrapeResults if result.job]
 
@@ -157,10 +167,10 @@ async def asyncGetJobDetails(browser: Browser, company: Company, url: str, semap
             await asyncRandomDelay(shortDelay=True)
 
             if response is None:
-                print(f'No response @ {url}. Skipping')
+                logger.warning('No response @ %d. Skipping.', url)
                 return JobScrapeResult(None, company)
             if response.status != 200:
-                print(f'Status {response.status} @ {url}. Skipping.')
+                logger.warning('Status %d @ %s. Skipping.', response.status, url)
                 return JobScrapeResult(None, company)
 
             await page.locator(company.xpaths['jobTitle']).first.wait_for(timeout=5000) 
@@ -179,7 +189,7 @@ async def asyncGetJobDetails(browser: Browser, company: Company, url: str, semap
 
             return JobScrapeResult(job, company)
         except PlaywrightTimeoutError:
-            print(f'\nPlaywrightTimeoutError @ {url}.')
+            logger.warning('PlaywrightTimeoutError @ %s. Skipping.', url)
             return JobScrapeResult(None, company)
         finally:
             await page.close()

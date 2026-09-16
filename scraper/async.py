@@ -5,11 +5,11 @@ from scraper.dataLoader import loadExistingDatabaseData, loadJson
 from scraper.jobUrls import asyncCollectAllCompanyJobUrls
 from scraper.jobDetails import asyncGetAllJobDetails
 from scraper.handleNLP import handleAllNLP
-from scraper.utils import timed, emailJobsInExperienceRange, sendExperiencePushNotification
+from scraper.utils import timed, emailJobsInExperienceRange, sendExperiencePushNotification, setupLogging
 from scraper.exportDetails import writeJobDetailsToFile, insertJobsToDatabase
 
 
-@timed('Program')
+@timed('Program', debugOnly=False)
 async def main():
     companies, oldJobUrls = loadExistingDatabaseData()
     loadJson(companies)
@@ -47,4 +47,5 @@ async def main():
 
 if __name__ == '__main__':
     print('.\n.\n.\n.\n.\n.\n')
+    setupLogging()
     asyncio.run(main())

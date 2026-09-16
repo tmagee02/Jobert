@@ -1,11 +1,14 @@
 import re
 import spacy
+import logging
 from typing import Tuple
 from scraper.job import Job
 from scraper.utils import timed
 from scraper.nlp.patternsNLP import salaryPatterns, experiencePatterns
 
-@timed('handleAllNLP')
+logger = logging.getLogger(__name__)
+
+@timed('handleAllNLP', debugOnly=False)
 def handleAllNLP(jobsScraped: list[Job]):
     nlp = spacy.load("./scraper/nlp/training/output/model-best")
     ruler = nlp.add_pipe("entity_ruler", before="ner")
@@ -35,55 +38,66 @@ def handleAllNLP(jobsScraped: list[Job]):
                     print(f'possible issue: {ent.text} -> {ent.label_}')
         # print(labelLists['SALARY'], labelLists['EXPERIENCE'])
 
-        try:
-            minSalary, maxSalary = extractSalaryRange(labelLists['SALARY'][0]) if labelLists['SALARY'] else (None, None)
-            job.minSalary, job.maxSalary = minSalary, maxSalary
-        except ValueError as e:
-            print(f'ValueError Caught: {e}\n')
-            job.minSalary, job.maxSalary = None, None
-
-        job.minExperience, job.maxExperience = extractExperience(labelLists['EXPERIENCE'])
+        job.minSalary, job.maxSalary = extractSalaryRange(job.url, labelLists['SALARY'])
+        job.minExperience, job.maxExperience = extractExperience(job.url, labelLists['EXPERIENCE'])
 
 
-def extractSalaryRange(salary: str) -> Tuple[int, int]:
+'''
+Goes through each salary entity found and returns the first valid min/max salary
+
+Logs warnings of unexpected amount of salary patterns in an entity
+'''
+def extractSalaryRange(jobUrl: str, salaryEntities: list[str]) -> Tuple[int, int]:
+    #patterns that match similar patterns: 100,000; 100000; 100k
     regexStandard = r'\d{1,3}(?:,?\d{3}){1,2}'
     regexK = r'\d{1,3}[kK]'
-    salaryVals = re.findall(regexStandard, salary)
-    salaryVals.extend(re.findall(regexK, salary))
 
-    if len(salaryVals) != 1 and len(salaryVals) != 2:
-        raise ValueError(f'Unexpected amount of values in salary string - {salary} >>> amount of values seen is {len(salaryVals)}')
+    for salaryEnt in salaryEntities:
+        print(salaryEnt)
+        salaryVals = re.findall(regexStandard, salaryEnt)
+        salaryVals.extend(re.findall(regexK, salaryEnt))
 
-    minString = salaryVals[0][:len(salaryVals[0])-1] if 'k' in salaryVals[0].lower() else salaryVals[0]
-    maxString = salaryVals[1] if len(salaryVals) == 2 else salaryVals[0]
-    maxString = maxString[:len(maxString)-1] if 'k' in maxString.lower() else maxString
-    minSalary = int(minString.replace(',', ''))
-    maxSalary = int(maxString.replace(',', ''))
+        #invalid salary entity if a strange amount of patterns are found in the entity (No patterns or more than 2)
+        if len(salaryVals) != 1 and len(salaryVals) != 2:
+            # logger.warning('%s - Unexpected amount of values in salary string - %s (amount of values seen: %d)', 
+            #                jobUrl,
+            #                salaryEnt, 
+            #                len(salaryVals)
+            # )
+            continue
 
-    if 'k' in salaryVals[0].lower():
-        minSalary *= 1000    
-    if 'k' in salaryVals[0].lower():
-        maxSalary *= 1000
+        #transform the min (and max) salary to ints
+        minString = salaryVals[0][:len(salaryVals[0])-1] if 'k' in salaryVals[0].lower() else salaryVals[0]
+        maxString = salaryVals[1] if len(salaryVals) == 2 else salaryVals[0]
+        maxString = maxString[:len(maxString)-1] if 'k' in maxString.lower() else maxString
+        minSalary = int(minString.replace(',', ''))
+        maxSalary = int(maxString.replace(',', ''))
 
-    return minSalary, maxSalary
+        if 'k' in salaryVals[0].lower():
+            minSalary *= 1000    
+        if 'k' in salaryVals[0].lower():
+            maxSalary *= 1000
+
+        return minSalary, maxSalary
+
+    return None, None
 
 
 '''
 Goes through each experience entity found and returns the first valid min/max YOE
 
-Prints warnings of unexpected counts or YOE found in experience entities
+Logs warnings of unexpected counts or YOE found in experience entities
 '''
-def extractExperience(experienceEntities: list[str]) -> Tuple[int | None, int | None]:            
+def extractExperience(jobUrl: str, experienceEntities: list[str]) -> Tuple[int | None, int | None]:            
     MAX_VALID_EXP = 20
     minExp, maxExp = None, None
     regex = r'\d+'
-    warnings = []
-
+    
     for expEnt in experienceEntities:
         expVals = re.findall(regex, expEnt)
     
         if len(expVals) != 1 and len(expVals) != 2:
-            warnings.append(f'Unexpected amount of values in experience string - {expEnt}')
+            logger.warning('%s - Unexpected amount of values in experience string - %s', jobUrl, expEnt)
             continue
 
         minExp = int(expVals[0])
@@ -92,8 +106,7 @@ def extractExperience(experienceEntities: list[str]) -> Tuple[int | None, int | 
         if 0 <= minExp <= MAX_VALID_EXP and (maxExp is None or minExp < maxExp < 100):
             break
         else:
-            warnings.append(f'Unexpected years of experience in experience string - {expEnt}')
+            logger.warning('%s - Unexpected years of experience in experience string - %s', jobUrl, expEnt)
             minExp, maxExp = None, None
 
-    print(*warnings, sep='\n')
     return minExp, maxExp

@@ -3,16 +3,15 @@ import psycopg2
 import json
 import pandas as pd
 from collections import defaultdict
-import time
+from scraper.utils import timed
 from scraper.company import Company
 
 
-NEED_TO_FIX = {}
+NEED_TO_FIX = {'Uber'}
 WHITELIST = {}
 
-
+@timed('loadExistingDatabaseData')
 def loadExistingDatabaseData() -> Tuple[dict, Set[str]]:
-    timeStart = time.perf_counter()
     qSelectCompany = '''
         select * 
         from Company
@@ -47,14 +46,11 @@ def loadExistingDatabaseData() -> Tuple[dict, Set[str]]:
     df_jobUrls = pd.read_sql_query(qSelectJobUrls, conn)
     dbJobUrls = set(df_jobUrls['job_url'])
 
-    timeEnd = time.perf_counter()
-    timeLoadExistingDatabaseData = timeEnd - timeStart
-    print(f'\nloadExistingDatabaseData Time: {timeLoadExistingDatabaseData}')
     return (companies, dbJobUrls)
 
 
+@timed('loadJson')
 def loadJson(companies: dict) -> Tuple[dict, defaultdict]:
-    timeStart = time.perf_counter()
     with open('./scraper/xpathCompany.json', 'r') as file:
         data = json.load(file)
 
@@ -68,7 +64,3 @@ def loadJson(companies: dict) -> Tuple[dict, defaultdict]:
         c.paginationType = company['paginationType'] 
         c.urlAttributeType = company['urlAttributeType']
         c.xpaths = company['xpaths']
-    
-    timeEnd = time.perf_counter()
-    timeLoadJson = timeEnd - timeStart
-    print(f'\nloadJson Time: {timeLoadJson}\n')

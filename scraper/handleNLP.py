@@ -53,17 +53,16 @@ def extractSalaryRange(jobUrl: str, salaryEntities: list[str]) -> Tuple[int, int
     regexK = r'\d{1,3}[kK]'
 
     for salaryEnt in salaryEntities:
-        print(salaryEnt)
         salaryVals = re.findall(regexStandard, salaryEnt)
         salaryVals.extend(re.findall(regexK, salaryEnt))
 
         #invalid salary entity if a strange amount of patterns are found in the entity (No patterns or more than 2)
         if len(salaryVals) != 1 and len(salaryVals) != 2:
-            # logger.warning('%s - Unexpected amount of values in salary string - %s (amount of values seen: %d)', 
-            #                jobUrl,
-            #                salaryEnt, 
-            #                len(salaryVals)
-            # )
+            logger.warning('%s - Unexpected amount of values in salary string - %s (amount of values seen: %d)', 
+                           jobUrl,
+                           salaryEnt, 
+                           len(salaryVals)
+            )
             continue
 
         #transform the min (and max) salary to ints

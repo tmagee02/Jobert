@@ -24,19 +24,15 @@ def handleAllNLP(jobsScraped: list[Job]):
             'EXPERIENCE' : [],
             'LOCATION' : []
         }
-        # labelLists = defaultdict(list)
 
-        sentences = text.split("\n\n") #if job.title == 'Engineering Manager' else ''
+        sentences = text.split("\n\n")
         for sent in sentences:
             doc = nlp(sent)
             for ent in doc.ents:
-                # labelLists[ent.label_].append(ent.text) you can use a defaultdict to test specific labels, changing them in patternsNLP
                 if ent.label_ in labelLists:
-                    # print(ent, ent.label_)
                     labelLists[ent.label_].append(ent.text)
                 else:
                     print(f'possible issue: {ent.text} -> {ent.label_}')
-        # print(labelLists['SALARY'], labelLists['EXPERIENCE'])
 
         job.minSalary, job.maxSalary = extractSalaryRange(job.url, labelLists['SALARY'])
         job.minExperience, job.maxExperience = extractExperience(job.url, labelLists['EXPERIENCE'])

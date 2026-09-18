@@ -64,25 +64,10 @@ def timed(messagePrefix: str, debugOnly: bool=True):
 
 
 async def asyncRandomDelay(shortDelay: bool=False) -> None:
-    # global totalDelay
-    # logger = logging.getLogger('Jobert Scraper')
     randomTime = random.uniform(0.5, 1.5) if shortDelay else random.uniform(1.5, 5)
-    # totalDelay += randomTime
-    # logger.debug(f'Random Delay: {randomTime} sec')
-    # print(f'Waiting {randomTime} sec.')
     await asyncio.sleep(randomTime)
     return
 
-
-totalDelay = 0
-def randomDelay(shortDelay: bool=False) -> None:
-    global totalDelay
-    logger = logging.getLogger('Jobert Scraper')
-    randomTime = random.uniform(0.5, 1.5) if shortDelay else random.uniform(1.5, 5)
-    totalDelay += randomTime
-    logger.debug(f'Random Delay: {randomTime} sec')
-    time.sleep(randomTime)
-    return
 
 def emailLogging(timestamp: str, programTime: float, loggerFile: str):
     body = f'Scraper run time: {programTime}. See logs attatched.'

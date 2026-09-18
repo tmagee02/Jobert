@@ -22,16 +22,9 @@ async def main():
 
         await browser.close()
 
-    handleAllNLP(jobsScraped) # New Uber (maybe Stripe? untested) NLP salary bad (maybe experience? untested)
+    handleAllNLP(jobsScraped)
     shuffledJobs = list(jobsScraped)
     random.shuffle(shuffledJobs)
-
-    # for job in shuffledJobs:  
-    #     print('\n', job.url)
-    #     print(f'{job.minSalary}, {job.maxSalary} : SALARY')
-    #     print(f'{job.minExperience}, {job.maxExperience} : EXPERIENCE')
-    #     for location in job.locations:
-    #         print(f'{location} : LOCATION')
 
     emailJobsInExperienceRange(shuffledJobs, 0, 2)
     writeJobDetailsToFile(shuffledJobs)

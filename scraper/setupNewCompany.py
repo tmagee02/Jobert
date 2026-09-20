@@ -1,6 +1,7 @@
-from playwright.sync_api import sync_playwright
-from scraper.jobUrls import collectAllCompanyJobUrls
-from scraper.jobDetails import getAllJobDetails
+import asyncio
+from playwright.async_api import async_playwright
+from scraper.jobUrls import asyncCollectAllCompanyJobUrls
+from scraper.jobDetails import asyncGetAllJobDetails
 from scraper.exportDetails import writeJobDetailsToFile
 from scraper.handleNLP import handleAllNLP
 from scraper.company import Company
@@ -15,7 +16,7 @@ from scraper.company import Company
 # DevTools: Vercel, Figma, Linear, Notion 0
 # Misc.: Waymo, Wing (Google subsidiaries)
 
-def main():
+async def main():
     ID = 14
     NAME = 'NVIDIA'
     BASE_URL = 'https://jobs.nvidia.com'
@@ -58,27 +59,22 @@ def main():
     companies = {NAME: company}
     oldJobUrls = set()
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, slow_mo=50)
-        page = browser.new_page()
-        page.add_init_script("""
-            Object.defineProperty(navigator, 'webdriver', {
-                get: () => undefined,
-            });
-        """)
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=False, slow_mo=50)
 
-        jobUrls = collectAllCompanyJobUrls(page, companies, oldJobUrls)
-        jobDetails = getAllJobDetails(page, companies, jobUrls)
+        jobUrls = await asyncCollectAllCompanyJobUrls(browser, companies, oldJobUrls)
+        jobsScraped = await asyncGetAllJobDetails(browser, companies, jobUrls)
+
+        await browser.close()
     
 
-    handleAllNLP(jobDetails)
-    jobDetails = list(jobDetails.values())
-    for job in jobDetails:
+    handleAllNLP(jobsScraped)
+    for job in jobsScraped:
         print(job.title, job.minSalary, job.maxSalary, job.minExperience, job.maxExperience, sep=" | ")
 
-    writeJobDetailsToFile(jobDetails)
+    writeJobDetailsToFile(jobsScraped)
     return
 
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())

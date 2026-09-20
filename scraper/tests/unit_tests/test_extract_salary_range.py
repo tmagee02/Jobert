@@ -3,46 +3,43 @@ from scraper.handleNLP import extractSalaryRange
 
 
 @pytest.mark.parametrize(
-    'text, expected',
+    'salaryEntities, expected',
     [
-        ('$147,400 and $272,100 SALARY', (147400, 272100)),
-        ('$190,400 - $285,600', (190400, 285600)),
-        ('$64,000—$204,000', (64000, 204000)),
-        ('USD$171,000 per year - USD$190,000', (171000, 190000)),
-        ('$29K – $325K', (29000, 325000)),
-        ('$2k – $32k', (2000, 32000)),
-        ('$171,000', (171000, 171000)),
-        ('$2K', (2000, 2000)),
-        ('$190,800.00 - $262,800.00 per year', (190800, 262800)), #Plaid
-        ('$2,000.00 per year', (2000, 2000)), #Plaid
-        ('$240,000 - $300,000', (240000, 300000)), #Brax
-        ('$203,410–290,586 USD', (203410, 290586)), #Spotify
-        ('US: $174000 - $253000 (USD)', (174000, 253000)), #Google
-        ('$350,000 - $500,000 USD', (350000, 500000)), #Anthropic
-        ('$140,000—$195,000 USD', (140000, 195000)), #Datadog
-        ('152,000 USD - 241,500 USD', (152000, 241500)) #NVIDIA
+        (['$147,400 and $272,100 SALARY'], (147400, 272100)),
+        (['$190,400 - $285,600'], (190400, 285600)),
+        (['$64,000—$204,000'], (64000, 204000)),
+        (['USD$171,000 per year - USD$190,000'], (171000, 190000)),
+        (['$29K – $325K'], (29000, 325000)),
+        (['$2k – $32k'], (2000, 32000)),
+        (['$171,000'], (171000, 171000)),
+        (['$2K'], (2000, 2000)),
+        (['$190,800.00 - $262,800.00 per year'], (190800, 262800)), #Plaid
+        (['$2,000.00 per year'], (2000, 2000)), #Plaid
+        (['$240,000 - $300,000'], (240000, 300000)), #Brax
+        (['$203,410–290,586 USD'], (203410, 290586)), #Spotify
+        (['US: $174000 - $253000 (USD)'], (174000, 253000)), #Google
+        (['$350,000 - $500,000 USD'], (350000, 500000)), #Anthropic
+        (['$140,000—$195,000 USD'], (140000, 195000)), #Datadog
+        (['152,000 USD - 241,500 USD'], (152000, 241500)) #NVIDIA
     ]
 )
-def test_extract_salary_range(text, expected):
-    assert extractSalaryRange(text) == expected
+def test_extract_salary_range(salaryEntities, expected):
+    url = 'www.unittest.com'
+    assert extractSalaryRange(url, salaryEntities) == expected
 
 
 @pytest.mark.parametrize(
-    'text', 
+    'salaryEntities', 
     [
-        '',
-        'Salary: ',
-        '$147,400 and $272,100 and $347,400',
-        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
-        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
-        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
-        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
-        # pytest.param('', marks=pytest.mark.skip(reason='need to grab other examples')),
+        [''],
+        ['Salary: '],
+        ['$147,400 and $272,100 and $347,400']
     ]
 )
-def test_extract_salary_range_invalid_format(text):
-    with pytest.raises(ValueError):
-        extractSalaryRange(text)
+def test_extract_salary_range_invalid_value_count(salaryEntities, caplog):
+    url = 'www.unittest.com'
+    assert extractSalaryRange(url, salaryEntities) == (None, None)
+    assert f'{url} - Unexpected amount of values in salary string - {salaryEntities[0]}' in caplog.text
 
 
 @pytest.mark.parametrize(

@@ -1,18 +1,12 @@
-import pytest
-from playwright.sync_api import sync_playwright
+import pytest_asyncio
+from playwright.async_api import async_playwright
 
-@pytest.fixture
-def page():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, slow_mo=50)
-        page = browser.new_page()
-        page.add_init_script("""
-            Object.defineProperty(navigator, 'webdriver', {
-                get: () => undefined,
-            });
-        """)
+@pytest_asyncio.fixture
+async def browser():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=False, slow_mo=50)
 
-        yield page
+        yield browser
 
-        browser.close()
+        await browser.close()
         

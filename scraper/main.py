@@ -2,9 +2,9 @@ from playwright.async_api import async_playwright
 import asyncio
 import random
 from scraper.dataLoader import loadExistingDatabaseData, loadJson
-from scraper.jobUrls import asyncCollectAllCompanyJobUrls
-from scraper.jobDetails import asyncGetAllJobDetails
-from scraper.handleNLP import handleAllNLP
+from scraper.jobUrls import collectAllCompanyJobUrls
+from scraper.scrapeJobs import scrapeAllJobs
+from scraper.processNLP import processNLP
 from scraper.utils import timed, emailJobsInExperienceRange, sendExperiencePushNotification, setupLogging
 from scraper.exportDetails import writeJobDetailsToFile, insertJobsToDatabase
 
@@ -17,12 +17,12 @@ async def main():
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=False, slow_mo=50)
 
-        jobUrls = await asyncCollectAllCompanyJobUrls(browser, companies, oldJobUrls)
-        jobsScraped = await asyncGetAllJobDetails(browser, companies, jobUrls)
+        jobUrls = await collectAllCompanyJobUrls(browser, companies, oldJobUrls)
+        jobsScraped = await scrapeAllJobs(browser, companies, jobUrls)
 
         await browser.close()
 
-    handleAllNLP(jobsScraped)
+    processNLP(jobsScraped)
     shuffledJobs = list(jobsScraped)
     random.shuffle(shuffledJobs)
 

@@ -1,7 +1,7 @@
 import logging
 from scraper.company import Company
 from playwright.sync_api import Page
-from scraper.utils import asyncRandomDelay
+from scraper.utils import randomDelay
 
 
 logger = logging.getLogger(__name__)
@@ -11,7 +11,7 @@ class DiscoveryError(Exception):
     pass
 
 
-async def asyncRunDiscoveryStrategy(company: Company, page: Page):    
+async def runDiscoveryStrategy(company: Company, page: Page):    
     if not company.urlDiscoveryStrategy:
         logger.debug('%s: No discovery strategy required', company.name)
         return
@@ -26,11 +26,11 @@ async def asyncRunDiscoveryStrategy(company: Company, page: Page):
             )
     )
     for step in company.urlDiscoveryStrategy:
-        await asyncRandomDelay(shortDelay=True)
-        await ASYNC_DISCOVERY_ACTIONS[step['type']](step, page)
+        await randomDelay(shortDelay=True)
+        await DISCOVERY_ACTIONS[step['type']](step, page)
 
 
-async def asyncTextInput(step: dict, page: Page):
+async def textInput(step: dict, page: Page):
     inputElement = page.locator(step['selector'])
     count = await inputElement.count()
     if count == 0:
@@ -41,7 +41,7 @@ async def asyncTextInput(step: dict, page: Page):
     await inputElement.type(step['text'])
     
 
-async def asyncClick(step: dict, page: Page):
+async def click(step: dict, page: Page):
     locator = page.locator(step['selector'])
     count = await locator.count()
     if count == 0:
@@ -52,7 +52,7 @@ async def asyncClick(step: dict, page: Page):
     await locator.click()
 
 
-async def asyncClickAll(step: dict, page: Page):
+async def clickAll(step: dict, page: Page):
     locator = page.locator(step['selector'])
     if not await locator.count(): 
         raise DiscoveryError(f"No elements found for selector({step['selector']})")
@@ -60,11 +60,11 @@ async def asyncClickAll(step: dict, page: Page):
     for i in range(await locator.count()):
         element = locator.nth(i)
         await element.click()
-        await asyncRandomDelay(shortDelay=True)
+        await randomDelay(shortDelay=True)
 
 
-ASYNC_DISCOVERY_ACTIONS = {
-    'TEXT_INPUT': asyncTextInput,
-    'CLICK': asyncClick,
-    'CLICK_ALL': asyncClickAll
+DISCOVERY_ACTIONS = {
+    'TEXT_INPUT': textInput,
+    'CLICK': click,
+    'CLICK_ALL': clickAll
 }

@@ -1,6 +1,6 @@
 from scraper.dataLoader import loadJson, loadExistingDatabaseData
 from scraper.jobUrls import collectAllCompanyJobUrls
-from scraper.jobDetails import getJobDetails
+from scraper.scrapeJobs import scrapeAllJobs
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 from collections import defaultdict
 import json

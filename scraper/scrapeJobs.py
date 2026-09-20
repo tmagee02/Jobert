@@ -4,7 +4,7 @@ from playwright.async_api import Browser
 from typing import List, Tuple
 from collections import defaultdict
 from scraper.company import Company
-from scraper.utils import asyncRandomDelay, timed
+from scraper.utils import randomDelay, timed
 from playwright.sync_api import Page, Locator, TimeoutError as PlaywrightTimeoutError
 import logging
 from scraper.job import Job
@@ -21,8 +21,8 @@ def getLocator(page: Page, company: Company, key: str) -> Locator:
         return page.locator(xpath) if xpath else locDummy
 
 
-@timed('getAllJobs', debugOnly=False)
-async def asyncGetAllJobDetails(browser: Browser, companies: defaultdict, jobUrls: List[Tuple[str, str]]) -> list[Job]:  
+@timed('scrapeAllJobs', debugOnly=False)
+async def scrapeAllJobs(browser: Browser, companies: defaultdict, jobUrls: List[Tuple[str, str]]) -> list[Job]:  
     #get maximum of X urls per company
     MAX_COMPANY_COUNT = 30
     companyCount = defaultdict(int)
@@ -37,7 +37,7 @@ async def asyncGetAllJobDetails(browser: Browser, companies: defaultdict, jobUrl
     #limit semaphore and split into coroutines
     semaphore = asyncio.Semaphore(8)
     jobScrapeResults = await tqdm.gather(
-        *(asyncGetJobDetails(browser, companies[companyName], jobUrl, semaphore) 
+        *(scrapeJob(browser, companies[companyName], jobUrl, semaphore) 
           for companyName, jobUrl in urlsToScrape
         )
     )
@@ -59,7 +59,7 @@ async def asyncGetAllJobDetails(browser: Browser, companies: defaultdict, jobUrl
     return [result.job for result in jobScrapeResults if result.job]
 
 
-async def asyncGetJobDetails(browser: Browser, company: Company, url: str, semaphore: Semaphore) -> JobScrapeResult:
+async def scrapeJob(browser: Browser, company: Company, url: str, semaphore: Semaphore) -> JobScrapeResult:
     async with semaphore:
         page = await browser.new_page()        
         await page.add_init_script("""
@@ -70,7 +70,7 @@ async def asyncGetJobDetails(browser: Browser, company: Company, url: str, semap
 
         try:
             response = await page.goto(url)
-            await asyncRandomDelay(shortDelay=True)
+            await randomDelay(shortDelay=True)
 
             if response is None:
                 print()
@@ -87,11 +87,11 @@ async def asyncGetJobDetails(browser: Browser, company: Company, url: str, semap
             locRemote = getLocator(page, company, 'remote')
             locDatePosted = getLocator(page, company, 'datePosted')
 
-            title = await asyncGetLocatorText(locTitle, onlyFirst=True)   
-            jobDesc = await asyncGetJobDesc(page, company)
-            offices = await asyncGetLocatorText(locOffices)
-            remote = await asyncGetLocatorText(locRemote)
-            datePosted = await asyncGetLocatorText(locDatePosted)
+            title = await getLocatorText(locTitle, onlyFirst=True)   
+            jobDesc = await getJobDesc(page, company)
+            offices = await getLocatorText(locOffices)
+            remote = await getLocatorText(locRemote)
+            datePosted = await getLocatorText(locDatePosted)
 
             job = Job(url, company.id, company.name, title, jobDesc, offices, remote, datePosted)
 
@@ -103,20 +103,20 @@ async def asyncGetJobDetails(browser: Browser, company: Company, url: str, semap
             await page.close()
 
 
-async def asyncGetLocatorText(locator: Locator, onlyFirst: bool=False):
+async def getLocatorText(locator: Locator, onlyFirst: bool=False):
     if onlyFirst:
         return await locator.nth(0).inner_text() if await locator.count() > 0 else None
     else:
         return ' \n\n '.join(await locator.all_inner_texts()) if await locator.count() > 0 else None
 
 
-async def asyncGetJobDesc(page: Page, company: Company) -> str:
+async def getJobDesc(page: Page, company: Company) -> str:
     sections = company.xpaths['jobDesc']
     sectionTexts = []
 
     try:
         for section in sections:
-            sectionTexts.append(await asyncGetLocatorText(page.locator(section), True))
+            sectionTexts.append(await getLocatorText(page.locator(section), True))
     except PlaywrightTimeoutError:
         return 
     

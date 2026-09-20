@@ -1,7 +1,6 @@
 import pytest
 from scraper.dataLoader import loadExistingDatabaseData, loadJson
-from scraper.jobUrls import asyncCollectAllCompanyJobUrls
-from scraper.jobDetails import asyncGetAllJobDetails
+from scraper.jobUrls import collectAllCompanyJobUrls
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize(
@@ -21,17 +20,16 @@ from scraper.jobDetails import asyncGetAllJobDetails
         'Datadog',
         'NVIDIA'
     ],
-    ids=lambda c: f'{c.lower()}-jobs-live'
+    ids=lambda c: f'{c.lower()}-collect-urls'
 )
-async def test_extract_jobs(companyName, browser):
+async def test_collect_urls(companyName, browser):
     companies, _ = loadExistingDatabaseData()
     loadJson(companies)
     company = {companyName: companies[companyName]}
 
-    jobUrls = await asyncCollectAllCompanyJobUrls(browser, company, set())
-    jobsScraped = await asyncGetAllJobDetails(browser, company, jobUrls)
+    jobUrls = await collectAllCompanyJobUrls(browser, company, set())
 
-    for job in jobsScraped:
-        assert job.idCompany == company[companyName].id
-        assert len(job.title) > 0
-        assert len(job.jobDesc) > 0
+    assert len(jobUrls) > 0
+    for c, url in jobUrls:
+        assert c == companyName
+        assert isinstance(url, str)

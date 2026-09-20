@@ -1,5 +1,5 @@
 import pytest
-from scraper.handleNLP import extractSalaryRange
+from scraper.processNLP import extractSalaryRange
 
 
 @pytest.mark.parametrize(

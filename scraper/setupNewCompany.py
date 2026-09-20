@@ -1,9 +1,9 @@
 import asyncio
 from playwright.async_api import async_playwright
-from scraper.jobUrls import asyncCollectAllCompanyJobUrls
-from scraper.jobDetails import asyncGetAllJobDetails
+from scraper.jobUrls import collectAllCompanyJobUrls
+from scraper.scrapeJobs import scrapeAllJobs
 from scraper.exportDetails import writeJobDetailsToFile
-from scraper.handleNLP import handleAllNLP
+from scraper.processNLP import processNLP
 from scraper.company import Company
 
 
@@ -62,13 +62,13 @@ async def main():
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=False, slow_mo=50)
 
-        jobUrls = await asyncCollectAllCompanyJobUrls(browser, companies, oldJobUrls)
-        jobsScraped = await asyncGetAllJobDetails(browser, companies, jobUrls)
+        jobUrls = await collectAllCompanyJobUrls(browser, companies, oldJobUrls)
+        jobsScraped = await scrapeAllJobs(browser, companies, jobUrls)
 
         await browser.close()
     
 
-    handleAllNLP(jobsScraped)
+    processNLP(jobsScraped)
     for job in jobsScraped:
         print(job.title, job.minSalary, job.maxSalary, job.minExperience, job.maxExperience, sep=" | ")
 

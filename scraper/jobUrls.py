@@ -1,8 +1,8 @@
 import asyncio
 import logging
 from typing import Set, Tuple
-from scraper.discoveryStrategy import asyncRunDiscoveryStrategy
-from scraper.utils import asyncRandomDelay, timed
+from scraper.discoveryStrategy import runDiscoveryStrategy
+from scraper.utils import randomDelay, timed
 from playwright.sync_api import Page, Locator
 from playwright.async_api import Browser, TimeoutError
 from urllib.parse import urljoin, urlparse
@@ -49,9 +49,9 @@ def filterOldUrls(companyName: str, companyJobUrls: str, oldJobUrls: Set[str]):
 
 
 @timed('collectAllCompanyJobUrls', debugOnly=False)
-async def asyncCollectAllCompanyJobUrls(browser: Browser, companies: dict, oldJobUrls: Set[str]):
+async def collectAllCompanyJobUrls(browser: Browser, companies: dict, oldJobUrls: Set[str]):
     jobUrls = []
-    companyUrls = await asyncio.gather(*(asyncCollectCompanyUrls(browser, company, oldJobUrls) for company in companies.values()))
+    companyUrls = await asyncio.gather(*(collectCompanyUrls(browser, company, oldJobUrls) for company in companies.values()))
 
     for urls in companyUrls:
         jobUrls.extend(urls)
@@ -61,7 +61,7 @@ async def asyncCollectAllCompanyJobUrls(browser: Browser, companies: dict, oldJo
 
 
 @timed('companyUrls')
-async def asyncCollectCompanyUrls(browser: Browser, company: Company, oldJobUrls: Set[str]):
+async def collectCompanyUrls(browser: Browser, company: Company, oldJobUrls: Set[str]):
     page = await browser.new_page()        
     await page.add_init_script("""
         Object.defineProperty(navigator, 'webdriver', {
@@ -70,25 +70,25 @@ async def asyncCollectCompanyUrls(browser: Browser, company: Company, oldJobUrls
     """)
 
     await page.goto(company.searchUrl())
-    await asyncRandomDelay(shortDelay=True)
-    await asyncRunDiscoveryStrategy(company, page)
+    await randomDelay(shortDelay=True)
+    await runDiscoveryStrategy(company, page)
 
     jobUrls = []
     paginationLimit = 9    
     paginationButton = page.locator(company.xpaths['pagination'])
-    while paginationLimit > 0 and company.paginationType and await asyncIsClickable(paginationButton):
+    while paginationLimit > 0 and company.paginationType and await isClickable(paginationButton):
         if company.paginationType == 'Next Page': 
-            jobUrls.extend(await asyncGetVisibleUrls(page, company))
+            jobUrls.extend(await getVisibleUrls(page, company))
 
         await paginationButton.click()
-        await asyncRandomDelay(True)
+        await randomDelay(True)
         try:
             await page.locator(company.xpaths['pagination']).wait_for(timeout=5000)
             paginationLimit -= 1
         except TimeoutError: 
             break
     
-    jobUrls.extend(await asyncGetVisibleUrls(page, company))
+    jobUrls.extend(await getVisibleUrls(page, company))
 
     await page.close()    
     
@@ -96,13 +96,13 @@ async def asyncCollectCompanyUrls(browser: Browser, company: Company, oldJobUrls
     return jobUrls
 
 
-async def asyncIsClickable(paginationButton: Locator) -> bool:
+async def isClickable(paginationButton: Locator) -> bool:
     isRemoved = await paginationButton.count() == 0
     isDisabled = await paginationButton.get_attribute('disabled') is not None
     return not (isRemoved or isDisabled)
 
 
-async def asyncGetVisibleUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
+async def getVisibleUrls(page: Page, company: Company) -> list[Tuple[str, str]]:
     visibleUrls = []
     elements = page.locator(company.xpaths['jobUrl'])
 

@@ -1,5 +1,5 @@
 import pytest
-from scraper.handleNLP import extractExperience
+from scraper.processNLP import extractExperience
 
 
 @pytest.mark.parametrize(

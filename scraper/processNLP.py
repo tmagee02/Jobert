@@ -8,8 +8,8 @@ from scraper.nlp.patternsNLP import salaryPatterns, experiencePatterns
 
 logger = logging.getLogger(__name__)
 
-@timed('handleAllNLP', debugOnly=False)
-def handleAllNLP(jobsScraped: list[Job]):
+@timed('processNLP', debugOnly=False)
+def processNLP(jobsScraped: list[Job]):
     nlp = spacy.load("./scraper/nlp/training/output/model-best")
     ruler = nlp.add_pipe("entity_ruler", before="ner")
     patterns = [*salaryPatterns, *experiencePatterns]

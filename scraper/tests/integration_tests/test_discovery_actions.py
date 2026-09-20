@@ -1,7 +1,7 @@
 import pytest
 import pytest_asyncio
 from playwright.async_api import async_playwright
-from scraper.discoveryStrategy import asyncTextInput, asyncClick, asyncClickAll
+from scraper.discoveryStrategy import textInput, click, clickAll
 
 
 @pytest_asyncio.fixture
@@ -29,7 +29,7 @@ async def test_text_input(page):
         'text': 'testing textInput()'
     }
 
-    await asyncTextInput(step, page)
+    await textInput(step, page)
     inputElement = page.locator(step['selector'])
 
     assert await inputElement.input_value() == step['text']
@@ -44,7 +44,7 @@ async def test_click(page):
 
     checkbox = page.locator('#team-0')
     assert not await checkbox.is_checked()
-    await asyncClick(step, page)
+    await click(step, page)
     assert await checkbox.is_checked()
 
 
@@ -59,7 +59,7 @@ async def test_click_all(page):
     for i in range(await checkboxes.count()):
         assert not await checkboxes.nth(i).is_checked()
 
-    await asyncClickAll(step, page)
+    await clickAll(step, page)
 
     for i in range(await checkboxes.count()):
         assert await checkboxes.nth(i).is_checked()

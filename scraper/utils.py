@@ -63,7 +63,7 @@ def timed(messagePrefix: str, debugOnly: bool=True):
     return decorator
 
 
-async def asyncRandomDelay(shortDelay: bool=False) -> None:
+async def randomDelay(shortDelay: bool=False) -> None:
     randomTime = random.uniform(0.5, 1.5) if shortDelay else random.uniform(1.5, 5)
     await asyncio.sleep(randomTime)
     return

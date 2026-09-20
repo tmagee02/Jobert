@@ -92,7 +92,12 @@ def extractExperience(jobUrl: str, experienceEntities: list[str]) -> Tuple[int |
         expVals = re.findall(regex, expEnt)
     
         if len(expVals) != 1 and len(expVals) != 2:
-            logger.warning('%s - Unexpected amount of values in experience string - %s', jobUrl, expEnt)
+            logger.warning(
+                '%s - Unexpected amount of values in experience string - %s (amount of values seen: %d)', 
+                jobUrl, 
+                expEnt,
+                len(expVals)
+            )
             continue
 
         minExp = int(expVals[0])

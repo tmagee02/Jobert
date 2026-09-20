@@ -3,31 +3,45 @@ from scraper.handleNLP import extractExperience
 
 
 @pytest.mark.parametrize(
-    'text, expected', 
+    'experienceEntities, expected', 
     [
-        ('10 years EXPERIENCE', (10, 10)),
-        ('3+ years EXPERIENCE', (3, 3)),
-        ('5-8 years EXPERIENCE', (5, 8)),
+        (['10 years EXPERIENCE'], (10, None)),
+        (['3+ years EXPERIENCE'], (3, None)),
+        (['5-8 years EXPERIENCE'], (5, 8)),
+        ([], (None, None))
     ]
 )
-def test_extract_experience(text, expected):
-    assert extractExperience(text) == expected
+def test_extract_experience_valid(experienceEntities, expected):
+    url = 'www.unittest.com'
+    assert extractExperience(url, experienceEntities) == expected
 
 
 @pytest.mark.parametrize(
-    'text',
+    'experienceEntities',
     [
-        'Experience Needed',
-        '',
-        '10-20-30 years EXPERIENCE',
-        '9-7 years EXPERIENCE',
-        '10-100 years EXPERIENCE',
+        ['Experience Needed'],
+        [''],
+        ['10-20-30 years EXPERIENCE']
+    ]
+)
+def test_extract_experience_invalid_value_count(experienceEntities, caplog):
+    url = 'www.unittest.com'
+    assert extractExperience(url, experienceEntities) == (None, None)
+    assert f'{url} - Unexpected amount of values in experience string - {experienceEntities[0]}' in caplog.text
+
+
+@pytest.mark.parametrize(
+    'experienceEntities',
+    [
+        ['9-7 years EXPERIENCE'],
+        ['10-100 years EXPERIENCE'],
         pytest.param('-1-8 years EXPERIENCE', marks=pytest.mark.xfail(reason='negative values not currently handled properly'))
     ]
 )
-def test_extract_experience_invalid_format(text):
-    with pytest.raises(ValueError):
-        extractExperience(text)
+def test_extract_experience_invalid_yoe(experienceEntities, caplog):
+    url = 'www.unittest.com'
+    assert extractExperience(url, experienceEntities) == (None, None)
+    assert f'{url} - Unexpected years of experience in experience string - {experienceEntities[0]}' in caplog.text
 
 
 @pytest.mark.parametrize(

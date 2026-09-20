@@ -40,7 +40,7 @@ def filterOldUrls(companyName: str, companyJobUrls: str, oldJobUrls: Set[str]):
         if url not in oldJobUrls:
             newUrls.append((company, url))
     
-    logger.info(
+    logger.debug(
         '%s: %d new urls | Ignoring %d previously obtained urls', 
         companyName, len(newUrls), 
         len(companyJobUrls) - len(newUrls)

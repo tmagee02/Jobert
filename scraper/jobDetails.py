@@ -24,7 +24,7 @@ def getLocator(page: Page, company: Company, key: str) -> Locator:
 @timed('getAllJobs', debugOnly=False)
 async def asyncGetAllJobDetails(browser: Browser, companies: defaultdict, jobUrls: List[Tuple[str, str]]) -> list[Job]:  
     #get maximum of X urls per company
-    MAX_COMPANY_COUNT = 100
+    MAX_COMPANY_COUNT = 30
     companyCount = defaultdict(int)
     uniqueUrls = set()
     urlsToScrape = []
@@ -73,9 +73,11 @@ async def asyncGetJobDetails(browser: Browser, company: Company, url: str, semap
             await asyncRandomDelay(shortDelay=True)
 
             if response is None:
+                print()
                 logger.warning('No response @ %d. Skipping.', url)
                 return JobScrapeResult(None, company)
             if response.status != 200:
+                print()
                 logger.warning('Status %d @ %s. Skipping.', response.status, url)
                 return JobScrapeResult(None, company)
 
